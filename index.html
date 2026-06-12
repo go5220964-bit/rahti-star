@@ -1,12 +1,3 @@
-لديّ الآن كل المعلومات التي أحتاجها. سأبني الملف الكامل الآن مباشرةً.
-
-***
-
-## ملف HTML الكامل النهائي
-
-احفظ الكود التالي بأكمله كملف `rahati-star-attendance.html`:
-
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -51,18 +42,17 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 .topbar-brand .logo{width:32px;height:32px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
 .topbar-actions{display:flex;align-items:center;gap:12px}
 .topbar-time{font-size:13px;opacity:.75;font-variant-numeric:tabular-nums;direction:ltr}
-.user-pill{background:rgba(255,255,255,.12);border-radius:20px;padding:5px 12px;font-size:13px;cursor:pointer;transition:.15s;border:none;color:#fff;font-family:inherit}
+.user-pill{background:rgba(255,255,255,.12);border-radius:20px;padding:5px 12px;font-size:13px;cursor:pointer;transition:.15s}
 .user-pill:hover{background:rgba(255,255,255,.2)}
 
 /* ─── Navigation ─── */
-.nav{background:var(--surface);border-bottom:1px solid var(--border);display:flex;gap:0;overflow-x:auto;position:sticky;top:56px;z-index:99;scrollbar-width:none}
-.nav::-webkit-scrollbar{display:none}
+.nav{background:var(--surface);border-bottom:1px solid var(--border);display:flex;gap:0;overflow-x:auto;position:sticky;top:56px;z-index:99}
 .nav-btn{padding:14px 20px;border:none;background:none;font-family:inherit;font-size:14px;color:var(--text-2);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:.15s;display:flex;align-items:center;gap:6px}
 .nav-btn:hover{color:var(--brand)}
 .nav-btn.active{color:var(--brand);border-bottom-color:var(--brand);font-weight:500}
 
 /* ─── Pages ─── */
-.page{display:none;padding:1.5rem;max-width:1200px;margin:0 auto}
+.page{display:none;padding:1.5rem;max-width:1100px;margin:0 auto}
 .page.active{display:block}
 
 /* ─── Cards ─── */
@@ -111,8 +101,8 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 @keyframes slide-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 
 /* ─── Map ─── */
-.map-frame{width:100%;height:300px;border-radius:10px;border:1px solid var(--border);overflow:hidden;background:#e8f0e8;position:relative}
-.map-canvas{width:100%;height:100%}
+#map-frame{width:100%;height:300px;border-radius:10px;border:1px solid var(--border);overflow:hidden;background:#e8f0e8;position:relative}
+#map-canvas{width:100%;height:100%}
 .map-overlay-info{position:absolute;bottom:12px;right:12px;background:rgba(255,255,255,.95);border-radius:8px;padding:8px 12px;font-size:12px;color:var(--text-2);box-shadow:0 2px 8px rgba(0,0,0,.15)}
 
 /* ─── Location status ─── */
@@ -124,7 +114,7 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 .loc-dot.green{background:var(--brand-mid);box-shadow:0 0 0 3px rgba(45,146,103,.2);animation:pulse 2s infinite}
 .loc-dot.red{background:var(--danger);box-shadow:0 0 0 3px rgba(192,57,43,.2)}
 .loc-dot.gray{background:#bbb}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(45,146,103,.25)}50%{box-shadow:0 0 0 6px rgba(45,146,103,.1)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(45,146,103,.2)}50%{box-shadow:0 0 0 6px rgba(45,146,103,.1)}}
 
 /* ─── Stamp button ─── */
 .stamp-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1rem}
@@ -186,19 +176,6 @@ select.form-control{cursor:pointer}
 .spinner{width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:inline-block}
 @keyframes spin{to{transform:rotate(360deg)}}
 .chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--brand-light);color:var(--brand-dark);border-radius:20px;font-size:12px;font-weight:500}
-
-/* ─── Password strength ─── */
-.pwd-eye{position:absolute;left:10px;top:10px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)}
-
-/* ─── Absence table ─── */
-#absence-table th, #absence-table td{padding:8px 10px;white-space:nowrap}
-#absence-table{font-size:13px}
-
-@media print {
-  .topbar,.nav,.stamp-wrap,.btn,.section-header button{display:none!important}
-  .page{display:block!important;padding:0}
-  body{background:#fff}
-}
 </style>
 </head>
 <body>
@@ -209,12 +186,10 @@ select.form-control{cursor:pointer}
     <div class="login-logo">🌟</div>
     <div class="login-title">راحتي ستار</div>
     <div class="login-sub">نظام الحضور والانصراف الجغرافي<br>الطائف — طريق السيل</div>
-
     <div style="background:#e8f5ee;border:1px solid #9fe1cb;border-radius:8px;padding:10px 14px;margin-bottom:1rem;font-size:13px;color:#1a6b4a;display:flex;align-items:center;gap:8px">
-      <span>✅</span><span>متصل بـ Google Sheets — البيانات تُحفظ تلقائياً</span>
+      <span>✅</span>
+      <span>متصل بـ Google Sheets — البيانات تُحفظ تلقائياً</span>
     </div>
-
-    <!-- اختيار الدور -->
     <div class="role-btns" id="role-btns">
       <button class="role-btn" onclick="showAdminLogin()">
         <span class="role-icon">🛡️</span>
@@ -225,43 +200,37 @@ select.form-control{cursor:pointer}
         <div><div style="font-size:15px;font-weight:600">بوابة الموظف</div><div style="font-size:12px;color:var(--text-3)">تسجيل الحضور والانصراف</div></div>
       </button>
     </div>
-
-    <!-- نموذج تسجيل دخول الموظف -->
-    <div id="emp-login-panel" style="display:none;margin-top:.5rem;text-align:right">
-      <button onclick="showRoleSelect()" style="background:none;border:none;color:var(--text-3);font-size:13px;cursor:pointer;font-family:inherit;margin-bottom:1rem">← رجوع</button>
-      <div style="font-size:16px;font-weight:600;margin-bottom:1.25rem;text-align:center">🔐 تسجيل دخول الموظف</div>
-      <div class="form-group" style="text-align:right">
+    <div id="emp-login-panel" style="display:none;text-align:right;margin-top:.5rem">
+      <button onclick="showRoleSelect()" style="background:none;border:none;color:var(--text-3);font-size:13px;cursor:pointer;font-family:inherit;margin-bottom:1rem">&larr; رجوع</button>
+      <div style="font-size:16px;font-weight:600;margin-bottom:1.25rem;text-align:center">&#128272; تسجيل دخول الموظف</div>
+      <div class="form-group">
         <label class="form-label">اسم المستخدم</label>
-        <input class="form-control" id="emp-login-username" placeholder="أدخل اسم المستخدم" autocomplete="username" onkeydown="if(event.key==='Enter')document.getElementById('emp-login-password').focus()">
+        <input class="form-control" id="emp-login-username" placeholder="أدخل اسم المستخدم" onkeydown="if(event.key==='Enter')document.getElementById('emp-login-password').focus()">
       </div>
-      <div class="form-group" style="position:relative;text-align:right">
+      <div class="form-group" style="position:relative">
         <label class="form-label">كلمة المرور</label>
-        <input class="form-control" id="emp-login-password" type="password" placeholder="أدخل كلمة المرور" autocomplete="current-password" onkeydown="if(event.key==='Enter')loginEmployee()">
-        <button class="pwd-eye" onclick="togglePwdVis('emp-login-password','eye-1')" id="eye-1">👁</button>
+        <input class="form-control" id="emp-login-password" type="password" placeholder="أدخل كلمة المرور" style="padding-left:40px" onkeydown="if(event.key==='Enter')loginEmployee()">
+        <button onclick="togglePwdVis('emp-login-password','eye-1')" id="eye-1" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">&#128065;</button>
       </div>
-      <div id="emp-login-error" style="color:var(--danger);font-size:13px;margin-bottom:.75rem;display:none">❌ اسم المستخدم أو كلمة المرور غير صحيحة</div>
+      <div id="emp-login-error" style="color:#c0392b;font-size:13px;margin-bottom:.75rem;display:none">&#10060; اسم المستخدم أو كلمة المرور غير صحيحة</div>
       <button class="btn btn-primary btn-lg" onclick="loginEmployee()">دخول</button>
     </div>
-
-    <!-- نموذج تسجيل دخول المدير -->
-    <div id="admin-login-panel" style="display:none;margin-top:.5rem;text-align:right">
-      <button onclick="showRoleSelect()" style="background:none;border:none;color:var(--text-3);font-size:13px;cursor:pointer;font-family:inherit;margin-bottom:1rem">← رجوع</button>
-      <div style="font-size:16px;font-weight:600;margin-bottom:1.25rem;text-align:center">🛡️ دخول المدير</div>
-      <div class="form-group" style="position:relative;text-align:right">
+    <div id="admin-login-panel" style="display:none;text-align:right;margin-top:.5rem">
+      <button onclick="showRoleSelect()" style="background:none;border:none;color:var(--text-3);font-size:13px;cursor:pointer;font-family:inherit;margin-bottom:1rem">&larr; رجوع</button>
+      <div style="font-size:16px;font-weight:600;margin-bottom:1.25rem;text-align:center">&#128737; دخول المدير</div>
+      <div class="form-group" style="position:relative">
         <label class="form-label">كلمة مرور المدير</label>
-        <input class="form-control" id="admin-login-password" type="password" placeholder="أدخل كلمة المرور" autocomplete="current-password" onkeydown="if(event.key==='Enter')loginAdmin()">
-        <button class="pwd-eye" onclick="togglePwdVis('admin-login-password','eye-a')" id="eye-a">👁</button>
+        <input class="form-control" id="admin-login-password" type="password" placeholder="أدخل كلمة المرور" style="padding-left:40px" onkeydown="if(event.key==='Enter')loginAdmin()">
+        <button onclick="togglePwdVis('admin-login-password','eye-a')" id="eye-a" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">&#128065;</button>
       </div>
-      <div id="admin-login-error" style="color:var(--danger);font-size:13px;margin-bottom:.75rem;display:none">❌ كلمة المرور غير صحيحة</div>
+      <div id="admin-login-error" style="color:#c0392b;font-size:13px;margin-bottom:.75rem;display:none">&#10060; كلمة المرور غير صحيحة</div>
       <button class="btn btn-primary btn-lg" onclick="loginAdmin()">دخول كمدير</button>
       <div style="font-size:11px;color:var(--text-3);margin-top:.75rem;text-align:center">كلمة المرور الافتراضية: <strong>rahati2024</strong></div>
     </div>
-
     <p style="font-size:11px;color:var(--text-3);margin-top:1rem;text-align:center" id="drive-status">🔒 البيانات محمية ومحفوظة في Google Sheets</p>
     <p style="display:none" id="demo-hint"></p>
   </div>
 </div>
-
 
 <!-- ═══════════════════ APP ═══════════════════ -->
 <div id="app" style="display:none">
@@ -277,7 +246,7 @@ select.form-control{cursor:pointer}
   </div>
   <div class="topbar-actions">
     <div class="topbar-time" id="clock">--:--:--</div>
-    <button class="user-pill" id="user-pill">👤 موظف</button>
+    <div class="user-pill" id="user-pill" onclick="toggleRole()">👤 موظف</div>
     <button onclick="logout()" style="background:rgba(255,255,255,.12);border:none;color:#fff;padding:6px 12px;border-radius:6px;cursor:pointer;font-family:inherit;font-size:13px">خروج</button>
   </div>
 </div>
@@ -286,14 +255,13 @@ select.form-control{cursor:pointer}
 <div class="nav" id="main-nav">
   <button class="nav-btn active" data-page="attendance" onclick="switchPage('attendance')">📍 الحضور والانصراف</button>
   <button class="nav-btn" data-page="admin" onclick="switchPage('admin')" id="admin-tab" style="display:none">📊 لوحة الإدارة</button>
-  <button class="nav-btn" data-page="reports" onclick="switchPage('reports')" id="reports-tab" style="display:none">📋 التقارير</button>
-  <button class="nav-btn" data-page="absence" onclick="switchPage('absence')" id="absence-tab" style="display:none">📅 الغيابات</button>
+  <button class="nav-btn" data-page="reports" onclick="switchPage('reports')" id="reports-tab" style="display:none">📋 التقارير والسجلات</button>
   <button class="nav-btn" data-page="employees" onclick="switchPage('employees')" id="emp-mgmt-tab" style="display:none">👥 الموظفون</button>
   <button class="nav-btn" data-page="shifts" onclick="switchPage('shifts')" id="shifts-tab" style="display:none">🕐 الورديات</button>
-  <button class="nav-btn" data-page="profile" onclick="switchPage('profile')" id="profile-tab" style="display:none">👤 ملفي الشخصي</button>
   <button class="nav-btn" data-page="settings" onclick="switchPage('settings')" id="settings-tab" style="display:none">⚙️ الإعدادات</button>
+  <button class="nav-btn" data-page="absence" onclick="switchPage('absence')" id="absence-tab" style="display:none">📅 الغيابات</button>
+  <button class="nav-btn" data-page="profile" onclick="switchPage('profile')" id="profile-tab" style="display:none">👤 ملفي الشخصي</button>
 </div>
-
 
 <!-- ═══ PAGE: ATTENDANCE ═══ -->
 <div class="page active" id="page-attendance">
@@ -306,7 +274,7 @@ select.form-control{cursor:pointer}
         <div class="loc-dot gray" id="loc-dot"></div>
         <div>
           <div style="font-weight:500;font-size:14px" id="loc-title">جارٍ تحديد موقعك...</div>
-          <div style="font-size:12px;opacity:.7;margin-top:2px" id="loc-desc">يرجى الانتظار</div>
+          <div style="font-size:12px;opacity:.7;margin-top:2px" id="loc-desc">يرجى السماح بالوصول للموقع</div>
         </div>
       </div>
 
@@ -314,8 +282,8 @@ select.form-control{cursor:pointer}
       <div class="card">
         <div class="card-title">👤 بيانات الموظف</div>
         <div class="form-group">
-          <label class="form-label">الاسم الكامل</label>
-          <input class="form-control" id="emp-name" placeholder="اسمك الكامل" value="">
+          <label class="form-label">اسم الموظف</label>
+          <input class="form-control" id="emp-name" placeholder="أدخل اسمك الكامل" value="">
         </div>
         <div class="form-group">
           <label class="form-label">القسم</label>
@@ -335,7 +303,7 @@ select.form-control{cursor:pointer}
 
       <!-- Distance Info -->
       <div class="card">
-        <div class="card-title">📡 بُعد الموقع</div>
+        <div class="card-title">📏 المسافة عن الموقع</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
           <div class="stat">
             <div class="stat-label">المسافة الحالية</div>
@@ -343,18 +311,18 @@ select.form-control{cursor:pointer}
             <div class="stat-sub">متر</div>
           </div>
           <div class="stat">
-            <div class="stat-label">النطاق المسموح</div>
+            <div class="stat-label">الحد المسموح</div>
             <div class="stat-value" style="font-size:20px" id="allowed-radius-disp">100</div>
             <div class="stat-sub">متر</div>
           </div>
         </div>
         <div style="margin-top:12px">
           <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-3);margin-bottom:4px">
-            <span>نسبة القرب من الموقع</span>
-            <span id="prox-pct">--</span>
+            <span>مقياس القرب</span>
+            <span id="prox-pct">--%</span>
           </div>
           <div style="height:6px;background:#eee;border-radius:3px;overflow:hidden">
-            <div id="prox-bar" style="height:100%;border-radius:3px;width:0;transition:.5s;background:var(--brand)"></div>
+            <div id="prox-bar" style="height:100%;border-radius:3px;width:0%;transition:.5s;background:var(--brand)"></div>
           </div>
         </div>
       </div>
@@ -362,14 +330,14 @@ select.form-control{cursor:pointer}
       <!-- Stamp Buttons -->
       <div class="stamp-wrap">
         <button class="stamp-btn checkin" id="btn-checkin" onclick="doStamp('in')" disabled>
-          <div class="icon">🟢</div>
-          <div>تسجيل الحضور</div>
-          <div style="font-size:12px;opacity:.8" id="checkin-time">----</div>
+          <div class="icon">⬆️</div>
+          <div>تسجيل حضور</div>
+          <div style="font-size:12px;opacity:.8" id="checkin-time">--:--</div>
         </button>
         <button class="stamp-btn checkout" id="btn-checkout" onclick="doStamp('out')" disabled>
-          <div class="icon">🔵</div>
-          <div>تسجيل الانصراف</div>
-          <div style="font-size:12px;opacity:.8" id="checkout-time">----</div>
+          <div class="icon">⬇️</div>
+          <div>تسجيل انصراف</div>
+          <div style="font-size:12px;opacity:.8" id="checkout-time">--:--</div>
         </button>
       </div>
     </div>
@@ -378,17 +346,17 @@ select.form-control{cursor:pointer}
       <!-- Map -->
       <div class="card">
         <div class="card-title">🗺️ الخريطة الجغرافية</div>
-        <div id="map-frame" class="map-frame">
-          <canvas id="map-canvas" class="map-canvas"></canvas>
+        <div id="map-frame">
+          <canvas id="map-canvas"></canvas>
           <div class="map-overlay-info" id="map-info">
-            <div style="font-weight:500">📍 موقعك</div>
+            <div style="font-weight:500">راحتي ستار — الطائف</div>
             <div id="map-coords" style="direction:ltr;font-size:11px;margin-top:2px;color:#666">21.4788°, 40.4854°</div>
           </div>
         </div>
         <div style="display:flex;gap:12px;margin-top:10px;font-size:12px;color:var(--text-3)">
-          <span>🟢 موقع العمل</span>
-          <span>🔵 موقعك</span>
-          <span style="border:1.5px dashed #1a6b4a;padding:0 6px;border-radius:4px">النطاق المسموح</span>
+          <span>🟢 موقع المقر</span>
+          <span>🔵 موقعك الحالي</span>
+          <span style="border:1.5px dashed #1a6b4a;padding:0 6px;border-radius:4px">نطاق السماح</span>
         </div>
       </div>
 
@@ -396,50 +364,67 @@ select.form-control{cursor:pointer}
       <div class="card">
         <div class="card-title">📋 سجل اليوم</div>
         <div id="today-log">
-          <div class="empty-state"><div class="icon">📭</div><div>لا توجد بصمات اليوم</div></div>
+          <div class="empty-state">
+            <div class="icon">📭</div>
+            <div>لا توجد بصمات اليوم</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
 <!-- ═══ PAGE: ADMIN ═══ -->
 <div class="page" id="page-admin">
   <div class="grid-4" style="margin-bottom:1rem">
-    <div class="stat brand"><div class="stat-label">✅ حاضرون</div><div class="stat-value" id="stat-present">0</div><div class="stat-sub">الموظفون اليوم</div></div>
-    <div class="stat"><div class="stat-label">❌ غائبون</div><div class="stat-value" id="stat-absent">0</div><div class="stat-sub">من أصل <span id="stat-total-emp">0</span></div></div>
-    <div class="stat"><div class="stat-label">⏰ متأخرون</div><div class="stat-value" id="stat-late">0</div><div class="stat-sub">تجاوزوا وقت البدء</div></div>
-    <div class="stat"><div class="stat-label">⛔ مرفوضة</div><div class="stat-value" id="stat-rejected">0</div><div class="stat-sub">بصمات خارج النطاق</div></div>
+    <div class="stat brand">
+      <div class="stat-label">✅ حضور اليوم</div>
+      <div class="stat-value" id="stat-present">0</div>
+      <div class="stat-sub">موظف</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">❌ غياب اليوم</div>
+      <div class="stat-value" id="stat-absent">0</div>
+      <div class="stat-sub">موظف</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">⏰ تأخر اليوم</div>
+      <div class="stat-value" id="stat-late">0</div>
+      <div class="stat-sub">موظف</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">⛔ محاولات مرفوضة</div>
+      <div class="stat-value" id="stat-rejected">0</div>
+      <div class="stat-sub">هذا الشهر</div>
+    </div>
   </div>
 
   <div class="grid-2">
     <div class="card">
-      <div class="card-title">📈 الحضور الأسبوعي</div>
+      <div class="card-title">📈 حضور الأسبوع الحالي</div>
       <div class="chart-wrap"><canvas id="week-chart"></canvas></div>
     </div>
     <div class="card">
-      <div class="card-title">🏢 توزيع الأقسام</div>
+      <div class="card-title">🏢 الحضور حسب القسم</div>
       <div class="chart-wrap"><canvas id="dept-chart"></canvas></div>
     </div>
   </div>
 
   <div class="card">
     <div class="section-header">
-      <div class="card-title" style="margin-bottom:0">⚡ السجل المباشر</div>
-      <button class="btn btn-secondary" onclick="exportToSheet()">📤 تصدير Google Sheets</button>
+      <div class="card-title" style="margin-bottom:0">🕐 آخر البصمات</div>
+      <button class="btn btn-secondary" onclick="exportToSheet()">⬆️ تصدير لـ Google Sheets</button>
     </div>
     <div class="table-wrap" id="live-log-table">
       <table>
-        <thead><tr><th>الموظف</th><th>القسم</th><th>الوردية</th><th>النوع</th><th>الوقت</th><th>المسافة</th><th>الحالة</th></tr></thead>
+        <thead><tr><th>الموظف</th><th>القسم</th><th>النوع</th><th>الوقت</th><th>الموقع</th><th>الحالة</th></tr></thead>
         <tbody id="live-log-body">
-          <tr><td colspan="7" style="text-align:center;color:var(--text-3);padding:24px">لا توجد سجلات بعد</td></tr>
+          <tr><td colspan="6" style="text-align:center;color:var(--text-3);padding:24px">لا توجد سجلات بعد</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-
 
 <!-- ═══ PAGE: REPORTS ═══ -->
 <div class="page" id="page-reports">
@@ -468,39 +453,156 @@ select.form-control{cursor:pointer}
       </div>
     </div>
     <div style="display:flex;gap:10px">
-      <button class="btn btn-primary" onclick="filterReports()">🔍 بحث</button>
-      <button class="btn btn-secondary" onclick="exportToSheet()">📤 Google Sheets</button>
+      <button class="btn btn-primary" onclick="filterReports()">🔍 عرض التقرير</button>
+      <button class="btn btn-secondary" onclick="exportToSheet()">⬆️ تصدير لـ Google Sheets</button>
       <button class="btn btn-secondary" onclick="printReport()">🖨️ طباعة</button>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-title">📊 ملخص النتائج</div>
+    <div class="card-title">📊 ملخص الحضور</div>
     <div class="grid-3" id="report-summary">
-      <div class="stat"><div class="stat-label">إجمالي السجلات</div><div class="stat-value" id="r-total">0</div></div>
-      <div class="stat"><div class="stat-label">✅ مقبولة</div><div class="stat-value" id="r-accepted">0</div></div>
-      <div class="stat"><div class="stat-label">❌ مرفوضة</div><div class="stat-value" id="r-rejected">0</div></div>
+      <div class="stat"><div class="stat-label">إجمالي البصمات</div><div class="stat-value" id="r-total">0</div></div>
+      <div class="stat"><div class="stat-label">بصمات مقبولة</div><div class="stat-value" id="r-accepted">0</div></div>
+      <div class="stat"><div class="stat-label">بصمات مرفوضة</div><div class="stat-value" id="r-rejected">0</div></div>
     </div>
   </div>
 
   <div class="card">
     <div class="section-header">
-      <div class="card-title" style="margin-bottom:0">📋 تفاصيل السجلات</div>
+      <div class="card-title" style="margin-bottom:0">📋 سجلات الحضور</div>
       <span class="chip" id="report-count">0 سجل</span>
     </div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>التاريخ</th><th>الموظف</th><th>القسم</th><th>الوردية</th><th>دخول</th><th>خروج</th><th>المدة</th><th>الحالة</th></tr></thead>
+        <thead><tr><th>التاريخ</th><th>الموظف</th><th>القسم</th><th>الوردية</th><th>حضور</th><th>انصراف</th><th>المدة</th><th>الحالة</th></tr></thead>
         <tbody id="report-body">
-          <tr><td colspan="8" style="text-align:center;color:var(--text-3);padding:24px">اضغط بحث لعرض النتائج</td></tr>
+          <tr><td colspan="8" style="text-align:center;color:var(--text-3);padding:24px">لا توجد سجلات</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
 
+<!-- ═══ PAGE: EMPLOYEES ═══ -->
+<div class="page" id="page-employees">
+  <div class="section-header">
+    <h2 style="font-size:17px;font-weight:600">👥 إدارة الموظفين</h2>
+    <button class="btn btn-primary" onclick="openAddEmp()">+ إضافة موظف</button>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الاسم</th><th>القسم</th><th>الوردية</th><th>اسم المستخدم</th><th>تاريخ التوظيف</th><th>الحالة</th><th>الإجراءات</th></tr></thead>
+        <tbody id="emp-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<!-- ═══ PAGE: ABSENCE REPORT ═══ -->
+<!-- ═══ PAGE: SETTINGS ═══ -->
+<div class="page" id="page-settings">
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">📍 إعدادات الموقع الجغرافي</div>
+      <div class="form-group">
+        <label class="form-label">خط العرض (Latitude)</label>
+        <input class="form-control" id="set-lat" value="21.4787635" style="direction:ltr">
+      </div>
+      <div class="form-group">
+        <label class="form-label">خط الطول (Longitude)</label>
+        <input class="form-control" id="set-lng" value="40.4853529" style="direction:ltr">
+      </div>
+      <div class="form-group">
+        <label class="form-label">نطاق السماح (متر)</label>
+        <input class="form-control" type="number" id="set-radius" value="100" min="30" max="1000">
+      </div>
+      <button class="btn btn-primary" onclick="saveSettings()">💾 حفظ الإعدادات</button>
+    </div>
+    <div class="card">
+      <div class="card-title">🔗 إعدادات Google Drive</div>
+      <div id="drive-settings-status" style="margin-bottom:1rem;font-size:14px;color:var(--text-2)">غير مرتبط</div>
+      <button class="gdrive-btn" id="settings-gdrive-btn" onclick="showScriptUrlModal()" style="margin-top:0;border-radius:8px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.5 20L1 11l4-7h14l4 7-4 7z" fill="#34a853"/><path d="M1 11l5.5 9h11L23 11z" fill="#4285f4" opacity=".5"/><path d="M5 4l5.5 9.5-5 8.5H1L6.5 11z" fill="#fbbc05" opacity=".6"/></svg>
+        ربط Google Drive
+      </button>
+      <div style="margin-top:1rem">
+        <div class="form-group">
+          <label class="form-label">معرّف Google Sheet (اختياري)</label>
+          <input class="form-control" id="sheet-id" placeholder="أدخل Sheet ID أو اتركه فارغاً للإنشاء تلقائياً" style="direction:ltr;font-size:12px">
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">⏰ إعدادات الدوام</div>
+      <div class="form-group">
+        <label class="form-label">وقت بدء الدوام الصباحي</label>
+        <input class="form-control" type="time" id="set-work-start" value="07:00">
+      </div>
+      <div class="form-group">
+        <label class="form-label">حد التأخر (بالدقائق)</label>
+        <input class="form-control" type="number" id="set-late-mins" value="15" min="0">
+      </div>
+      <button class="btn btn-primary" onclick="saveSettings()">💾 حفظ</button>
+    </div>
+    <div class="card">
+      <div class="card-title">ℹ️ معلومات الشركة</div>
+      <div style="font-size:14px;color:var(--text-2);line-height:2">
+        <div>🏢 <strong>راحتي ستار للشقق المخدومة</strong></div>
+        <div>📍 الطائف — طريق السيل</div>
+        <div>🌐 إحداثيات المقر: 21.4787635, 40.4853529</div>
+        <div style="margin-top:10px">
+          <div style="font-size:12px;color:var(--text-3)">إصدار النظام: 1.0.0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ PAGE: SHIFTS ═══ -->
+<div class="page" id="page-shifts">
+  <div class="section-header">
+    <h2 style="font-size:17px;font-weight:600">🕐 إدارة الورديات</h2>
+    <button class="btn btn-primary" onclick="openShiftModal()">+ إضافة وردية</button>
+  </div>
+
+  <div class="grid-3" id="shifts-stats" style="margin-bottom:1rem"></div>
+
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>اسم الوردية</th>
+            <th>وقت البداية</th>
+            <th>وقت النهاية</th>
+            <th>المدة</th>
+            <th>الموظفون</th>
+            <th>الحالة</th>
+            <th>الإجراءات</th>
+          </tr>
+        </thead>
+        <tbody id="shifts-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1rem">
+    <div class="card-title">📅 توزيع الورديات على الموظفين</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>الموظف</th><th>القسم</th><th>الوردية المعينة</th><th>تغيير الوردية</th></tr>
+        </thead>
+        <tbody id="emp-shift-assign-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ PAGE: ABSENCE ═══ -->
 <div class="page" id="page-absence">
   <div class="card">
     <div class="card-title">📅 تقرير الغيابات الشهري</div>
@@ -524,57 +626,39 @@ select.form-control{cursor:pointer}
       <button class="btn btn-secondary" onclick="window.print()">🖨️ طباعة</button>
     </div>
   </div>
-
   <div class="grid-4" style="margin-bottom:1rem">
     <div class="stat brand"><div class="stat-label" style="color:#fff">📅 أيام العمل</div><div class="stat-value" id="abs-work-days">—</div></div>
     <div class="stat"><div class="stat-label">👥 الموظفون</div><div class="stat-value" id="abs-total-emp">—</div></div>
-    <div class="stat"><div class="stat-label">🔴 إجمالي الغيابات</div><div class="stat-value" id="abs-total-absent">—</div></div>
-    <div class="stat"><div class="stat-label">🟡 إجمالي التأخرات</div><div class="stat-value" id="abs-total-late">—</div></div>
+    <div class="stat"><div class="stat-label">🔴 الغيابات</div><div class="stat-value" id="abs-total-absent">—</div></div>
+    <div class="stat"><div class="stat-label">🟡 التأخرات</div><div class="stat-value" id="abs-total-late">—</div></div>
   </div>
-
-  <div class="card" id="absence-report-card">
+  <div class="card">
     <div class="section-header">
       <div class="card-title" style="margin-bottom:0">📋 جدول الغيابات التفصيلي</div>
       <span class="chip" id="absence-count">0 موظف</span>
     </div>
-    <div class="table-wrap">
-      <table id="absence-table">
+    <div class="table-wrap" style="overflow-x:auto">
+      <table id="absence-table" style="font-size:13px;min-width:600px">
         <thead id="absence-thead"></thead>
-        <tbody id="absence-tbody">
-          <tr><td colspan="5" style="text-align:center;color:var(--text-3);padding:28px">اختر الشهر واضغط إنشاء التقرير</td></tr>
-        </tbody>
+        <tbody id="absence-tbody"><tr><td colspan="6" style="text-align:center;color:var(--text-3);padding:28px">اختر الشهر واضغط إنشاء التقرير</td></tr></tbody>
       </table>
+    </div>
+    <div style="display:flex;gap:16px;margin-top:12px;font-size:12px">
+      <span style="background:#e8f5ee;color:#1a6b4a;padding:3px 10px;border-radius:4px">✓ حاضر</span>
+      <span style="background:#fdf0ef;color:#c0392b;padding:3px 10px;border-radius:4px">غ غائب</span>
+      <span style="background:#fdf5e6;color:#c9973a;padding:3px 10px;border-radius:4px">ت متأخر</span>
     </div>
   </div>
 </div>
-
-
-<!-- ═══ PAGE: EMPLOYEES ═══ -->
-<div class="page" id="page-employees">
-  <div class="section-header">
-    <h2 style="font-size:17px;font-weight:600">👥 إدارة الموظفين</h2>
-    <button class="btn btn-primary" onclick="openAddEmp()">➕ إضافة موظف</button>
-  </div>
-  <div class="card">
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>الاسم</th><th>القسم</th><th>الوردية</th><th>اسم المستخدم</th><th>تاريخ التوظيف</th><th>الحالة</th><th>الإجراءات</th></tr></thead>
-        <tbody id="emp-table-body"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
 
 <!-- ═══ PAGE: PROFILE ═══ -->
 <div class="page" id="page-profile">
   <div class="grid-2">
     <div>
-      <div class="card" id="profile-info-card">
+      <div class="card">
         <div class="card-title">👤 بياناتي الشخصية</div>
         <div id="profile-details"></div>
       </div>
-
       <div class="card">
         <div class="card-title">📊 إحصائياتي هذا الشهر</div>
         <div class="grid-3" style="gap:.6rem">
@@ -583,7 +667,6 @@ select.form-control{cursor:pointer}
           <div class="stat"><div class="stat-label">🟡 تأخر</div><div class="stat-value" id="my-late-days">0</div></div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-title">🗓️ سجل حضوري</div>
         <div class="table-wrap">
@@ -594,7 +677,6 @@ select.form-control{cursor:pointer}
         </div>
       </div>
     </div>
-
     <div>
       <div class="card">
         <div class="card-title">🔑 تغيير كلمة المرور</div>
@@ -602,17 +684,17 @@ select.form-control{cursor:pointer}
         <div class="form-group" style="position:relative">
           <label class="form-label">كلمة المرور الحالية</label>
           <input class="form-control" id="pwd-current" type="password" placeholder="أدخل كلمة مرورك الحالية" style="padding-left:40px">
-          <button class="pwd-eye" onclick="togglePwdVis('pwd-current','eye-c')" id="eye-c">👁</button>
+          <button onclick="togglePwdVis('pwd-current','eye-c')" id="eye-c" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">👁</button>
         </div>
         <div class="form-group" style="position:relative">
           <label class="form-label">كلمة المرور الجديدة</label>
           <input class="form-control" id="pwd-new" type="password" placeholder="6 أحرف على الأقل" oninput="checkPwdStrength(this.value)" style="padding-left:40px">
-          <button class="pwd-eye" onclick="togglePwdVis('pwd-new','eye-n')" id="eye-n">👁</button>
+          <button onclick="togglePwdVis('pwd-new','eye-n')" id="eye-n" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">👁</button>
         </div>
         <div class="form-group" style="position:relative">
           <label class="form-label">تأكيد كلمة المرور الجديدة</label>
           <input class="form-control" id="pwd-confirm" type="password" placeholder="أعد الكتابة" style="padding-left:40px">
-          <button class="pwd-eye" onclick="togglePwdVis('pwd-confirm','eye-r')" id="eye-r">👁</button>
+          <button onclick="togglePwdVis('pwd-confirm','eye-r')" id="eye-r" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">👁</button>
         </div>
         <div style="margin-bottom:1rem">
           <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-3);margin-bottom:4px">
@@ -624,7 +706,6 @@ select.form-control{cursor:pointer}
         </div>
         <button class="btn btn-primary" style="width:100%" onclick="changePassword()">💾 حفظ كلمة المرور الجديدة</button>
       </div>
-
       <div class="card" id="admin-reset-pwd-card" style="display:none">
         <div class="card-title">🔧 إعادة تعيين كلمة مرور موظف</div>
         <div id="admin-pwd-reset-alert"></div>
@@ -642,97 +723,7 @@ select.form-control{cursor:pointer}
   </div>
 </div>
 
-
-<!-- ═══ PAGE: SHIFTS ═══ -->
-<div class="page" id="page-shifts">
-  <div class="section-header">
-    <h2 style="font-size:17px;font-weight:600">🕐 إدارة الورديات</h2>
-    <button class="btn btn-primary" onclick="openShiftModal()">➕ إضافة وردية</button>
-  </div>
-  <div class="grid-3" id="shifts-stats" style="margin-bottom:1rem"></div>
-  <div class="card">
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>اسم الوردية</th><th>وقت البداية</th><th>وقت النهاية</th><th>المدة</th><th>الموظفون</th><th>الحالة</th><th>الإجراءات</th></tr></thead>
-        <tbody id="shifts-table-body"></tbody>
-      </table>
-    </div>
-  </div>
-  <div class="card" style="margin-top:1rem">
-    <div class="card-title">🔄 تعيين ورديات الموظفين</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>الموظف</th><th>القسم</th><th>الوردية الحالية</th><th>تغيير الوردية</th></tr></thead>
-        <tbody id="emp-shift-assign-body"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-
-<!-- ═══ PAGE: SETTINGS ═══ -->
-<div class="page" id="page-settings">
-  <div class="grid-2">
-    <div class="card">
-      <div class="card-title">📍 إعدادات الموقع الجغرافي</div>
-      <div class="form-group">
-        <label class="form-label">خط العرض (Latitude)</label>
-        <input class="form-control" id="set-lat" value="21.4787635" style="direction:ltr">
-      </div>
-      <div class="form-group">
-        <label class="form-label">خط الطول (Longitude)</label>
-        <input class="form-control" id="set-lng" value="40.4853529" style="direction:ltr">
-      </div>
-      <div class="form-group">
-        <label class="form-label">النطاق المسموح (متر)</label>
-        <input class="form-control" type="number" id="set-radius" value="100" min="30" max="1000">
-      </div>
-      <button class="btn btn-primary" onclick="saveSettings()">💾 حفظ الإعدادات</button>
-    </div>
-
-    <div class="card">
-      <div class="card-title">☁️ Google Drive / Sheets</div>
-      <div id="drive-settings-status" style="margin-bottom:1rem;font-size:14px;color:var(--text-2)"></div>
-      <button class="gdrive-btn" id="settings-gdrive-btn" onclick="showScriptUrlModal()" style="margin-top:0;border-radius:8px">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.5 20L1 11l4-7h14l4 7-4 7z" fill="#34a853"/><path d="M1 11l5.5 9h11L23 11z" fill="#4285f4" opacity=".5"/><path d="M5 4l5.5 9.5-5 8.5H1L6.5 11z" fill="#fbbc05" opacity=".6"/></svg>
-        ربط Google Drive
-      </button>
-      <div style="margin-top:1rem">
-        <div class="form-group">
-          <label class="form-label">Google Sheet ID</label>
-          <input class="form-control" id="sheet-id" placeholder="Sheet ID" style="direction:ltr;font-size:12px">
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">⏰ إعدادات الدوام</div>
-      <div class="form-group">
-        <label class="form-label">وقت بدء الدوام</label>
-        <input class="form-control" type="time" id="set-work-start" value="07:00">
-      </div>
-      <div class="form-group">
-        <label class="form-label">دقائق التسامح للتأخر</label>
-        <input class="form-control" type="number" id="set-late-mins" value="15" min="0">
-      </div>
-      <button class="btn btn-primary" onclick="saveSettings()">💾 حفظ</button>
-    </div>
-
-    <div class="card">
-      <div class="card-title">ℹ️ معلومات النظام</div>
-      <div style="font-size:14px;color:var(--text-2);line-height:2">
-        <div>📍 <strong>الموقع:</strong> راحتي ستار — الطائف</div>
-        <div>🌐 <strong>الإحداثيات:</strong> <span style="direction:ltr;display:inline-block">21.4787635, 40.4853529</span></div>
-        <div style="margin-top:10px">
-          <div style="font-size:12px;color:var(--text-3)">الإصدار 2.0.0 — راحتي ستار</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-</div><!-- end app -->
-
+</div><!-- end #app -->
 
 <!-- ═══ Modal: Add Employee ═══ -->
 <div class="modal-backdrop" id="add-emp-modal">
@@ -771,50 +762,32 @@ select.form-control{cursor:pointer}
 <!-- ═══ Modal: Add/Edit Shift ═══ -->
 <div class="modal-backdrop" id="shift-modal">
   <div class="modal">
-    <div class="modal-title" id="shift-modal-title">➕ إضافة وردية</div>
+    <div class="modal-title" id="shift-modal-title">🕐 إضافة وردية جديدة</div>
     <input type="hidden" id="shift-edit-id">
     <div class="form-group">
       <label class="form-label">اسم الوردية *</label>
-      <input class="form-control" id="shift-name-input" placeholder="مثال: صباحية">
+      <input class="form-control" id="shift-name-input" placeholder="مثال: صباحية، مسائية، ليلية...">
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
       <div class="form-group">
-        <label class="form-label">وقت البداية</label>
+        <label class="form-label">وقت البداية *</label>
         <input class="form-control" type="time" id="shift-start-input" value="07:00">
       </div>
       <div class="form-group">
-        <label class="form-label">وقت النهاية</label>
+        <label class="form-label">وقت النهاية *</label>
         <input class="form-control" type="time" id="shift-end-input" value="15:00">
       </div>
     </div>
     <div class="form-group">
-      <label class="form-label">ملاحظات</label>
-      <input class="form-control" id="shift-notes-input" placeholder="اختياري">
+      <label class="form-label">ملاحظات (اختياري)</label>
+      <input class="form-control" id="shift-notes-input" placeholder="أي ملاحظات خاصة بهذه الوردية">
     </div>
     <div id="shift-preview" style="background:var(--brand-light);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--brand-dark);margin-top:4px;display:none">
-      مدة الوردية: <strong id="shift-duration-preview"></strong>
+      ⏱️ مدة الوردية: <strong id="shift-duration-preview"></strong>
     </div>
     <div class="modal-footer">
       <button class="btn btn-secondary" onclick="closeModal('shift-modal')">إلغاء</button>
-      <button class="btn btn-primary" onclick="saveShift()">💾 حفظ</button>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ Modal: Script URL ═══ -->
-<div class="modal-backdrop" id="script-url-modal">
-  <div class="modal">
-    <div class="modal-title">🔗 ربط Google Apps Script</div>
-    <p style="font-size:13px;color:var(--text-2);margin-bottom:1rem;line-height:1.6">
-      الصق رابط Apps Script الخاص بك لحفظ بيانات الحضور مباشرةً في Google Sheets.
-    </p>
-    <div class="form-group">
-      <label class="form-label">رابط Script URL</label>
-      <input class="form-control" id="script-url-input" placeholder="https://script.google.com/macros/s/..." style="direction:ltr;font-size:12px" oninput="this.style.borderColor=this.value?'var(--brand)':'var(--border)'">
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('script-url-modal');document.getElementById('role-btns').style.display='grid';document.getElementById('demo-hint').style.display='none'">استخدام بدون Sheets</button>
-      <button class="btn btn-primary" id="test-conn-btn" onclick="saveScriptUrl()">✅ حفظ والاتصال</button>
+      <button class="btn btn-primary" onclick="saveShift()">💾 حفظ الوردية</button>
     </div>
   </div>
 </div>
@@ -823,8 +796,6 @@ select.form-control{cursor:pointer}
 <script>
 // ══════════════════════════════════════════════
 const OFFICE = { lat: 21.4787635, lng: 40.4853529, name: "راحتي ستار — الطائف" };
-const ADMIN_DEFAULT_PASSWORD = 'rahati2024';
-
 let CONFIG = {
   lat: 21.4787635,
   lng: 40.4853529,
@@ -838,7 +809,6 @@ let CONFIG = {
 // ══════════════════════════════════════════════
 let state = {
   role: 'employee',
-  loggedEmployee: null,
   currentPos: null,
   currentDist: null,
   isInside: false,
@@ -849,34 +819,16 @@ let state = {
     { id: 3, name: 'ليلية',  start: '23:00', end: '07:00', notes: '', active: true },
   ],
   employees: [
-    { id: 1, name: 'محمد أحمد العمري',      dept: 'الاستقبال',        shiftId: 1, joinDate: '2024-01-15', active: true },
-    { id: 2, name: 'سارة محمد القحطاني',    dept: 'الإدارة',          shiftId: 1, joinDate: '2024-03-01', active: true },
-    { id: 3, name: 'خالد عبدالله الزهراني', dept: 'الأمن',            shiftId: 3, joinDate: '2024-02-10', active: true },
-    { id: 4, name: 'نورة سعد العتيبي',      dept: 'التنظيف والتدبير', shiftId: 2, joinDate: '2024-04-05', active: true },
+    { id: 1, name: 'محمد أحمد العمري',     dept: 'الاستقبال',        shiftId: 1, joinDate: '2024-01-15', active: true },
+    { id: 2, name: 'سارة محمد القحطاني',   dept: 'الإدارة',          shiftId: 1, joinDate: '2024-03-01', active: true },
+    { id: 3, name: 'خالد عبدالله الزهراني',dept: 'الأمن',            shiftId: 3, joinDate: '2024-02-10', active: true },
+    { id: 4, name: 'نورة سعد العتيبي',     dept: 'التنظيف والتدبير', shiftId: 2, joinDate: '2024-04-05', active: true },
   ],
   driveConnected: false,
   sheetId: null,
   weekChart: null,
   deptChart: null
 };
-
-// ══════════════════════════════════════════════
-// CREDENTIALS SYSTEM
-// ══════════════════════════════════════════════
-function getCredentials() {
-  const saved = localStorage.getItem('rahati_credentials');
-  if (saved) return JSON.parse(saved);
-  // Default credentials based on initial employees
-  const creds = {};
-  state.employees.forEach(e => {
-    creds[e.id] = { username: e.name.split(' ')[0] + e.id, password: '123456' };
-  });
-  return creds;
-}
-
-function saveCredentials(creds) {
-  localStorage.setItem('rahati_credentials', JSON.stringify(creds));
-}
 
 // ══════════════════════════════════════════════
 // HELPERS
@@ -886,9 +838,16 @@ function haversine(lat1, lon1, lat2, lon2) {
   const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 }
-function formatTime(date) { return date.toLocaleTimeString('ar-SA', {hour:'2-digit', minute:'2-digit', hour12:true}); }
-function formatDate(date) { return date.toLocaleDateString('ar-SA', {year:'numeric', month:'long', day:'numeric'}); }
-function formatDateShort(date) { return date.toLocaleDateString('ar-SA', {year:'numeric', month:'2-digit', day:'2-digit'}); }
+
+function formatTime(date) {
+  return date.toLocaleTimeString('ar-SA', {hour:'2-digit', minute:'2-digit', hour12:true});
+}
+function formatDate(date) {
+  return date.toLocaleDateString('ar-SA', {year:'numeric', month:'long', day:'numeric'});
+}
+function formatDateShort(date) {
+  return date.toLocaleDateString('ar-SA', {year:'numeric', month:'2-digit', day:'2-digit'});
+}
 
 function showAlert(container, type, msg, duration=4000) {
   const icons = {success:'✅', danger:'❌', warn:'⚠️'};
@@ -919,110 +878,6 @@ function loadFromStorage() {
 }
 
 // ══════════════════════════════════════════════
-// AUTH — نظام المصادقة
-// ══════════════════════════════════════════════
-function showRoleSelect() {
-  document.getElementById('role-btns').style.display = 'grid';
-  document.getElementById('emp-login-panel').style.display = 'none';
-  document.getElementById('admin-login-panel').style.display = 'none';
-}
-
-function showEmpLogin() {
-  document.getElementById('role-btns').style.display = 'none';
-  document.getElementById('emp-login-panel').style.display = 'block';
-  document.getElementById('admin-login-panel').style.display = 'none';
-  document.getElementById('emp-login-error').style.display = 'none';
-  document.getElementById('emp-login-username').value = '';
-  document.getElementById('emp-login-password').value = '';
-  setTimeout(() => document.getElementById('emp-login-username').focus(), 100);
-}
-
-function showAdminLogin() {
-  document.getElementById('role-btns').style.display = 'none';
-  document.getElementById('emp-login-panel').style.display = 'none';
-  document.getElementById('admin-login-panel').style.display = 'block';
-  document.getElementById('admin-login-error').style.display = 'none';
-  document.getElementById('admin-login-password').value = '';
-  setTimeout(() => document.getElementById('admin-login-password').focus(), 100);
-}
-
-function loginEmployee() {
-  const username = document.getElementById('emp-login-username').value.trim();
-  const password = document.getElementById('emp-login-password').value;
-  const creds = getCredentials();
-
-  let foundEmp = null;
-  for (const empId in creds) {
-    if (creds[empId].username === username && creds[empId].password === password) {
-      foundEmp = state.employees.find(e => e.id == empId);
-      break;
-    }
-  }
-
-  if (!foundEmp || !foundEmp.active) {
-    document.getElementById('emp-login-error').style.display = 'block';
-    document.getElementById('emp-login-password').value = '';
-    document.getElementById('emp-login-password').focus();
-    return;
-  }
-
-  state.loggedEmployee = foundEmp;
-  state.role = 'employee';
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-
-  // إعداد واجهة الموظف
-  const pill = document.getElementById('user-pill');
-  pill.textContent = '👤 ' + foundEmp.name;
-
-  // إخفاء تبويبات الإدارة
-  ['admin-tab','reports-tab','absence-tab','emp-mgmt-tab','shifts-tab','settings-tab'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.style.display = 'none';
-  });
-  document.getElementById('profile-tab').style.display = '';
-
-  // تعبئة بيانات الحضور تلقائياً
-  const nameEl = document.getElementById('emp-name');
-  const deptEl = document.getElementById('emp-dept');
-  const shiftEl = document.getElementById('emp-shift');
-  if (nameEl) { nameEl.value = foundEmp.name; nameEl.readOnly = true; }
-  if (deptEl) { deptEl.value = foundEmp.dept; deptEl.disabled = true; }
-
-  loadFromStorage();
-  populateShiftDropdowns();
-  if (shiftEl) shiftEl.value = foundEmp.shiftId;
-
-  startClock();
-  startWatchingLocation();
-  renderTodayLog();
-  switchPage('attendance');
-}
-
-function loginAdmin() {
-  const password = document.getElementById('admin-login-password').value;
-  const savedAdminPwd = localStorage.getItem('rahati_admin_pwd') || ADMIN_DEFAULT_PASSWORD;
-
-  if (password !== savedAdminPwd) {
-    document.getElementById('admin-login-error').style.display = 'block';
-    document.getElementById('admin-login-password').value = '';
-    document.getElementById('admin-login-password').focus();
-    return;
-  }
-
-  state.loggedEmployee = null;
-  login('admin');
-}
-
-function togglePwdVis(inputId, btnId) {
-  const input = document.getElementById(inputId);
-  const btn = document.getElementById(btnId);
-  if (!input) return;
-  input.type = input.type === 'password' ? 'text' : 'password';
-  if (btn) btn.textContent = input.type === 'password' ? '👁' : '🙈';
-}
-
-// ══════════════════════════════════════════════
 // CLOCK
 // ══════════════════════════════════════════════
 function startClock() {
@@ -1044,7 +899,10 @@ function startClock() {
 // GEOLOCATION
 // ══════════════════════════════════════════════
 function startWatchingLocation() {
-  if(!navigator.geolocation) { setLocationStatus('error','المتصفح لا يدعم تحديد الموقع',''); return; }
+  if(!navigator.geolocation) {
+    setLocationStatus('error', 'المتصفح لا يدعم تحديد الموقع');
+    return;
+  }
   navigator.geolocation.watchPosition(
     pos => {
       const { latitude, longitude, accuracy } = pos.coords;
@@ -1053,6 +911,7 @@ function startWatchingLocation() {
       state.currentDist = Math.round(dist);
       state.isInside = dist <= CONFIG.radius;
 
+      // Update UI
       document.getElementById('current-dist').textContent = state.currentDist;
       document.getElementById('map-coords').textContent = `${latitude.toFixed(5)}°, ${longitude.toFixed(5)}°`;
 
@@ -1065,11 +924,13 @@ function startWatchingLocation() {
       if(state.isInside) {
         setLocationStatus('inside', `✅ أنت داخل النطاق المسموح`, `المسافة: ${state.currentDist} م — دقة: ${Math.round(accuracy)} م`);
       } else {
-        setLocationStatus('outside', `⛔ أنت خارج النطاق`, `بعيد بـ ${Math.round(dist - CONFIG.radius)} م عن الحد المسموح`);
+        setLocationStatus('outside', `⛔ أنت خارج النطاق`, `المسافة: ${state.currentDist} م — بعيد بـ ${Math.round(dist - CONFIG.radius)} م عن الحد المسموح`);
       }
 
+      // Enable/disable buttons
       document.getElementById('btn-checkin').disabled = !state.isInside;
       document.getElementById('btn-checkout').disabled = !state.isInside;
+
       drawMap(latitude, longitude);
     },
     err => {
@@ -1080,15 +941,15 @@ function startWatchingLocation() {
   );
 }
 
-function setLocationStatus(type, title, desc) {
+function setLocationStatus(type, title, desc='') {
   const card = document.getElementById('loc-status-card');
-  const dot  = document.getElementById('loc-dot');
-  const t    = document.getElementById('loc-title');
-  const d    = document.getElementById('loc-desc');
+  const dot = document.getElementById('loc-dot');
+  const t = document.getElementById('loc-title');
+  const d = document.getElementById('loc-desc');
   card.className = 'loc-status ' + (type==='inside'?'inside':type==='outside'?'outside':'checking');
-  dot.className  = 'loc-dot ' + (type==='inside'?'green':type==='outside'?'red':'gray');
-  t.textContent  = title;
-  d.textContent  = desc;
+  dot.className = 'loc-dot ' + (type==='inside'?'green':type==='outside'?'red':'gray');
+  t.textContent = title;
+  d.textContent = desc;
 }
 
 // ══════════════════════════════════════════════
@@ -1101,51 +962,103 @@ function drawMap(empLat, empLng) {
   const W = canvas.offsetWidth, H = canvas.offsetHeight;
   canvas.width = W; canvas.height = H;
   const CX = W/2, CY = H/2;
+
+  // Map scale: pixels per degree
   const scale = 3000000;
 
+  // Convert lat/lng difference to pixels
   function toPixels(lat, lng) {
     const dLng = (lng - CONFIG.lng) * Math.cos(CONFIG.lat * Math.PI/180);
     const dLat = lat - CONFIG.lat;
-    return [CX + dLng*scale, CY - dLat*scale];
+    const px = CX + dLng * scale;
+    const py = CY - dLat * scale;
+    return [px, py];
   }
 
-  ctx.fillStyle = '#e8f0e4'; ctx.fillRect(0,0,W,H);
-  ctx.strokeStyle = 'rgba(0,0,0,0.06)'; ctx.lineWidth = 1;
-  for(let i=0;i<W;i+=40){ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i,H);ctx.stroke();}
-  for(let j=0;j<H;j+=40){ctx.beginPath();ctx.moveTo(0,j);ctx.lineTo(W,j);ctx.stroke();}
+  // Background
+  ctx.fillStyle = '#e8f0e4';
+  ctx.fillRect(0, 0, W, H);
 
+  // Grid
+  ctx.strokeStyle = 'rgba(0,0,0,0.06)';
+  ctx.lineWidth = 1;
+  for(let i=0;i<W;i+=40){ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i,H);ctx.stroke()}
+  for(let j=0;j<H;j+=40){ctx.beginPath();ctx.moveTo(0,j);ctx.lineTo(W,j);ctx.stroke()}
+
+  // Some decorative "buildings" around office
   const buildings = [[-.0003,.0005],[.0006,-.0002],[-.0006,-.0004],[.0003,.0007],[-.0002,-.0007]];
-  buildings.forEach(([dlat,dlng]) => {
+  buildings.forEach(([dlat,dlng])=>{
     const [bx,by] = toPixels(CONFIG.lat+dlat, CONFIG.lng+dlng);
-    ctx.fillStyle='#b8cbb4'; ctx.fillRect(bx-12, by-10, 24, 20);
+    ctx.fillStyle = '#b8cbb4';
+    ctx.fillRect(bx-12, by-10, 24, 20);
   });
 
-  ctx.beginPath(); ctx.moveTo(0, CY+20); ctx.lineTo(W, CY+20);
-  ctx.strokeStyle='#d4c99a'; ctx.lineWidth=12; ctx.stroke();
+  // Road
+  ctx.beginPath();
+  ctx.moveTo(0, CY+20);
+  ctx.lineTo(W, CY+20);
+  ctx.strokeStyle='#d4c99a';
+  ctx.lineWidth=12;
+  ctx.stroke();
+  ctx.strokeStyle='rgba(255,255,255,0.5)';
+  ctx.lineWidth=1.5;
+  ctx.setLineDash([12,10]);
+  ctx.stroke();
+  ctx.setLineDash([]);
 
+  // Radius circle
   const radiusPx = CONFIG.radius / 111111 * scale;
-  ctx.beginPath(); ctx.arc(CX, CY, radiusPx, 0, 2*Math.PI);
-  ctx.fillStyle='rgba(26,107,74,0.12)'; ctx.fill();
-  ctx.strokeStyle='#1a6b4a'; ctx.lineWidth=2; ctx.setLineDash([8,5]); ctx.stroke(); ctx.setLineDash([]);
+  ctx.beginPath();
+  ctx.arc(CX, CY, radiusPx, 0, 2*Math.PI);
+  ctx.fillStyle = 'rgba(26,107,74,0.12)';
+  ctx.fill();
+  ctx.strokeStyle = '#1a6b4a';
+  ctx.lineWidth = 2;
+  ctx.setLineDash([8,5]);
+  ctx.stroke();
+  ctx.setLineDash([]);
 
-  ctx.beginPath(); ctx.arc(CX, CY, 8, 0, 2*Math.PI);
-  ctx.fillStyle='#1a6b4a'; ctx.fill();
-  ctx.strokeStyle='#fff'; ctx.lineWidth=2.5; ctx.stroke();
-  ctx.fillStyle='#0e4a32'; ctx.font='bold 12px IBM Plex Sans Arabic, sans-serif';
-  ctx.textAlign='right'; ctx.fillText('🌟 راحتي ستار', CX-12, CY-12);
+  // Office marker
+  ctx.beginPath();
+  ctx.arc(CX, CY, 8, 0, 2*Math.PI);
+  ctx.fillStyle = '#1a6b4a';
+  ctx.fill();
+  ctx.strokeStyle = '#fff';
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
 
+  ctx.fillStyle = '#0e4a32';
+  ctx.font = 'bold 12px IBM Plex Sans Arabic, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('المقر ⭐', CX - 12, CY - 12);
+
+  // Employee dot
   if(empLat && empLng) {
     const [ex, ey] = toPixels(empLat, empLng);
+    // Distance line
+    ctx.beginPath();
+    ctx.moveTo(CX, CY);
+    ctx.lineTo(Math.max(10,Math.min(W-10,ex)), Math.max(10,Math.min(H-10,ey)));
+    ctx.strokeStyle = 'rgba(0,0,0,0.2)';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4,3]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
     const ecx = Math.max(10,Math.min(W-10,ex));
     const ecy = Math.max(10,Math.min(H-10,ey));
-    ctx.beginPath(); ctx.moveTo(CX,CY); ctx.lineTo(ecx,ecy);
-    ctx.strokeStyle='rgba(0,0,0,0.2)'; ctx.lineWidth=1.5; ctx.setLineDash([4,3]); ctx.stroke(); ctx.setLineDash([]);
-    ctx.beginPath(); ctx.arc(ecx, ecy, 9, 0, 2*Math.PI);
-    ctx.fillStyle = state.isInside ? '#1a5fa3' : '#c0392b'; ctx.fill();
-    ctx.strokeStyle='#fff'; ctx.lineWidth=2.5; ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(ecx, ecy, 9, 0, 2*Math.PI);
+    ctx.fillStyle = state.isInside ? '#185fa3' : '#c0392b';
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
     ctx.fillStyle = state.isInside ? '#0c447c' : '#8b1a1a';
-    ctx.font='11px IBM Plex Sans Arabic, sans-serif'; ctx.textAlign='right';
-    ctx.fillText('📍 موقعك', ecx-12, ecy-12);
+    ctx.font = '11px IBM Plex Sans Arabic, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText('موقعك', ecx - 12, ecy - 12);
   }
 }
 
@@ -1154,33 +1067,44 @@ function drawMap(empLat, empLng) {
 // ══════════════════════════════════════════════
 function doStamp(type) {
   if(!state.isInside) {
-    const stamp = {
-      id: Date.now(), name: document.getElementById('emp-name').value || 'غير محدد',
-      dept: document.getElementById('emp-dept').value,
-      shift: getShiftLabel(parseInt(document.getElementById('emp-shift').value)),
-      type: 'rejected', stampType: type, status: 'rejected',
-      time: new Date().toISOString(), dist: state.currentDist
-    };
-    state.stamps.push(stamp); saveToStorage(); updateAdminStats();
-    showAlert('attendance-alert','danger',`⛔ البصمة مرفوضة — أنت على بُعد ${state.currentDist} متر من الموقع`);
+    showAlert('attendance-alert', 'danger', `⛔ البصمة مرفوضة — أنت على بعد ${state.currentDist} م من المقر`);
+    const stamp = { id: Date.now(), name: document.getElementById('emp-name').value || 'غير محدد', dept: document.getElementById('emp-dept').value, shift: getShiftLabel(parseInt(document.getElementById('emp-shift').value)), type: 'rejected', stampType: type, time: new Date().toISOString(), dist: state.currentDist };
+    state.stamps.push(stamp);
+    saveToStorage();
+    updateAdminStats();
     return;
   }
+
   const name = document.getElementById('emp-name').value.trim();
-  if(!name) { showAlert('attendance-alert','warn','يرجى إدخال اسمك أولاً'); document.getElementById('emp-name').focus(); return; }
+  if(!name) {
+    showAlert('attendance-alert', 'warn', 'يرجى إدخال اسم الموظف أولاً');
+    document.getElementById('emp-name').focus();
+    return;
+  }
+
   const now = new Date();
   const stamp = {
-    id: Date.now(), name,
+    id: Date.now(),
+    name,
     dept: document.getElementById('emp-dept').value,
     shift: getShiftLabel(parseInt(document.getElementById('emp-shift').value)),
-    type, status: 'accepted',
-    time: now.toISOString(), dist: state.currentDist,
-    lat: state.currentPos?.lat, lng: state.currentPos?.lng
+    type: type, // 'in' | 'out'
+    status: 'accepted',
+    time: now.toISOString(),
+    dist: state.currentDist,
+    lat: state.currentPos?.lat,
+    lng: state.currentPos?.lng
   };
-  state.stamps.push(stamp); saveToStorage();
+
+  state.stamps.push(stamp);
+  saveToStorage();
   if(state.driveConnected) appendToSheet(stamp);
-  const typeAr = type==='in' ? 'الحضور' : 'الانصراف';
-  showAlert('attendance-alert','success',`✅ تم تسجيل ${typeAr} بنجاح — ${formatTime(now)}`);
-  renderTodayLog(); updateAdminStats();
+
+  const typeAr = type === 'in' ? 'حضور' : 'انصراف';
+  showAlert('attendance-alert', 'success', `✅ تم تسجيل ${typeAr} بنجاح — ${formatTime(now)}`);
+  renderTodayLog();
+  updateAdminStats();
+  updateLiveLog();
   if(state.driveConnected) appendToSheet(stamp);
 }
 
@@ -1195,12 +1119,12 @@ function renderTodayLog() {
   el.innerHTML = todayStamps.slice().reverse().map(s => {
     const t = new Date(s.time);
     const accepted = s.status === 'accepted';
-    const typeAr = s.type==='in' ? '🟢 دخول' : s.type==='out' ? '🔵 خروج' : '⛔ مرفوضة';
+    const typeAr = s.type === 'in' ? 'حضور' : s.type === 'out' ? 'انصراف' : '--';
     return `<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)">
-      <div style="width:10px;height:10px;border-radius:50%;background:${accepted?(s.type==='in'?'#1a6b4a':'#1a5fa3'):'#c0392b'};flex-shrink:0"></div>
+      <div style="width:10px;height:10px;border-radius:50%;background:${accepted?(s.type==='in'?'#1a6b4a':'#185fa3'):'#c0392b'};flex-shrink:0"></div>
       <div style="flex:1">
         <div style="font-size:14px;font-weight:500">${s.name}</div>
-        <div style="font-size:12px;color:var(--text-3)">${s.dept} — ${typeAr}</div>
+        <div style="font-size:12px;color:var(--text-3)">${s.dept} • ${typeAr}</div>
       </div>
       <div style="text-align:left;direction:ltr">
         <div style="font-size:13px;font-weight:500">${formatTime(t)}</div>
@@ -1215,35 +1139,43 @@ function renderTodayLog() {
 // ══════════════════════════════════════════════
 function updateAdminStats() {
   const today = new Date().toDateString();
-  const todayAcc = state.stamps.filter(s => new Date(s.time).toDateString()===today && s.status==='accepted');
+  const todayAcc = state.stamps.filter(s=>new Date(s.time).toDateString()===today && s.status==='accepted');
   const uniquePresent = [...new Set(todayAcc.map(s=>s.name))];
-  const totalEmp = state.employees.filter(e=>e.active).length;
-  const rejected = state.stamps.filter(s=>s.status==='rejected'&&s.type==='rejected').length;
+  const totalEmp = state.employees.length;
+  const rejected = state.stamps.filter(s=>s.status==='rejected'||s.type==='rejected').length;
+
+  // Late: checked in after workStart + lateMins
   const [wh,wm] = CONFIG.workStart.split(':').map(Number);
   const lateLimit = wh*60 + wm + CONFIG.lateMins;
   const todayIn = todayAcc.filter(s=>s.type==='in');
-  const late = todayIn.filter(s => { const t=new Date(s.time); return t.getHours()*60+t.getMinutes()>lateLimit; }).length;
+  const late = todayIn.filter(s=>{
+    const t = new Date(s.time);
+    return t.getHours()*60+t.getMinutes() > lateLimit;
+  }).length;
 
   document.getElementById('stat-present').textContent = uniquePresent.length;
-  document.getElementById('stat-absent').textContent  = Math.max(0, totalEmp - uniquePresent.length);
-  document.getElementById('stat-late').textContent    = late;
+  document.getElementById('stat-absent').textContent = Math.max(0, totalEmp - uniquePresent.length);
+  document.getElementById('stat-late').textContent = late;
   document.getElementById('stat-rejected').textContent = rejected;
-  document.getElementById('stat-total-emp').textContent = totalEmp;
-  renderWeekChart(); renderDeptChart();
+
+  renderWeekChart();
+  renderDeptChart();
 }
 
 function updateLiveLog() {
   const tbody = document.getElementById('live-log-body');
   const recent = state.stamps.slice().reverse().slice(0,20);
-  if(!recent.length) { tbody.innerHTML='<tr><td colspan="7" style="text-align:center;color:var(--text-3);padding:24px">لا توجد سجلات بعد</td></tr>'; return; }
+  if(!recent.length) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-3);padding:24px">لا توجد سجلات بعد</td></tr>';
+    return;
+  }
   tbody.innerHTML = recent.map(s => {
     const t = new Date(s.time);
-    const accepted = s.status==='accepted';
-    const typeAr = s.type==='in'?'🟢 دخول':s.type==='out'?'🔵 خروج':'⛔ مرفوضة';
+    const accepted = s.status === 'accepted';
+    const typeAr = s.type === 'in' ? '⬆️ حضور' : s.type === 'out' ? '⬇️ انصراف' : '🚫 مرفوضة';
     return `<tr>
-      <td style="font-weight:500">${s.name}</td>
-      <td>${s.dept}</td>
-      <td style="font-size:13px">${s.shift||'—'}</td>
+      <td style="font-weight:500">${s.name||'—'}</td>
+      <td>${s.dept||'—'}</td>
       <td>${typeAr}</td>
       <td style="direction:ltr;text-align:right">${formatTime(t)}<br><span style="font-size:11px;color:var(--text-3)">${formatDateShort(t)}</span></td>
       <td style="direction:ltr;font-size:12px">${s.dist||'—'} م</td>
@@ -1255,18 +1187,19 @@ function updateLiveLog() {
 function renderWeekChart() {
   const ctx = document.getElementById('week-chart');
   if(!ctx) return;
-  const days=[], present=[];
+  const days = [];
+  const present = [];
   for(let i=6;i>=0;i--) {
-    const d=new Date(); d.setDate(d.getDate()-i);
-    const ds=d.toDateString();
+    const d = new Date(); d.setDate(d.getDate()-i);
+    const ds = d.toDateString();
     days.push(d.toLocaleDateString('ar-SA',{weekday:'short'}));
-    const cnt=[...new Set(state.stamps.filter(s=>new Date(s.time).toDateString()===ds&&s.status==='accepted').map(s=>s.name))].length;
+    const cnt = [...new Set(state.stamps.filter(s=>new Date(s.time).toDateString()===ds&&s.status==='accepted').map(s=>s.name))].length;
     present.push(cnt);
   }
   if(state.weekChart) state.weekChart.destroy();
   state.weekChart = new Chart(ctx, {
     type:'bar',
-    data:{labels:days,datasets:[{label:'حضور',data:present,backgroundColor:'rgba(26,107,74,0.8)',borderRadius:6,borderSkipped:false}]},
+    data:{labels:days,datasets:[{label:'الحضور',data:present,backgroundColor:'rgba(26,107,74,0.8)',borderRadius:6,borderSkipped:false}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}},x:{grid:{display:false}}}}
   });
 }
@@ -1274,13 +1207,13 @@ function renderWeekChart() {
 function renderDeptChart() {
   const ctx = document.getElementById('dept-chart');
   if(!ctx) return;
-  const depts=['الاستقبال','التنظيف والتدبير','الأمن','الصيانة','الإدارة'];
-  const today=new Date().toDateString();
-  const counts=depts.map(d=>[...new Set(state.stamps.filter(s=>new Date(s.time).toDateString()===today&&s.status==='accepted'&&s.dept===d).map(s=>s.name))].length);
+  const depts = ['الاستقبال','التنظيف والتدبير','الأمن','الصيانة','الإدارة'];
+  const today = new Date().toDateString();
+  const counts = depts.map(d => [...new Set(state.stamps.filter(s=>new Date(s.time).toDateString()===today&&s.status==='accepted'&&s.dept===d).map(s=>s.name))].length);
   if(state.deptChart) state.deptChart.destroy();
   state.deptChart = new Chart(ctx, {
     type:'doughnut',
-    data:{labels:depts,datasets:[{data:counts,backgroundColor:['#1a6b4a','#2d9267','#c9973a','#1a5fa3','#7b3fa0'],borderWidth:2,borderColor:'#fff'}]},
+    data:{labels:depts,datasets:[{data:counts,backgroundColor:['#1a6b4a','#2d9267','#c9973a','#185fa3','#7b3fa0'],borderWidth:2,borderColor:'#fff'}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{font:{size:12},boxWidth:12}}}}
   });
 }
@@ -1289,64 +1222,1007 @@ function renderDeptChart() {
 // REPORTS
 // ══════════════════════════════════════════════
 function filterReports() {
-  const from=document.getElementById('filter-from').value;
-  const to=document.getElementById('filter-to').value;
-  const empF=document.getElementById('filter-emp').value;
-  const deptF=document.getElementById('filter-dept').value;
+  const from = document.getElementById('filter-from').value;
+  const to = document.getElementById('filter-to').value;
+  const empF = document.getElementById('filter-emp').value;
+  const deptF = document.getElementById('filter-dept').value;
 
-  const days={};
-  state.stamps.filter(s=>s.status==='accepted').forEach(s => {
-    const date=s.time.slice(0,10), key=date+'_'+s.name;
-    if(!days[key]) days[key]={date,name:s.name,dept:s.dept,shift:s.shift,checkin:null,checkout:null};
-    if(s.type==='in'&&!days[key].checkin) days[key].checkin=s.time;
-    if(s.type==='in'&&days[key].checkin) days[key].checkin=days[key].checkin<s.time?days[key].checkin:s.time;
-    if(s.type==='out') days[key].checkout=(!days[key].checkout||s.time>days[key].checkout)?s.time:days[key].checkout;
+  let filtered = state.stamps.filter(s => s.status === 'accepted' && s.type === 'in');
+
+  if(from) filtered = filtered.filter(s => s.time.slice(0,10) >= from);
+  if(to) filtered = filtered.filter(s => s.time.slice(0,10) <= to);
+  if(empF) filtered = filtered.filter(s => s.name === empF);
+  if(deptF) filtered = filtered.filter(s => s.dept === deptF);
+
+  // Build daily records
+  const days = {};
+  state.stamps.filter(s => s.status === 'accepted').forEach(s => {
+    const date = s.time.slice(0,10);
+    const key = date + '_' + s.name;
+    if(!days[key]) days[key] = { date, name: s.name, dept: s.dept, shift: s.shift, checkin: null, checkout: null };
+    if(s.type === 'in' && (!days[key].checkin || s.time < days[key].checkin)) days[key].checkin = s.time;
+    if(s.type === 'out' && (!days[key].checkout || s.time > days[key].checkout)) days[key].checkout = s.time;
   });
 
-  let records=Object.values(days);
-  if(from) records=records.filter(r=>r.date>=from);
-  if(to)   records=records.filter(r=>r.date<=to);
-  if(empF) records=records.filter(r=>r.name===empF);
-  if(deptF)records=records.filter(r=>r.dept===deptF);
-  records.sort((a,b)=>b.date.localeCompare(a.date));
+  let records = Object.values(days);
+  if(from) records = records.filter(r => r.date >= from);
+  if(to) records = records.filter(r => r.date <= to);
+  if(empF) records = records.filter(r => r.name === empF);
+  if(deptF) records = records.filter(r => r.dept === deptF);
+  records.sort((a,b) => b.date.localeCompare(a.date));
 
   document.getElementById('report-count').textContent = records.length + ' سجل';
-  document.getElementById('r-total').textContent    = state.stamps.length;
+  document.getElementById('r-total').textContent = state.stamps.length;
   document.getElementById('r-accepted').textContent = state.stamps.filter(s=>s.status==='accepted').length;
   document.getElementById('r-rejected').textContent = state.stamps.filter(s=>s.status!=='accepted').length;
 
-  const tbody=document.getElementById('report-body');
-  if(!records.length){
-    tbody.innerHTML='<tr><td colspan="8" style="text-align:center;color:var(--text-3);padding:24px">لا توجد نتائج</td></tr>';
+  const tbody = document.getElementById('report-body');
+  if(!records.length) {
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--text-3);padding:24px">لا توجد سجلات</td></tr>';
     return;
   }
-  const [wh,wm]=CONFIG.workStart.split(':').map(Number);
-  const lateLimit=wh*60+wm+CONFIG.lateMins;
-  tbody.innerHTML=records.map(r=>{
-    const cin=r.checkin?formatTime(new Date(r.checkin)):'—';
-    const cout=r.checkout?formatTime(new Date(r.checkout)):'—';
-    let dur='—';
-    if(r.checkin&&r.checkout){ const m=Math.round((new Date(r.checkout)-new Date(r.checkin))/60000); dur=`${Math.floor(m/60)}س ${m%60}د`; }
-    let badge='<span class="badge badge-green">في الوقت</span>';
-    if(r.checkin){ const t=new Date(r.checkin); if(t.getHours()*60+t.getMinutes()>lateLimit) badge='<span class="badge badge-gold">متأخر</span>'; }
-    else badge='<span class="badge badge-red">غائب</span>';
+  tbody.innerHTML = records.map(r => {
+    const cin = r.checkin ? formatTime(new Date(r.checkin)) : '—';
+    const cout = r.checkout ? formatTime(new Date(r.checkout)) : '—';
+    let duration = '—';
+    if(r.checkin && r.checkout) {
+      const mins = Math.round((new Date(r.checkout)-new Date(r.checkin))/60000);
+      duration = Math.floor(mins/60) + 'س ' + (mins%60) + 'د';
+    }
+    const [wh,wm] = CONFIG.workStart.split(':').map(Number);
+    const lateLimit = wh*60 + wm + CONFIG.lateMins;
+    let statusBadge = '<span class="badge badge-green">حاضر</span>';
+    if(r.checkin) {
+      const t = new Date(r.checkin);
+      if(t.getHours()*60+t.getMinutes() > lateLimit) statusBadge = '<span class="badge badge-gold">متأخر</span>';
+    }
+    if(!r.checkin) statusBadge = '<span class="badge badge-red">غائب</span>';
     return `<tr>
       <td>${new Date(r.date).toLocaleDateString('ar-SA',{year:'numeric',month:'short',day:'numeric'})}</td>
-      <td style="font-weight:500">${r.name}</td><td>${r.dept}</td>
+      <td style="font-weight:500">${r.name}</td>
+      <td>${r.dept}</td>
       <td style="font-size:13px">${r.shift||'—'}</td>
       <td style="direction:ltr;text-align:right">${cin}</td>
       <td style="direction:ltr;text-align:right">${cout}</td>
-      <td>${dur}</td><td>${badge}</td>
+      <td>${duration}</td>
+      <td>${statusBadge}</td>
     </tr>`;
   }).join('');
 }
 
-function printReport() { window.print(); }
+function printReport() {
+  window.print();
+}
 
 // ══════════════════════════════════════════════
-// ABSENCE REPORT — تقرير الغيابات الشهري
+// SHIFT HELPERS
+// ══════════════════════════════════════════════
+function getShiftLabel(shiftId) {
+  const s = state.shifts.find(sh => sh.id === shiftId);
+  if(!s) return '—';
+  return `${s.name} (${s.start} - ${s.end})`;
+}
+
+function shiftDurationMins(start, end) {
+  const [sh,sm] = start.split(':').map(Number);
+  const [eh,em] = end.split(':').map(Number);
+  let mins = (eh*60+em) - (sh*60+sm);
+  if(mins <= 0) mins += 24*60;
+  return mins;
+}
+
+function shiftDurationLabel(start, end) {
+  const mins = shiftDurationMins(start, end);
+  return Math.floor(mins/60) + ' ساعة' + (mins%60 ? ' و' + (mins%60) + ' دقيقة' : '');
+}
+
+function populateShiftDropdowns() {
+  const active = state.shifts.filter(s => s.active);
+  const opts = active.map(s => `<option value="${s.id}">${s.name} (${s.start} - ${s.end})</option>`).join('');
+  ['emp-shift','new-emp-shift'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.innerHTML = opts;
+  });
+}
+
+// ══════════════════════════════════════════════
+// SHIFTS PAGE
+// ══════════════════════════════════════════════
+function renderShiftsPage() {
+  populateShiftDropdowns();
+
+  // Stats
+  const statsEl = document.getElementById('shifts-stats');
+  const total = state.shifts.length;
+  const active = state.shifts.filter(s=>s.active).length;
+  const empCount = state.employees.filter(e=>e.active).length;
+  statsEl.innerHTML = `
+    <div class="stat"><div class="stat-label">إجمالي الورديات</div><div class="stat-value">${total}</div></div>
+    <div class="stat"><div class="stat-label">الورديات النشطة</div><div class="stat-value">${active}</div></div>
+    <div class="stat"><div class="stat-label">الموظفون الموزعون</div><div class="stat-value">${empCount}</div></div>
+  `;
+
+  // Shifts table
+  const tbody = document.getElementById('shifts-table-body');
+  if(!state.shifts.length) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--text-3);padding:24px">لا توجد ورديات — أضف وردية جديدة</td></tr>';
+  } else {
+    tbody.innerHTML = state.shifts.map(s => {
+      const empCnt = state.employees.filter(e=>e.shiftId===s.id && e.active).length;
+      const dur = shiftDurationLabel(s.start, s.end);
+      return `<tr>
+        <td style="font-weight:600;font-size:15px">${s.name}</td>
+        <td><span style="direction:ltr;display:inline-block;font-size:14px;font-weight:500">${s.start}</span></td>
+        <td><span style="direction:ltr;display:inline-block;font-size:14px;font-weight:500">${s.end}</span></td>
+        <td><span class="chip">${dur}</span></td>
+        <td>${empCnt ? `<span class="badge badge-green">${empCnt} موظف</span>` : '<span class="badge badge-gray">لا أحد</span>'}</td>
+        <td><span class="badge ${s.active?'badge-green':'badge-gray'}">${s.active?'نشطة':'موقوفة'}</span></td>
+        <td style="display:flex;gap:6px;flex-wrap:wrap">
+          <button class="btn btn-secondary" style="padding:5px 10px;font-size:12px" onclick="editShift(${s.id})">✏️ تعديل</button>
+          <button class="btn btn-secondary" style="padding:5px 10px;font-size:12px" onclick="toggleShift(${s.id})">${s.active?'⏸ إيقاف':'▶ تفعيل'}</button>
+          <button class="btn btn-danger" style="padding:5px 10px;font-size:12px" onclick="deleteShift(${s.id})" ${empCnt?'disabled title="لا يمكن حذف وردية بها موظفون"':''}>🗑</button>
+        </td>
+      </tr>`;
+    }).join('');
+  }
+
+  // Employee assignment table
+  const assignBody = document.getElementById('emp-shift-assign-body');
+  if(!state.employees.length) {
+    assignBody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--text-3);padding:24px">لا يوجد موظفون</td></tr>';
+  } else {
+    const activeShiftOpts = state.shifts.filter(s=>s.active).map(s=>`<option value="${s.id}">${s.name} (${s.start} - ${s.end})</option>`).join('');
+    assignBody.innerHTML = state.employees.filter(e=>e.active).map(e => {
+      return `<tr>
+        <td style="font-weight:500">${e.name}</td>
+        <td>${e.dept}</td>
+        <td>${getShiftLabel(e.shiftId)}</td>
+        <td>
+          <select class="form-control" style="width:auto;padding:6px 10px;font-size:13px" onchange="assignShift(${e.id}, parseInt(this.value))">
+            ${activeShiftOpts}
+          </select>
+        </td>
+      </tr>`;
+    }).join('');
+    // Set current values
+    state.employees.filter(e=>e.active).forEach((e,i) => {
+      const selects = assignBody.querySelectorAll('select');
+      if(selects[i]) selects[i].value = e.shiftId;
+    });
+  }
+}
+
+function assignShift(empId, shiftId) {
+  const emp = state.employees.find(e=>e.id===empId);
+  if(emp) {
+    emp.shiftId = shiftId;
+    saveToStorage();
+    renderShiftsPage();
+  }
+}
+
+function openShiftModal(editId=null) {
+  document.getElementById('shift-edit-id').value = editId || '';
+  if(editId) {
+    const s = state.shifts.find(sh=>sh.id===editId);
+    if(!s) return;
+    document.getElementById('shift-modal-title').textContent = '✏️ تعديل الوردية';
+    document.getElementById('shift-name-input').value = s.name;
+    document.getElementById('shift-start-input').value = s.start;
+    document.getElementById('shift-end-input').value = s.end;
+    document.getElementById('shift-notes-input').value = s.notes||'';
+  } else {
+    document.getElementById('shift-modal-title').textContent = '🕐 إضافة وردية جديدة';
+    document.getElementById('shift-name-input').value = '';
+    document.getElementById('shift-start-input').value = '07:00';
+    document.getElementById('shift-end-input').value = '15:00';
+    document.getElementById('shift-notes-input').value = '';
+  }
+  updateShiftPreview();
+  document.getElementById('shift-modal').classList.add('open');
+}
+
+function editShift(id) { openShiftModal(id); }
+
+function updateShiftPreview() {
+  const s = document.getElementById('shift-start-input').value;
+  const e = document.getElementById('shift-end-input').value;
+  const prev = document.getElementById('shift-preview');
+  const dur = document.getElementById('shift-duration-preview');
+  if(s && e) {
+    prev.style.display = 'block';
+    dur.textContent = shiftDurationLabel(s, e);
+  }
+}
+
+function saveShift() {
+  const name = document.getElementById('shift-name-input').value.trim();
+  const start = document.getElementById('shift-start-input').value;
+  const end = document.getElementById('shift-end-input').value;
+  const notes = document.getElementById('shift-notes-input').value.trim();
+  const editId = parseInt(document.getElementById('shift-edit-id').value);
+
+  if(!name) { alert('يرجى إدخال اسم الوردية'); return; }
+  if(!start || !end) { alert('يرجى تحديد وقت البداية والنهاية'); return; }
+
+  if(editId) {
+    const s = state.shifts.find(sh=>sh.id===editId);
+    if(s) { s.name=name; s.start=start; s.end=end; s.notes=notes; }
+  } else {
+    state.shifts.push({ id: Date.now(), name, start, end, notes, active: true });
+  }
+
+  saveToStorage();
+  populateShiftDropdowns();
+  renderShiftsPage();
+  renderEmployees();
+  closeModal('shift-modal');
+}
+
+function toggleShift(id) {
+  const s = state.shifts.find(sh=>sh.id===id);
+  if(s) { s.active=!s.active; saveToStorage(); renderShiftsPage(); populateShiftDropdowns(); }
+}
+
+function deleteShift(id) {
+  const empOnShift = state.employees.filter(e=>e.shiftId===id&&e.active).length;
+  if(empOnShift) { alert('لا يمكن حذف وردية بها موظفون نشطون. يرجى نقل الموظفين أولاً.'); return; }
+  if(!confirm('هل أنت متأكد من حذف هذه الوردية؟')) return;
+  state.shifts = state.shifts.filter(sh=>sh.id!==id);
+  saveToStorage();
+  renderShiftsPage();
+  populateShiftDropdowns();
+}
+
+// Live preview while editing times
+['shift-start-input','shift-end-input'].forEach(id => {
+  setTimeout(()=>{
+    const el = document.getElementById(id);
+    if(el) el.addEventListener('change', updateShiftPreview);
+  }, 500);
+});
+
+
+function renderEmployees() {
+  const tbody = document.getElementById('emp-table-body');
+  const filterEl = document.getElementById('filter-emp');
+  if(filterEl) {
+    filterEl.innerHTML = '<option value="">جميع الموظفين</option>' +
+      state.employees.map(e => `<option>${e.name}</option>`).join('');
+  }
+  tbody.innerHTML = state.employees.map(e => `
+    <tr>
+      <td style="font-weight:500">${e.name}</td>
+      <td>${e.dept}</td>
+      <td style="font-size:13px">${getShiftLabel(e.shiftId)}</td>
+      <td style="direction:ltr;font-size:12px;color:var(--text-3)">${getEmpUsername(e.id)}</td>
+      <td style="direction:ltr;text-align:right;font-size:13px">${e.joinDate}</td>
+      <td><span class="badge ${e.active?'badge-green':'badge-red'}">${e.active?'نشط':'موقوف'}</span></td>
+      <td>
+        <button class="btn btn-secondary" style="padding:5px 10px;font-size:12px" onclick="toggleEmpStatus(${e.id})">
+          ${e.active?'⏸ إيقاف':'▶ تفعيل'}
+        </button>
+        <button class="btn btn-secondary" style="padding:5px 10px;font-size:12px;margin-right:4px" onclick="adminQuickResetPwd(${e.id})">🔑</button>
+        <button class="btn btn-danger" style="padding:5px 10px;font-size:12px;margin-right:4px" onclick="removeEmployee(${e.id})">🗑</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function openAddEmp() {
+  document.getElementById('add-emp-modal').classList.add('open');
+}
+
+function addEmployee() {
+  const name = document.getElementById('new-emp-name').value.trim();
+  if(!name) { alert('يرجى إدخال الاسم'); return; }
+  const shiftSel = document.getElementById('new-emp-shift');
+  const shiftId = shiftSel ? parseInt(shiftSel.value) : (state.shifts[0]?.id || 1);
+  const newId = Date.now();
+  const username = (document.getElementById('new-emp-username').value.trim()) || (name.split(' ')[0].toLowerCase() + newId);
+  const password = (document.getElementById('new-emp-password').value.trim()) || '123456';
+  state.employees.push({ id:newId, name, dept:document.getElementById('new-emp-dept').value, shiftId, joinDate:new Date().toISOString().slice(0,10), active:true });
+  const creds = getCredentials(); creds[newId] = { username, password }; saveCredentials(creds);
+  saveToStorage(); renderEmployees(); closeModal('add-emp-modal');
+  document.getElementById('new-emp-name').value='';
+  document.getElementById('new-emp-username').value='';
+  document.getElementById('new-emp-password').value='';
+}
+
+function toggleEmpStatus(id) {
+  const e = state.employees.find(e=>e.id===id);
+  if(e) { e.active = !e.active; saveToStorage(); renderEmployees(); }
+}
+function removeEmployee(id) {
+  if(confirm('هل أنت متأكد من حذف هذا الموظف؟')) {
+    state.employees = state.employees.filter(e=>e.id!==id);
+    saveToStorage(); renderEmployees();
+  }
+}
+
+// ══════════════════════════════════════════════
+// SETTINGS
+// ══════════════════════════════════════════════
+function saveSettings() {
+  CONFIG.lat = parseFloat(document.getElementById('set-lat').value);
+  CONFIG.lng = parseFloat(document.getElementById('set-lng').value);
+  CONFIG.radius = parseInt(document.getElementById('set-radius').value);
+  CONFIG.workStart = document.getElementById('set-work-start').value;
+  CONFIG.lateMins = parseInt(document.getElementById('set-late-mins').value);
+  document.getElementById('allowed-radius-disp').textContent = CONFIG.radius;
+  saveToStorage();
+  alert('✅ تم حفظ الإعدادات بنجاح');
+}
+
+// ══════════════════════════════════════════════
+// GOOGLE SHEETS — عبر Apps Script Web App
+// لا يحتاج OAuth — يعمل من أي مكان
+// ══════════════════════════════════════════════
+
+// ضع رابط Apps Script Web App هنا بعد النشر
+let APPS_SCRIPT_URL = localStorage.getItem('rahati_script_url') || 'https://script.google.com/macros/s/AKfycbxzQWPBJ95PXcrAH7Be9m-oOUbkD10x7Uhra30_zlmSBUP2q3fIOC9FYCIl_dsjTAGW/exec';
+let state_driveReady = false;
+
+function setScriptUrl(url) {
+  APPS_SCRIPT_URL = url.trim();
+  localStorage.setItem('rahati_script_url', APPS_SCRIPT_URL);
+  state.driveConnected = !!APPS_SCRIPT_URL;
+  updateDriveUI();
+}
+
+function updateDriveUI() {
+  var connected = !!APPS_SCRIPT_URL;
+  var statusEl = document.getElementById('drive-status');
+  var settingsEl = document.getElementById('drive-settings-status');
+  var btnEl = document.getElementById('gdrive-login-btn');
+  if(connected) {
+    if(statusEl) statusEl.textContent = '✅ متصل — البيانات تُحفظ تلقائياً في Google Sheets';
+    if(settingsEl) settingsEl.innerHTML = '✅ متصل بـ Google Sheets<br><small style="color:#666;word-break:break-all">' + APPS_SCRIPT_URL.slice(0,60) + '...</small>';
+    if(btnEl) { btnEl.textContent = '✅ متصل بـ Google Sheets'; btnEl.style.background = '#1a6b4a'; }
+    document.getElementById('role-btns').style.display = 'grid';
+    document.getElementById('demo-hint').style.display = 'none';
+  } else {
+    if(statusEl) statusEl.textContent = 'يرجى ربط Google Sheets عبر Apps Script';
+    if(settingsEl) settingsEl.textContent = '❌ غير متصل';
+  }
+}
+
+function initGDrive() {
+  showScriptUrlModal();
+}
+
+function showScriptUrlModal() {
+  var modal = document.getElementById('script-url-modal');
+  if(modal) modal.classList.add('open');
+}
+
+async function appendToSheet(stamp) {
+  if(!APPS_SCRIPT_URL) return;
+  try {
+    var row = {
+      date: stamp.time ? stamp.time.slice(0,10) : '',
+      name: stamp.name || '',
+      dept: stamp.dept || '',
+      shift: stamp.shift || '',
+      type: stamp.type === 'in' ? 'حضور' : stamp.type === 'out' ? 'انصراف' : 'مرفوضة',
+      time: stamp.time ? formatTime(new Date(stamp.time)) : '',
+      dist: stamp.dist || '',
+      status: stamp.status === 'accepted' ? 'مقبولة' : 'مرفوضة',
+      lat: stamp.lat || '',
+      lng: stamp.lng || ''
+    };
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(row)
+    });
+    console.log('✅ Saved to sheet');
+  } catch(e) {
+    console.error('Sheet error:', e);
+  }
+}
+
+async function testConnection() {
+  if(!APPS_SCRIPT_URL) {
+    alert('يرجى إدخال رابط Apps Script أولاً');
+    return;
+  }
+  try {
+    document.getElementById('test-conn-btn').textContent = '⏳ جارٍ الاختبار...';
+    // Send a test ping
+    await fetch(APPS_SCRIPT_URL + '?action=ping', { mode: 'no-cors' });
+    document.getElementById('test-conn-btn').textContent = '✅ الاتصال ناجح';
+    document.getElementById('test-conn-btn').style.background = '#1a6b4a';
+    setTimeout(() => {
+      closeModal('script-url-modal');
+      updateDriveUI();
+      document.getElementById('role-btns').style.display = 'grid';
+      document.getElementById('demo-hint').style.display = 'none';
+    }, 1000);
+  } catch(e) {
+    document.getElementById('test-conn-btn').textContent = '❌ فشل الاتصال';
+  }
+}
+
+function exportToSheet() {
+  var headers = ['التاريخ','الموظف','القسم','الوردية','نوع البصمة','الوقت','المسافة (م)','الحالة'];
+  var rows = state.stamps.map(function(s) {
+    return [
+      s.time ? s.time.slice(0,10) : '',
+      s.name||'',
+      s.dept||'',
+      s.shift||'',
+      s.type==='in'?'حضور':s.type==='out'?'انصراف':'مرفوضة',
+      s.time ? formatTime(new Date(s.time)) : '',
+      s.dist||'',
+      s.status==='accepted'?'مقبولة':'مرفوضة'
+    ];
+  });
+  var csv = '\uFEFF' + [headers].concat(rows).map(function(r){ return r.map(function(c){ return '"'+c+'"'; }).join(','); }).join('\n');
+  var blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = '\u0631\u0627\u062d\u062a\u064a-\u0633\u062a\u0627\u0631-\u062d\u0636\u0648\u0631-' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ══════════════════════════════════════════════
+// NAV & PAGES
+// ══════════════════════════════════════════════
+function switchPage(id) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelector(`[data-page="${id}"]`).classList.add('active');
+
+  if(id==='shifts') renderShiftsPage();
+  if(id==='admin') { updateAdminStats(); updateLiveLog(); }
+  if(id==='reports') {
+    const today = new Date().toISOString().slice(0,10);
+    document.getElementById('filter-from').value = today.slice(0,7) + '-01';
+    document.getElementById('filter-to').value = today;
+    filterReports();
+    renderEmployees();
+  }
+  if(id==='settings') {
+    document.getElementById('set-lat').value = CONFIG.lat;
+    document.getElementById('set-lng').value = CONFIG.lng;
+    document.getElementById('set-radius').value = CONFIG.radius;
+    document.getElementById('allowed-radius-disp').textContent = CONFIG.radius;
+  }
+  if(id==='profile') renderProfilePage();
+  if(id==='absence') { const _n=new Date(); const _m=document.getElementById('absence-month'); if(_m&&!_m.value) _m.value=_n.getFullYear()+'-'+String(_n.getMonth()+1).padStart(2,'0'); }
+}
+
+// ══════════════════════════════════════════════
+// LOGIN
+// ══════════════════════════════════════════════
+function demoLogin() {
+  document.getElementById('role-btns').style.display = 'grid';
+  document.getElementById('demo-hint').style.display = 'none';
+  document.getElementById('drive-status').textContent = '🔴 وضع تجريبي — البيانات تُحفظ محلياً في المتصفح';
+  state.driveConnected = false;
+}
+
+function login(role) {
+  state.role = role;
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+
+  // إعادة تعيين جميع التبويبات (افتراضياً مخفية)
+  ['admin-tab','reports-tab','emp-mgmt-tab','shifts-tab','settings-tab'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.style.display = 'none';
+  });
+
+  var pill = document.getElementById('user-pill');
+  if(role === 'admin') {
+    pill.textContent = '🛡️ مدير';
+    // المدير يرى كل التبويبات
+    ['admin-tab','reports-tab','emp-mgmt-tab','shifts-tab','settings-tab','absence-tab'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.style.display = '';
+    });
+    var _pt=document.getElementById('profile-tab'); if(_pt) _pt.style.display='';
+  } else {
+    // الموظف يرى بوابة الحضور فقط
+    pill.textContent = '👤 موظف';
+  }
+
+  populateShiftDropdowns();
+
+  // Auto-fill from employees list
+  var empNameEl = document.getElementById('emp-name');
+  if(state.employees.length) {
+    empNameEl.value = state.employees[0].name;
+    document.getElementById('emp-dept').value = state.employees[0].dept;
+    var shiftSel = document.getElementById('emp-shift');
+    if(shiftSel) shiftSel.value = state.employees[0].shiftId;
+  }
+
+  startClock();
+  startWatchingLocation();
+  renderTodayLog();
+
+  setTimeout(function(){ drawMap(null, null); }, 200);
+}
+
+function logout() {
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('role-btns').style.display = 'none';
+  document.getElementById('demo-hint').style.display = '';
+  if(accessToken && google && google.accounts) {
+    google.accounts.oauth2.revoke(accessToken);
+    accessToken = null;
+    state.driveConnected = false;
+  }
+  var btn = document.getElementById('gdrive-login-btn');
+  if(btn) { btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.5 20L1 11l4-7h14l4 7-4 7z" fill="#34a853"/><path d="M1 11l5.5 9h11L23 11z" fill="#4285f4" opacity=".5"/><path d="M5 4l5.5 9.5-5 8.5H1L6.5 11z" fill="#fbbc05" opacity=".6"/></svg> تسجيل الدخول بـ Google'; btn.className = 'gdrive-btn'; }
+  document.getElementById('drive-status').textContent = 'سيتم حفظ البيانات تلقائياً في Google Sheets';
+}
+
+function toggleRole() {
+  const newRole = state.role === 'admin' ? 'employee' : 'admin';
+  login(newRole);
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+// Close modal on backdrop click
+document.querySelectorAll('.modal-backdrop').forEach(m => {
+  m.addEventListener('click', e => { if(e.target===m) m.classList.remove('open'); });
+});
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+loadFromStorage();
+document.getElementById('allowed-radius-disp').textContent = CONFIG.radius;
+
+// Init drive UI on load
+if(APPS_SCRIPT_URL) {
+  state.driveConnected = true;
+  setTimeout(updateDriveUI, 500);
+}
+
+// Seed demo data if empty
+if(state.stamps.length === 0) {
+  const now = new Date();
+  const today = now.toISOString().slice(0,10);
+  const names = ['محمد أحمد العمري','سارة محمد القحطاني','خالد عبدالله الزهراني'];
+  const depts = ['الاستقبال','الإدارة','الأمن'];
+  const shiftIds = [1,1,3];
+  names.forEach((name,i) => {
+    state.stamps.push({ id: Date.now()+i, name, dept:depts[i], shift:getShiftLabel(shiftIds[i]), type:'in', status:'accepted', time: today+'T07:'+(i===1?'22':'08')+':00.000Z', dist: 45+i*10 });
+    if(i<2) state.stamps.push({ id: Date.now()+100+i, name, dept:depts[i], shift:getShiftLabel(shiftIds[i]), type:'out', status:'accepted', time: today+'T15:0'+i+':00.000Z', dist: 52+i*5 });
+  });
+  saveToStorage();
+}
+
+function downloadAppsScript() {
+  var code = `// ============================================
+// راحتي ستار - Apps Script للحضور الجغرافي
+// انسخ هذا الكود في script.google.com
+// ============================================
+
+var SHEET_NAME = 'سجل الحضور';
+var SPREADSHEET_ID = ''; // اتركه فارغاً للإنشاء التلقائي
+
+function doPost(e) {
+  try {
+    var data = JSON.parse(e.postData.contents);
+    var ss = getOrCreateSpreadsheet();
+    var sheet = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
+    
+    // Add headers if empty
+    if(sheet.getLastRow() === 0) {
+      sheet.appendRow(['التاريخ','الموظف','القسم','الوردية','نوع البصمة','الوقت','المسافة (م)','الحالة','خط العرض','خط الطول','وقت التسجيل']);
+      sheet.getRange(1,1,1,11).setBackground('#0e4a32').setFontColor('#fff').setFontWeight('bold');
+      sheet.setFrozenRows(1);
+    }
+    
+    sheet.appendRow([
+      data.date || '',
+      data.name || '',
+      data.dept || '',
+      data.shift || '',
+      data.type || '',
+      data.time || '',
+      data.dist || '',
+      data.status || '',
+      data.lat || '',
+      data.lng || '',
+      new Date().toLocaleString('ar-SA')
+    ]);
+    
+    return ContentService.createTextOutput(JSON.stringify({success:true}))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch(err) {
+    return ContentService.createTextOutput(JSON.stringify({error: err.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function doGet(e) {
+  return ContentService.createTextOutput(JSON.stringify({status:'ok', app:'راحتي ستار'}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function getOrCreateSpreadsheet() {
+  if(SPREADSHEET_ID) return SpreadsheetApp.openById(SPREADSHEET_ID);
+  var files = DriveApp.getFilesByName('راحتي ستار - سجل الحضور');
+  if(files.hasNext()) return SpreadsheetApp.openById(files.next().getId());
+  var ss = SpreadsheetApp.create('راحتي ستار - سجل الحضور');
+  SPREADSHEET_ID = ss.getId();
+  return ss;
+}`;
+
+  var blob = new Blob([code], {type: 'text/javascript;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'rahati-star-apps-script.gs';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function saveScriptUrl() {
+  var url = document.getElementById('script-url-input').value.trim();
+  if(!url || !url.startsWith('https://script.google.com')) {
+    document.getElementById('script-url-input').style.borderColor = 'var(--danger)';
+    document.getElementById('script-url-input').focus();
+    return;
+  }
+  setScriptUrl(url);
+  document.getElementById('test-conn-btn').textContent = '✅ تم الحفظ';
+  document.getElementById('test-conn-btn').style.background = '#1a6b4a';
+  setTimeout(function() {
+    closeModal('script-url-modal');
+    showAlert('attendance-alert','success','✅ تم ربط Google Sheets بنجاح — البيانات ستُحفظ تلقائياً');
+  }, 800);
+}
+
+// ══════════════════════════════════════════════
+// CREDENTIALS SYSTEM — نظام كلمات المرور
+// ══════════════════════════════════════════════
+const ADMIN_DEFAULT_PASSWORD = 'rahati2024';
+
+function getCredentials() {
+  const saved = localStorage.getItem('rahati_credentials');
+  if (saved) try { return JSON.parse(saved); } catch(e) {}
+  return {
+    1: { username: 'mohammed', password: '123456' },
+    2: { username: 'sara',     password: '123456' },
+    3: { username: 'khaled',   password: '123456' },
+    4: { username: 'noura',    password: '123456' }
+  };
+}
+function saveCredentials(creds) {
+  localStorage.setItem('rahati_credentials', JSON.stringify(creds));
+}
+function getEmpUsername(empId) {
+  const creds = getCredentials();
+  return creds[empId] ? creds[empId].username : '—';
+}
+
+// ══════════════════════════════════════════════
+// AUTH PANELS
+// ══════════════════════════════════════════════
+function showRoleSelect() {
+  document.getElementById('role-btns').style.display = 'grid';
+  document.getElementById('emp-login-panel').style.display = 'none';
+  document.getElementById('admin-login-panel').style.display = 'none';
+}
+function showEmpLogin() {
+  document.getElementById('role-btns').style.display = 'none';
+  document.getElementById('emp-login-panel').style.display = 'block';
+  document.getElementById('admin-login-panel').style.display = 'none';
+  document.getElementById('emp-login-error').style.display = 'none';
+  setTimeout(function(){ document.getElementById('emp-login-username').focus(); }, 100);
+}
+function showAdminLogin() {
+  document.getElementById('role-btns').style.display = 'none';
+  document.getElementById('emp-login-panel').style.display = 'none';
+  document.getElementById('admin-login-panel').style.display = 'block';
+  document.getElementById('admin-login-error').style.display = 'none';
+  setTimeout(function(){ document.getElementById('admin-login-password').focus(); }, 100);
+}
+function loginEmployee() {
+  var username = document.getElementById('emp-login-username').value.trim();
+  var password = document.getElementById('emp-login-password').value;
+  var creds = getCredentials();
+  var foundEmp = null;
+  for (var empId in creds) {
+    if (creds[empId].username === username && creds[empId].password === password) {
+      foundEmp = state.employees.find(function(e){ return String(e.id) === String(empId); });
+      break;
+    }
+  }
+  if (!foundEmp || !foundEmp.active) {
+    document.getElementById('emp-login-error').style.display = 'block';
+    document.getElementById('emp-login-password').value = '';
+    return;
+  }
+  state.loggedEmployee = foundEmp;
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  var pill = document.getElementById('user-pill');
+  if(pill) pill.textContent = '👤 ' + foundEmp.name;
+  ['admin-tab','reports-tab','emp-mgmt-tab','shifts-tab','settings-tab','absence-tab'].forEach(function(id){
+    var el = document.getElementById(id); if(el) el.style.display = 'none';
+  });
+  var pt = document.getElementById('profile-tab'); if(pt) pt.style.display = '';
+  var nameEl = document.getElementById('emp-name');
+  var deptEl = document.getElementById('emp-dept');
+  if(nameEl){ nameEl.value = foundEmp.name; nameEl.readOnly = true; }
+  if(deptEl){ deptEl.value = foundEmp.dept; deptEl.disabled = true; }
+  loadFromStorage();
+  populateShiftDropdowns();
+  var shiftEl = document.getElementById('emp-shift');
+  if(shiftEl) shiftEl.value = foundEmp.shiftId;
+  startClock(); startWatchingLocation(); renderTodayLog();
+  switchPage('attendance');
+}
+function loginAdmin() {
+  var password = document.getElementById('admin-login-password').value;
+  var savedPwd = localStorage.getItem('rahati_admin_pwd') || ADMIN_DEFAULT_PASSWORD;
+  if (password !== savedPwd) {
+    document.getElementById('admin-login-error').style.display = 'block';
+    document.getElementById('admin-login-password').value = '';
+    return;
+  }
+  state.loggedEmployee = null;
+  login('admin');
+}
+function togglePwdVis(inputId, btnId) {
+  var input = document.getElementById(inputId);
+  var btn = document.getElementById(btnId);
+  if(!input) return;
+  input.type = input.type === 'password' ? 'text' : 'password';
+  if(btn) btn.textContent = input.type === 'password' ? '👁' : '🙈';
+}
+
+// ══════════════════════════════════════════════
+// PASSWORD CHANGE
+// ══════════════════════════════════════════════
+function checkPwdStrength(pwd) {
+  var bar = document.getElementById('pwd-strength-bar');
+  var lbl = document.getElementById('pwd-strength-label');
+  if(!bar||!lbl) return;
+  var score = 0;
+  if(pwd.length >= 6) score++;
+  if(pwd.length >= 10) score++;
+  if(/[A-Z]/.test(pwd)) score++;
+  if(/[0-9]/.test(pwd)) score++;
+  if(/[^A-Za-z0-9]/.test(pwd)) score++;
+  var levels = [
+    {w:'0%',c:'#ccc',l:'—'},
+    {w:'25%',c:'#c0392b',l:'ضعيفة'},
+    {w:'50%',c:'#c9973a',l:'متوسطة'},
+    {w:'75%',c:'#2d9267',l:'جيدة'},
+    {w:'100%',c:'#1a6b4a',l:'قوية جداً'}
+  ];
+  var lv = levels[Math.min(score,4)];
+  bar.style.width=lv.w; bar.style.background=lv.c; lbl.textContent=lv.l;
+}
+function changePassword() {
+  var emp = state.loggedEmployee;
+  if(!emp) { showAlert('pwd-change-alert','warn','لا يوجد موظف مسجّل دخوله'); return; }
+  var current = document.getElementById('pwd-current').value;
+  var newPwd  = document.getElementById('pwd-new').value;
+  var confirm = document.getElementById('pwd-confirm').value;
+  var creds = getCredentials();
+  if(!creds[emp.id] || creds[emp.id].password !== current) {
+    showAlert('pwd-change-alert','danger','كلمة المرور الحالية غير صحيحة'); return;
+  }
+  if(newPwd.length < 6){ showAlert('pwd-change-alert','warn','كلمة المرور الجديدة قصيرة جداً (6 أحرف على الأقل)'); return; }
+  if(newPwd !== confirm){ showAlert('pwd-change-alert','danger','كلمتا المرور غير متطابقتين'); return; }
+  creds[emp.id].password = newPwd;
+  saveCredentials(creds);
+  showAlert('pwd-change-alert','success','✅ تم تغيير كلمة المرور بنجاح');
+  document.getElementById('pwd-current').value='';
+  document.getElementById('pwd-new').value='';
+  document.getElementById('pwd-confirm').value='';
+  checkPwdStrength('');
+}
+function adminResetPassword() {
+  var sel = document.getElementById('reset-emp-select');
+  var newPwd = document.getElementById('reset-new-pwd').value.trim();
+  if(!sel||!newPwd){ showAlert('admin-pwd-reset-alert','warn','اختر موظفاً واكتب كلمة مرور جديدة'); return; }
+  var empId = sel.value;
+  var creds = getCredentials();
+  if(!creds[empId]) creds[empId] = { username: getEmpUsername(empId), password: newPwd };
+  else creds[empId].password = newPwd;
+  saveCredentials(creds);
+  showAlert('admin-pwd-reset-alert','success','✅ تم إعادة تعيين كلمة المرور بنجاح');
+  document.getElementById('reset-new-pwd').value='';
+}
+function adminQuickResetPwd(empId) {
+  var emp = state.employees.find(function(e){ return e.id === empId; });
+  if(!emp) return;
+  var newPwd = prompt('كلمة المرور الجديدة للموظف: ' + emp.name, '123456');
+  if(!newPwd) return;
+  var creds = getCredentials();
+  if(!creds[empId]) creds[empId] = { username: emp.name.split(' ')[0].toLowerCase()+empId, password: newPwd };
+  else creds[empId].password = newPwd;
+  saveCredentials(creds);
+  alert('✅ تم تغيير كلمة مرور ' + emp.name);
+}
+
+// ══════════════════════════════════════════════
+// PROFILE PAGE
+// ══════════════════════════════════════════════
+function renderProfilePage() {
+  var emp = state.loggedEmployee;
+  var isAdmin = state.role === 'admin';
+  var detEl = document.getElementById('profile-details');
+  var resetCard = document.getElementById('admin-reset-pwd-card');
+  if(resetCard) resetCard.style.display = isAdmin ? '' : 'none';
+  if(isAdmin) {
+    var sel = document.getElementById('reset-emp-select');
+    if(sel) sel.innerHTML = state.employees.filter(function(e){ return e.active; }).map(function(e){
+      return '<option value="'+e.id+'">'+e.name+'</option>';
+    }).join('');
+  }
+  var displayEmp = emp || { name: 'مدير النظام', dept: 'الإدارة', shiftId: null, joinDate: '—' };
+  if(detEl) detEl.innerHTML =
+    '<div style="display:flex;align-items:center;gap:16px;margin-bottom:1rem">' +
+    '<div style="width:56px;height:56px;background:var(--brand-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px">' +
+    (isAdmin ? '🛡️' : '👤') + '</div>' +
+    '<div><div style="font-size:17px;font-weight:600">'+displayEmp.name+'</div>' +
+    '<div style="font-size:13px;color:var(--text-3)">'+(isAdmin?'مدير النظام':displayEmp.dept)+'</div></div></div>' +
+    '<div style="display:grid;gap:8px;font-size:14px">' +
+    '<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text-3)">القسم</span><span>'+displayEmp.dept+'</span></div>' +
+    '<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text-3)">الوردية</span><span>'+(getShiftLabel(displayEmp.shiftId)||'—')+'</span></div>' +
+    '<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text-3)">تاريخ التوظيف</span><span style="direction:ltr">'+(displayEmp.joinDate||'—')+'</span></div>' +
+    (emp ? '<div style="display:flex;justify-content:space-between;padding:8px 0"><span style="color:var(--text-3)">اسم المستخدم</span><span style="direction:ltr">'+getEmpUsername(emp.id)+'</span></div>' : '') +
+    '</div>';
+
+  if(!emp) { renderMyStats([]); return; }
+  var myName = emp.name;
+  var now = new Date();
+  var monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().slice(0,10);
+  var myStamps = state.stamps.filter(function(s){ return s.name===myName && s.status==='accepted' && s.time.slice(0,10)>=monthStart; });
+  var days = {};
+  myStamps.forEach(function(s){
+    var d = s.time.slice(0,10);
+    if(!days[d]) days[d]={checkin:null,checkout:null};
+    if(s.type==='in'){ if(!days[d].checkin||s.time<days[d].checkin) days[d].checkin=s.time; }
+    if(s.type==='out'){ if(!days[d].checkout||s.time>days[d].checkout) days[d].checkout=s.time; }
+  });
+  var records = Object.entries(days).sort(function(a,b){ return b[0].localeCompare(a[0]); });
+  var tbody = document.getElementById('my-attendance-log');
+  var wParts = CONFIG.workStart.split(':').map(Number);
+  var lateLimit = wParts[0]*60 + wParts[1] + CONFIG.lateMins;
+  if(tbody) tbody.innerHTML = records.length ? records.map(function(entry){
+    var date=entry[0], r=entry[1];
+    var cin  = r.checkin  ? formatTime(new Date(r.checkin))  : '—';
+    var cout = r.checkout ? formatTime(new Date(r.checkout)) : '—';
+    var dur='—';
+    if(r.checkin&&r.checkout){ var m=Math.round((new Date(r.checkout)-new Date(r.checkin))/60000); dur=Math.floor(m/60)+'س '+m%60+'د'; }
+    var badge='<span class="badge badge-green">في الوقت</span>';
+    if(r.checkin){ var t=new Date(r.checkin); if(t.getHours()*60+t.getMinutes()>lateLimit) badge='<span class="badge badge-gold">متأخر</span>'; }
+    return '<tr><td style="direction:ltr">'+date+'</td><td style="direction:ltr">'+cin+'</td><td style="direction:ltr">'+cout+'</td><td>'+dur+'</td><td>'+badge+'</td></tr>';
+  }).join('') : '<tr><td colspan="5" style="text-align:center;color:var(--text-3);padding:20px">لا توجد سجلات هذا الشهر</td></tr>';
+  renderMyStats(records);
+}
+function renderMyStats(records) {
+  var workDays = new Date().getDate();
+  var presentDays = records.length;
+  var wParts = CONFIG.workStart.split(':').map(Number);
+  var lateLimit = wParts[0]*60 + wParts[1] + CONFIG.lateMins;
+  var lateDays = 0;
+  records.forEach(function(entry){
+    var r=entry[1];
+    if(r.checkin){ var t=new Date(r.checkin); if(t.getHours()*60+t.getMinutes()>lateLimit) lateDays++; }
+  });
+  var pEl=document.getElementById('my-present-days'); if(pEl) pEl.textContent=presentDays;
+  var aEl=document.getElementById('my-absent-days');  if(aEl) aEl.textContent=Math.max(0,workDays-presentDays);
+  var lEl=document.getElementById('my-late-days');    if(lEl) lEl.textContent=lateDays;
+}
+
+// ══════════════════════════════════════════════
+// ABSENCE REPORT — تقرير الغيابات
 // ══════════════════════════════════════════════
 function generateAbsenceReport() {
-  const monthVal=document.getElementById('absence-month').value;
-  const deptFilter=document.getElementById('absence-dept').value;
-  if(!monthVal){
+  var monthVal = document.getElementById('absence-month').value;
+  var deptFilter = document.getElementById('absence-dept').value;
+  if(!monthVal){ alert('يرجى اختيار الشهر'); return; }
+  var parts = monthVal.split('-').map(Number);
+  var year = parts[0], month = parts[1];
+  var daysInMonth = new Date(year, month, 0).getDate();
+  var workDays = [];
+  for(var d=1; d<=daysInMonth; d++){
+    var date = new Date(year, month-1, d);
+    if(date.getDay()!==5 && date.getDay()!==6)
+      workDays.push(String(d).padStart(2,'0'));
+  }
+  var employees = state.employees.filter(function(e){ return e.active; });
+  if(deptFilter) employees = employees.filter(function(e){ return e.dept===deptFilter; });
+  document.getElementById('abs-work-days').textContent = workDays.length;
+  document.getElementById('abs-total-emp').textContent = employees.length;
+  var wParts = CONFIG.workStart.split(':').map(Number);
+  var lateLimit = wParts[0]*60 + wParts[1] + CONFIG.lateMins;
+  var totalAbsent=0, totalLate=0;
+  var monthPad = String(month).padStart(2,'0');
+  var rows = employees.map(function(emp){
+    var absentCount=0, lateCount=0;
+    var cells = workDays.map(function(dStr){
+      var dateStr = year+'-'+monthPad+'-'+dStr;
+      var dayStamps = state.stamps.filter(function(s){ return s.name===emp.name && s.status==='accepted' && s.time.startsWith(dateStr); });
+      if(!dayStamps.length){ absentCount++; return '<td style="background:#fdf0ef;text-align:center;color:#c0392b;font-weight:600">غ</td>'; }
+      var inStamp = dayStamps.find(function(s){ return s.type==='in'; });
+      if(inStamp){
+        var t=new Date(inStamp.time);
+        if(t.getHours()*60+t.getMinutes()>lateLimit){ lateCount++; return '<td style="background:#fdf5e6;text-align:center;color:#c9973a;font-weight:600">ت</td>'; }
+      }
+      return '<td style="background:#e8f5ee;text-align:center;color:#1a6b4a;font-weight:600">✓</td>';
+    });
+    totalAbsent+=absentCount; totalLate+=lateCount;
+    return '<tr><td style="font-weight:500;white-space:nowrap;padding:8px 10px">'+emp.name+'</td><td style="padding:8px 10px">'+emp.dept+'</td>'+cells.join('')+'<td style="font-weight:700;color:#c0392b;text-align:center">'+absentCount+'</td><td style="font-weight:700;color:#c9973a;text-align:center">'+lateCount+'</td></tr>';
+  });
+  document.getElementById('abs-total-absent').textContent = totalAbsent;
+  document.getElementById('abs-total-late').textContent = totalLate;
+  document.getElementById('absence-count').textContent = employees.length + ' موظف';
+  var thead = document.getElementById('absence-thead');
+  thead.innerHTML = '<tr><th style="white-space:nowrap">الموظف</th><th>القسم</th>' +
+    workDays.map(function(d){ return '<th style="padding:6px 4px;font-size:11px;text-align:center;min-width:28px">'+d+'</th>'; }).join('') +
+    '<th style="color:#c0392b;white-space:nowrap">غياب</th><th style="color:#c9973a;white-space:nowrap">تأخر</th></tr>';
+  var tbody = document.getElementById('absence-tbody');
+  tbody.innerHTML = rows.length ? rows.join('') : '<tr><td colspan="6" style="text-align:center;color:var(--text-3);padding:24px">لا توجد بيانات</td></tr>';
+}
+function exportAbsenceCSV() {
+  var monthVal = document.getElementById('absence-month').value;
+  if(!monthVal){ alert('أنشئ التقرير أولاً'); return; }
+  var rows = [];
+  document.querySelectorAll('#absence-tbody tr').forEach(function(tr){
+    rows.push(Array.from(tr.querySelectorAll('td')).map(function(td){ return td.textContent.trim(); }).join(','));
+  });
+  var csv = '\uFEFF' + rows.join('\n');
+  var a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'absence-report-' + monthVal + '.csv';
+  a.click();
+}
+
+</script>
+</body>
+</html>
+<!-- Modal: Apps Script URL -->
+<div class="modal-backdrop" id="script-url-modal">
+  <div class="modal" style="max-width:560px">
+    <div class="modal-title">🔗 ربط Google Sheets</div>
+
+    <div style="background:#f0f7ff;border:1px solid #c0d8f0;border-radius:8px;padding:14px;margin-bottom:1.25rem;font-size:13px;line-height:1.9;color:#1a3a5c">
+      <strong>📋 خطوات الربط (مرة واحدة فقط):</strong><br>
+      1. افتح <a href="https://script.google.com/home" target="_blank" style="color:#1a5fa3">script.google.com</a> وأنشئ مشروعاً جديداً<br>
+      2. انسخ كود Apps Script وألصقه في المحرر<br>
+      3. اضغط <strong>نشر ← Deploy as Web App</strong><br>
+      4. اختر <strong>Anyone</strong> في "Who has access"<br>
+      5. انسخ رابط الـ Web App والصقه أدناه
+    </div>
+
+    <div style="background:#fffbea;border:1px solid #f0d060;border-radius:8px;padding:10px 14px;margin-bottom:1.25rem;font-size:12px;color:#7a6000">
+      💡 <strong>كود Apps Script:</strong> اضغط الزر أدناه لتنزيله
+      <br><button onclick="downloadAppsScript()" class="btn btn-secondary" style="margin-top:8px;font-size:12px;padding:6px 12px">⬇️ تنزيل كود Apps Script</button>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">رابط Web App (يبدأ بـ https://script.google.com/macros/s/...)</label>
+      <input class="form-control" id="script-url-input" placeholder="https://script.google.com/macros/s/AKfycbx.../exec" style="direction:ltr;font-size:12px" oninput="this.style.borderColor=this.value?'var(--brand)':'var(--border)'">
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('script-url-modal');document.getElementById('role-btns').style.display='grid';document.getElementById('demo-hint').style.display='none'">استخدام بدون Sheets</button>
+      <button class="btn btn-primary" id="test-conn-btn" onclick="saveScriptUrl()">✅ حفظ والاتصال</button>
+    </div>
+  </div>
+</div>
+
+
