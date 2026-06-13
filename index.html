@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>راحتي ستار — نظام الحضور الجغرافي</title>
+<title>Ø±Ø§Ø­ØªÙ Ø³ØªØ§Ø± â ÙØ¸Ø§Ù Ø§ÙØ­Ø¶ÙØ± Ø§ÙØ¬ØºØ±Ø§ÙÙ</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
 <style>
@@ -36,7 +36,7 @@
 html{scroll-behavior:smooth}
 body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px}
 
-/* ─── Topbar ─── */
+/* âââ Topbar âââ */
 .topbar{background:var(--brand-dark);color:#fff;padding:0 1.5rem;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .topbar-brand{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600}
 .topbar-brand .logo{width:32px;height:32px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
@@ -45,28 +45,28 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 .user-pill{background:rgba(255,255,255,.12);border-radius:20px;padding:5px 12px;font-size:13px;cursor:pointer;transition:.15s}
 .user-pill:hover{background:rgba(255,255,255,.2)}
 
-/* ─── Navigation ─── */
+/* âââ Navigation âââ */
 .nav{background:var(--surface);border-bottom:1px solid var(--border);display:flex;gap:0;overflow-x:auto;position:sticky;top:56px;z-index:99}
 .nav-btn{padding:14px 20px;border:none;background:none;font-family:inherit;font-size:14px;color:var(--text-2);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:.15s;display:flex;align-items:center;gap:6px}
 .nav-btn:hover{color:var(--brand)}
 .nav-btn.active{color:var(--brand);border-bottom-color:var(--brand);font-weight:500}
 
-/* ─── Pages ─── */
+/* âââ Pages âââ */
 .page{display:none;padding:1.5rem;max-width:1100px;margin:0 auto}
 .page.active{display:block}
 
-/* ─── Cards ─── */
+/* âââ Cards âââ */
 .card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:1.25rem 1.5rem;margin-bottom:1rem}
 .card-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:1rem;display:flex;align-items:center;gap:8px}
 .card-title svg{opacity:.6}
 
-/* ─── Grid ─── */
+/* âââ Grid âââ */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem}
 @media(max-width:640px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
 
-/* ─── Stat cards ─── */
+/* âââ Stat cards âââ */
 .stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.25rem;box-shadow:var(--shadow)}
 .stat-label{font-size:12px;color:var(--text-3);margin-bottom:6px;display:flex;align-items:center;gap:5px}
 .stat-value{font-size:26px;font-weight:600;color:var(--text);line-height:1}
@@ -74,7 +74,7 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 .stat.brand{background:var(--brand);border-color:var(--brand-dark)}
 .stat.brand .stat-label,.stat.brand .stat-value,.stat.brand .stat-sub{color:#fff}
 
-/* ─── Buttons ─── */
+/* âââ Buttons âââ */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 18px;border-radius:8px;border:none;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:.15s;text-decoration:none}
 .btn-primary{background:var(--brand);color:#fff}
 .btn-primary:hover{background:var(--brand-dark)}
@@ -86,26 +86,26 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 .btn-outline{background:transparent;border:1.5px solid var(--brand);color:var(--brand)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 
-/* ─── Badges ─── */
+/* âââ Badges âââ */
 .badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:500}
 .badge-green{background:var(--success-bg);color:var(--success)}
 .badge-red{background:var(--danger-bg);color:var(--danger)}
 .badge-gold{background:var(--gold-light);color:#8a6020}
 .badge-gray{background:#f0f0f0;color:#666}
 
-/* ─── Alert ─── */
+/* âââ Alert âââ */
 .alert{border-radius:8px;padding:12px 16px;font-size:14px;display:flex;align-items:center;gap:10px;margin-bottom:1rem;animation:slide-in .3s ease}
 .alert-success{background:var(--success-bg);color:var(--success);border:1px solid rgba(26,107,74,.2)}
 .alert-danger{background:var(--danger-bg);color:var(--danger);border:1px solid rgba(192,57,43,.2)}
 .alert-warn{background:var(--warn-bg);color:var(--warn);border:1px solid rgba(201,151,58,.2)}
 @keyframes slide-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 
-/* ─── Map ─── */
+/* âââ Map âââ */
 #map-frame{width:100%;height:300px;border-radius:10px;border:1px solid var(--border);overflow:hidden;background:#e8f0e8;position:relative}
 #map-canvas{width:100%;height:100%}
 .map-overlay-info{position:absolute;bottom:12px;right:12px;background:rgba(255,255,255,.95);border-radius:8px;padding:8px 12px;font-size:12px;color:var(--text-2);box-shadow:0 2px 8px rgba(0,0,0,.15)}
 
-/* ─── Location status ─── */
+/* âââ Location status âââ */
 .loc-status{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;margin-bottom:1rem}
 .loc-status.inside{background:var(--success-bg);border:1px solid rgba(26,107,74,.2)}
 .loc-status.outside{background:var(--danger-bg);border:1px solid rgba(192,57,43,.2)}
@@ -116,7 +116,7 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 .loc-dot.gray{background:#bbb}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(45,146,103,.2)}50%{box-shadow:0 0 0 6px rgba(45,146,103,.1)}}
 
-/* ─── Stamp button ─── */
+/* âââ Stamp button âââ */
 .stamp-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1rem}
 .stamp-btn{padding:18px;border-radius:12px;border:none;font-family:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:.15s;display:flex;flex-direction:column;align-items:center;gap:6px}
 .stamp-btn .icon{font-size:28px;line-height:1}
@@ -125,7 +125,7 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 .stamp-btn:disabled{opacity:.4;cursor:not-allowed}
 .stamp-btn:not(:disabled):hover{filter:brightness(1.08);transform:translateY(-1px)}
 
-/* ─── Table ─── */
+/* âââ Table âââ */
 .table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th{background:var(--bg);padding:10px 14px;text-align:right;font-weight:500;color:var(--text-2);font-size:13px;border-bottom:1px solid var(--border)}
@@ -134,14 +134,14 @@ tr:last-child td{border-bottom:none}
 tr:hover td{background:rgba(0,0,0,.015)}
 .td-center{text-align:center}
 
-/* ─── Form ─── */
+/* âââ Form âââ */
 .form-group{margin-bottom:1rem}
 .form-label{font-size:13px;color:var(--text-2);margin-bottom:5px;display:block;font-weight:500}
 .form-control{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;color:var(--text);background:var(--surface);transition:.15s;outline:none}
 .form-control:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(26,107,74,.1)}
 select.form-control{cursor:pointer}
 
-/* ─── Modal ─── */
+/* âââ Modal âââ */
 .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:none;align-items:center;justify-content:center}
 .modal-backdrop.open{display:flex}
 .modal{background:var(--surface);border-radius:var(--radius);padding:1.5rem;max-width:480px;width:94%;box-shadow:0 20px 60px rgba(0,0,0,.2);animation:modal-in .25s ease}
@@ -149,10 +149,10 @@ select.form-control{cursor:pointer}
 .modal-title{font-size:16px;font-weight:600;margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
 .modal-footer{display:flex;gap:8px;justify-content:flex-end;margin-top:1.25rem}
 
-/* ─── Chart wrapper ─── */
+/* âââ Chart wrapper âââ */
 .chart-wrap{position:relative;height:220px}
 
-/* ─── Login ─── */
+/* âââ Login âââ */
 #login-screen{position:fixed;inset:0;background:linear-gradient(160deg,var(--brand-dark) 0%,var(--brand) 100%);z-index:300;display:flex;align-items:center;justify-content:center}
 .login-box{background:#fff;border-radius:16px;padding:2.5rem;max-width:400px;width:90%;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.3)}
 .login-logo{width:72px;height:72px;background:var(--brand);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:36px}
@@ -166,7 +166,7 @@ select.form-control{cursor:pointer}
 .gdrive-btn:hover{background:#3367d6}
 .gdrive-status{font-size:12px;margin-top:.75rem;color:var(--text-3)}
 
-/* ─── Utility ─── */
+/* âââ Utility âââ */
 .flex{display:flex}.items-center{align-items:center}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.mt-1{margin-top:.5rem}.mt-2{margin-top:1rem}.mb-1{margin-bottom:.5rem}.mb-2{margin-bottom:1rem}
 .text-sm{font-size:13px}.text-muted{color:var(--text-3)}.text-danger{color:var(--danger)}.text-success{color:var(--success)}
 .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
@@ -180,90 +180,90 @@ select.form-control{cursor:pointer}
 </head>
 <body>
 
-<!-- ═══════════════════ LOGIN ═══════════════════ -->
+<!-- âââââââââââââââââââ LOGIN âââââââââââââââââââ -->
 <div id="login-screen">
   <div class="login-box">
-    <div class="login-logo">🌟</div>
-    <div class="login-title">راحتي ستار</div>
-    <div class="login-sub">نظام الحضور والانصراف الجغرافي<br>الطائف — طريق السيل</div>
+    <div class="login-logo">ð</div>
+    <div class="login-title">Ø±Ø§Ø­ØªÙ Ø³ØªØ§Ø±</div>
+    <div class="login-sub">ÙØ¸Ø§Ù Ø§ÙØ­Ø¶ÙØ± ÙØ§ÙØ§ÙØµØ±Ø§Ù Ø§ÙØ¬ØºØ±Ø§ÙÙ<br>Ø§ÙØ·Ø§Ø¦Ù â Ø·Ø±ÙÙ Ø§ÙØ³ÙÙ</div>
     <div style="background:#e8f5ee;border:1px solid #9fe1cb;border-radius:8px;padding:10px 14px;margin-bottom:1rem;font-size:13px;color:#1a6b4a;display:flex;align-items:center;gap:8px">
-      <span>✅</span>
-      <span>متصل بـ Google Sheets — البيانات تُحفظ تلقائياً</span>
+      <span>â</span>
+      <span>ÙØªØµÙ Ø¨Ù Google Sheets â Ø§ÙØ¨ÙØ§ÙØ§Øª ØªÙØ­ÙØ¸ ØªÙÙØ§Ø¦ÙØ§Ù</span>
     </div>
     <div class="role-btns" id="role-btns">
       <button class="role-btn" onclick="showAdminLogin()">
-        <span class="role-icon">🛡️</span>
-        <div><div style="font-size:15px;font-weight:600">لوحة الإدارة</div><div style="font-size:12px;color:var(--text-3)">صلاحيات كاملة — المدير</div></div>
+        <span class="role-icon">ð¡ï¸</span>
+        <div><div style="font-size:15px;font-weight:600">ÙÙØ­Ø© Ø§ÙØ¥Ø¯Ø§Ø±Ø©</div><div style="font-size:12px;color:var(--text-3)">ØµÙØ§Ø­ÙØ§Øª ÙØ§ÙÙØ© â Ø§ÙÙØ¯ÙØ±</div></div>
       </button>
       <button class="role-btn" onclick="showEmpLogin()">
-        <span class="role-icon">👤</span>
-        <div><div style="font-size:15px;font-weight:600">بوابة الموظف</div><div style="font-size:12px;color:var(--text-3)">تسجيل الحضور والانصراف</div></div>
+        <span class="role-icon">ð¤</span>
+        <div><div style="font-size:15px;font-weight:600">Ø¨ÙØ§Ø¨Ø© Ø§ÙÙÙØ¸Ù</div><div style="font-size:12px;color:var(--text-3)">ØªØ³Ø¬ÙÙ Ø§ÙØ­Ø¶ÙØ± ÙØ§ÙØ§ÙØµØ±Ø§Ù</div></div>
       </button>
     </div>
     <div id="emp-login-panel" style="display:none;text-align:right;margin-top:.5rem">
-      <button onclick="showRoleSelect()" style="background:none;border:none;color:var(--text-3);font-size:13px;cursor:pointer;font-family:inherit;margin-bottom:1rem">&larr; رجوع</button>
-      <div style="font-size:16px;font-weight:600;margin-bottom:1.25rem;text-align:center">&#128272; تسجيل دخول الموظف</div>
+      <button onclick="showRoleSelect()" style="background:none;border:none;color:var(--text-3);font-size:13px;cursor:pointer;font-family:inherit;margin-bottom:1rem">&larr; Ø±Ø¬ÙØ¹</button>
+      <div style="font-size:16px;font-weight:600;margin-bottom:1.25rem;text-align:center">&#128272; ØªØ³Ø¬ÙÙ Ø¯Ø®ÙÙ Ø§ÙÙÙØ¸Ù</div>
       <div class="form-group">
-        <label class="form-label">اسم المستخدم</label>
-        <input class="form-control" id="emp-login-username" placeholder="أدخل اسم المستخدم" onkeydown="if(event.key==='Enter')document.getElementById('emp-login-password').focus()">
+        <label class="form-label">Ø§Ø³Ù Ø§ÙÙØ³ØªØ®Ø¯Ù</label>
+        <input class="form-control" id="emp-login-username" placeholder="Ø£Ø¯Ø®Ù Ø§Ø³Ù Ø§ÙÙØ³ØªØ®Ø¯Ù" onkeydown="if(event.key==='Enter')document.getElementById('emp-login-password').focus()">
       </div>
       <div class="form-group" style="position:relative">
-        <label class="form-label">كلمة المرور</label>
-        <input class="form-control" id="emp-login-password" type="password" placeholder="أدخل كلمة المرور" style="padding-left:40px" onkeydown="if(event.key==='Enter')loginEmployee()">
+        <label class="form-label">ÙÙÙØ© Ø§ÙÙØ±ÙØ±</label>
+        <input class="form-control" id="emp-login-password" type="password" placeholder="Ø£Ø¯Ø®Ù ÙÙÙØ© Ø§ÙÙØ±ÙØ±" style="padding-left:40px" onkeydown="if(event.key==='Enter')loginEmployee()">
         <button onclick="togglePwdVis('emp-login-password','eye-1')" id="eye-1" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">&#128065;</button>
       </div>
-      <div id="emp-login-error" style="color:#c0392b;font-size:13px;margin-bottom:.75rem;display:none">&#10060; اسم المستخدم أو كلمة المرور غير صحيحة</div>
-      <button class="btn btn-primary btn-lg" onclick="loginEmployee()">دخول</button>
+      <div id="emp-login-error" style="color:#c0392b;font-size:13px;margin-bottom:.75rem;display:none">&#10060; Ø§Ø³Ù Ø§ÙÙØ³ØªØ®Ø¯Ù Ø£Ù ÙÙÙØ© Ø§ÙÙØ±ÙØ± ØºÙØ± ØµØ­ÙØ­Ø©</div>
+      <button class="btn btn-primary btn-lg" onclick="loginEmployee()">Ø¯Ø®ÙÙ</button>
     </div>
     <div id="admin-login-panel" style="display:none;text-align:right;margin-top:.5rem">
-      <button onclick="showRoleSelect()" style="background:none;border:none;color:var(--text-3);font-size:13px;cursor:pointer;font-family:inherit;margin-bottom:1rem">&larr; رجوع</button>
-      <div style="font-size:16px;font-weight:600;margin-bottom:1.25rem;text-align:center">&#128737; دخول المدير</div>
+      <button onclick="showRoleSelect()" style="background:none;border:none;color:var(--text-3);font-size:13px;cursor:pointer;font-family:inherit;margin-bottom:1rem">&larr; Ø±Ø¬ÙØ¹</button>
+      <div style="font-size:16px;font-weight:600;margin-bottom:1.25rem;text-align:center">&#128737; Ø¯Ø®ÙÙ Ø§ÙÙØ¯ÙØ±</div>
       <div class="form-group" style="position:relative">
-        <label class="form-label">كلمة مرور المدير</label>
-        <input class="form-control" id="admin-login-password" type="password" placeholder="أدخل كلمة المرور" style="padding-left:40px" onkeydown="if(event.key==='Enter')loginAdmin()">
+        <label class="form-label">ÙÙÙØ© ÙØ±ÙØ± Ø§ÙÙØ¯ÙØ±</label>
+        <input class="form-control" id="admin-login-password" type="password" placeholder="Ø£Ø¯Ø®Ù ÙÙÙØ© Ø§ÙÙØ±ÙØ±" style="padding-left:40px" onkeydown="if(event.key==='Enter')loginAdmin()">
         <button onclick="togglePwdVis('admin-login-password','eye-a')" id="eye-a" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">&#128065;</button>
       </div>
-      <div id="admin-login-error" style="color:#c0392b;font-size:13px;margin-bottom:.75rem;display:none">&#10060; كلمة المرور غير صحيحة</div>
-      <button class="btn btn-primary btn-lg" onclick="loginAdmin()">دخول كمدير</button>
-      <div style="font-size:11px;color:var(--text-3);margin-top:.75rem;text-align:center">كلمة المرور الافتراضية: <strong>rahati2024</strong></div>
+      <div id="admin-login-error" style="color:#c0392b;font-size:13px;margin-bottom:.75rem;display:none">&#10060; ÙÙÙØ© Ø§ÙÙØ±ÙØ± ØºÙØ± ØµØ­ÙØ­Ø©</div>
+      <button class="btn btn-primary btn-lg" onclick="loginAdmin()">Ø¯Ø®ÙÙ ÙÙØ¯ÙØ±</button>
+      <div style="font-size:11px;color:var(--text-3);margin-top:.75rem;text-align:center">ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ§ÙØªØ±Ø§Ø¶ÙØ©: <strong>rahati2024</strong></div>
     </div>
-    <p style="font-size:11px;color:var(--text-3);margin-top:1rem;text-align:center" id="drive-status">🔒 البيانات محمية ومحفوظة في Google Sheets</p>
+    <p style="font-size:11px;color:var(--text-3);margin-top:1rem;text-align:center" id="drive-status">ð Ø§ÙØ¨ÙØ§ÙØ§Øª ÙØ­ÙÙØ© ÙÙØ­ÙÙØ¸Ø© ÙÙ Google Sheets</p>
     <p style="display:none" id="demo-hint"></p>
   </div>
 </div>
 
-<!-- ═══════════════════ APP ═══════════════════ -->
+<!-- âââââââââââââââââââ APP âââââââââââââââââââ -->
 <div id="app" style="display:none">
 
 <!-- Topbar -->
 <div class="topbar">
   <div class="topbar-brand">
-    <div class="logo">🌟</div>
+    <div class="logo">ð</div>
     <div>
-      <div style="font-size:15px;font-weight:600">راحتي ستار</div>
-      <div style="font-size:11px;opacity:.6">الطائف — طريق السيل</div>
+      <div style="font-size:15px;font-weight:600">Ø±Ø§Ø­ØªÙ Ø³ØªØ§Ø±</div>
+      <div style="font-size:11px;opacity:.6">Ø§ÙØ·Ø§Ø¦Ù â Ø·Ø±ÙÙ Ø§ÙØ³ÙÙ</div>
     </div>
   </div>
   <div class="topbar-actions">
     <div class="topbar-time" id="clock">--:--:--</div>
-    <div class="user-pill" id="user-pill" onclick="toggleRole()">👤 موظف</div>
-    <button onclick="logout()" style="background:rgba(255,255,255,.12);border:none;color:#fff;padding:6px 12px;border-radius:6px;cursor:pointer;font-family:inherit;font-size:13px">خروج</button>
+    <div class="user-pill" id="user-pill" onclick="toggleRole()">ð¤ ÙÙØ¸Ù</div>
+    <button onclick="logout()" style="background:rgba(255,255,255,.12);border:none;color:#fff;padding:6px 12px;border-radius:6px;cursor:pointer;font-family:inherit;font-size:13px">Ø®Ø±ÙØ¬</button>
   </div>
 </div>
 
 <!-- Nav -->
 <div class="nav" id="main-nav">
-  <button class="nav-btn active" data-page="attendance" onclick="switchPage('attendance')">📍 الحضور والانصراف</button>
-  <button class="nav-btn" data-page="admin" onclick="switchPage('admin')" id="admin-tab" style="display:none">📊 لوحة الإدارة</button>
-  <button class="nav-btn" data-page="reports" onclick="switchPage('reports')" id="reports-tab" style="display:none">📋 التقارير والسجلات</button>
-  <button class="nav-btn" data-page="employees" onclick="switchPage('employees')" id="emp-mgmt-tab" style="display:none">👥 الموظفون</button>
-  <button class="nav-btn" data-page="shifts" onclick="switchPage('shifts')" id="shifts-tab" style="display:none">🕐 الورديات</button>
-  <button class="nav-btn" data-page="settings" onclick="switchPage('settings')" id="settings-tab" style="display:none">⚙️ الإعدادات</button>
-  <button class="nav-btn" data-page="absence" onclick="switchPage('absence')" id="absence-tab" style="display:none">📅 الغيابات</button>
-  <button class="nav-btn" data-page="profile" onclick="switchPage('profile')" id="profile-tab" style="display:none">👤 ملفي الشخصي</button>
+  <button class="nav-btn active" data-page="attendance" onclick="switchPage('attendance')">ð Ø§ÙØ­Ø¶ÙØ± ÙØ§ÙØ§ÙØµØ±Ø§Ù</button>
+  <button class="nav-btn" data-page="admin" onclick="switchPage('admin')" id="admin-tab" style="display:none">ð ÙÙØ­Ø© Ø§ÙØ¥Ø¯Ø§Ø±Ø©</button>
+  <button class="nav-btn" data-page="reports" onclick="switchPage('reports')" id="reports-tab" style="display:none">ð Ø§ÙØªÙØ§Ø±ÙØ± ÙØ§ÙØ³Ø¬ÙØ§Øª</button>
+  <button class="nav-btn" data-page="employees" onclick="switchPage('employees')" id="emp-mgmt-tab" style="display:none">ð¥ Ø§ÙÙÙØ¸ÙÙÙ</button>
+  <button class="nav-btn" data-page="shifts" onclick="switchPage('shifts')" id="shifts-tab" style="display:none">ð Ø§ÙÙØ±Ø¯ÙØ§Øª</button>
+  <button class="nav-btn" data-page="settings" onclick="switchPage('settings')" id="settings-tab" style="display:none">âï¸ Ø§ÙØ¥Ø¹Ø¯Ø§Ø¯Ø§Øª</button>
+  <button class="nav-btn" data-page="absence" onclick="switchPage('absence')" id="absence-tab" style="display:none">ð Ø§ÙØºÙØ§Ø¨Ø§Øª</button>
+  <button class="nav-btn" data-page="profile" onclick="switchPage('profile')" id="profile-tab" style="display:none">ð¤ ÙÙÙÙ Ø§ÙØ´Ø®ØµÙ</button>
 </div>
 
-<!-- ═══ PAGE: ATTENDANCE ═══ -->
+<!-- âââ PAGE: ATTENDANCE âââ -->
 <div class="page active" id="page-attendance">
   <div id="attendance-alert"></div>
 
@@ -273,52 +273,52 @@ select.form-control{cursor:pointer}
       <div class="loc-status checking" id="loc-status-card">
         <div class="loc-dot gray" id="loc-dot"></div>
         <div>
-          <div style="font-weight:500;font-size:14px" id="loc-title">جارٍ تحديد موقعك...</div>
-          <div style="font-size:12px;opacity:.7;margin-top:2px" id="loc-desc">يرجى السماح بالوصول للموقع</div>
+          <div style="font-weight:500;font-size:14px" id="loc-title">Ø¬Ø§Ø±Ù ØªØ­Ø¯ÙØ¯ ÙÙÙØ¹Ù...</div>
+          <div style="font-size:12px;opacity:.7;margin-top:2px" id="loc-desc">ÙØ±Ø¬Ù Ø§ÙØ³ÙØ§Ø­ Ø¨Ø§ÙÙØµÙÙ ÙÙÙÙÙØ¹</div>
         </div>
       </div>
 
       <!-- Employee Info -->
       <div class="card">
-        <div class="card-title">👤 بيانات الموظف</div>
+        <div class="card-title">ð¤ Ø¨ÙØ§ÙØ§Øª Ø§ÙÙÙØ¸Ù</div>
         <div class="form-group">
-          <label class="form-label">اسم الموظف</label>
-          <input class="form-control" id="emp-name" placeholder="أدخل اسمك الكامل" value="">
+          <label class="form-label">Ø§Ø³Ù Ø§ÙÙÙØ¸Ù</label>
+          <input class="form-control" id="emp-name" placeholder="Ø£Ø¯Ø®Ù Ø§Ø³ÙÙ Ø§ÙÙØ§ÙÙ" value="">
         </div>
         <div class="form-group">
-          <label class="form-label">القسم</label>
+          <label class="form-label">Ø§ÙÙØ³Ù</label>
           <select class="form-control" id="emp-dept">
-            <option>الاستقبال</option>
-            <option>التنظيف والتدبير</option>
-            <option>الأمن</option>
-            <option>الصيانة</option>
-            <option>الإدارة</option>
+            <option>Ø§ÙØ§Ø³ØªÙØ¨Ø§Ù</option>
+            <option>Ø§ÙØªÙØ¸ÙÙ ÙØ§ÙØªØ¯Ø¨ÙØ±</option>
+            <option>Ø§ÙØ£ÙÙ</option>
+            <option>Ø§ÙØµÙØ§ÙØ©</option>
+            <option>Ø§ÙØ¥Ø¯Ø§Ø±Ø©</option>
           </select>
         </div>
         <div class="form-group">
-          <label class="form-label">الوردية</label>
+          <label class="form-label">Ø§ÙÙØ±Ø¯ÙØ©</label>
           <select class="form-control" id="emp-shift"></select>
         </div>
       </div>
 
       <!-- Distance Info -->
       <div class="card">
-        <div class="card-title">📏 المسافة عن الموقع</div>
+        <div class="card-title">ð Ø§ÙÙØ³Ø§ÙØ© Ø¹Ù Ø§ÙÙÙÙØ¹</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
           <div class="stat">
-            <div class="stat-label">المسافة الحالية</div>
+            <div class="stat-label">Ø§ÙÙØ³Ø§ÙØ© Ø§ÙØ­Ø§ÙÙØ©</div>
             <div class="stat-value" id="current-dist" style="font-size:20px">--</div>
-            <div class="stat-sub">متر</div>
+            <div class="stat-sub">ÙØªØ±</div>
           </div>
           <div class="stat">
-            <div class="stat-label">الحد المسموح</div>
+            <div class="stat-label">Ø§ÙØ­Ø¯ Ø§ÙÙØ³ÙÙØ­</div>
             <div class="stat-value" style="font-size:20px" id="allowed-radius-disp">100</div>
-            <div class="stat-sub">متر</div>
+            <div class="stat-sub">ÙØªØ±</div>
           </div>
         </div>
         <div style="margin-top:12px">
           <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-3);margin-bottom:4px">
-            <span>مقياس القرب</span>
+            <span>ÙÙÙØ§Ø³ Ø§ÙÙØ±Ø¨</span>
             <span id="prox-pct">--%</span>
           </div>
           <div style="height:6px;background:#eee;border-radius:3px;overflow:hidden">
@@ -330,13 +330,13 @@ select.form-control{cursor:pointer}
       <!-- Stamp Buttons -->
       <div class="stamp-wrap">
         <button class="stamp-btn checkin" id="btn-checkin" onclick="doStamp('in')" disabled>
-          <div class="icon">⬆️</div>
-          <div>تسجيل حضور</div>
+          <div class="icon">â¬ï¸</div>
+          <div>ØªØ³Ø¬ÙÙ Ø­Ø¶ÙØ±</div>
           <div style="font-size:12px;opacity:.8" id="checkin-time">--:--</div>
         </button>
         <button class="stamp-btn checkout" id="btn-checkout" onclick="doStamp('out')" disabled>
-          <div class="icon">⬇️</div>
-          <div>تسجيل انصراف</div>
+          <div class="icon">â¬ï¸</div>
+          <div>ØªØ³Ø¬ÙÙ Ø§ÙØµØ±Ø§Ù</div>
           <div style="font-size:12px;opacity:.8" id="checkout-time">--:--</div>
         </button>
       </div>
@@ -345,28 +345,28 @@ select.form-control{cursor:pointer}
     <div>
       <!-- Map -->
       <div class="card">
-        <div class="card-title">🗺️ الخريطة الجغرافية</div>
+        <div class="card-title">ðºï¸ Ø§ÙØ®Ø±ÙØ·Ø© Ø§ÙØ¬ØºØ±Ø§ÙÙØ©</div>
         <div id="map-frame">
           <canvas id="map-canvas"></canvas>
           <div class="map-overlay-info" id="map-info">
-            <div style="font-weight:500">راحتي ستار — الطائف</div>
-            <div id="map-coords" style="direction:ltr;font-size:11px;margin-top:2px;color:#666">21.4788°, 40.4854°</div>
+            <div style="font-weight:500">Ø±Ø§Ø­ØªÙ Ø³ØªØ§Ø± â Ø§ÙØ·Ø§Ø¦Ù</div>
+            <div id="map-coords" style="direction:ltr;font-size:11px;margin-top:2px;color:#666">21.4788Â°, 40.4854Â°</div>
           </div>
         </div>
         <div style="display:flex;gap:12px;margin-top:10px;font-size:12px;color:var(--text-3)">
-          <span>🟢 موقع المقر</span>
-          <span>🔵 موقعك الحالي</span>
-          <span style="border:1.5px dashed #1a6b4a;padding:0 6px;border-radius:4px">نطاق السماح</span>
+          <span>ð¢ ÙÙÙØ¹ Ø§ÙÙÙØ±</span>
+          <span>ðµ ÙÙÙØ¹Ù Ø§ÙØ­Ø§ÙÙ</span>
+          <span style="border:1.5px dashed #1a6b4a;padding:0 6px;border-radius:4px">ÙØ·Ø§Ù Ø§ÙØ³ÙØ§Ø­</span>
         </div>
       </div>
 
       <!-- Today's Log -->
       <div class="card">
-        <div class="card-title">📋 سجل اليوم</div>
+        <div class="card-title">ð Ø³Ø¬Ù Ø§ÙÙÙÙ</div>
         <div id="today-log">
           <div class="empty-state">
-            <div class="icon">📭</div>
-            <div>لا توجد بصمات اليوم</div>
+            <div class="icon">ð­</div>
+            <div>ÙØ§ ØªÙØ¬Ø¯ Ø¨ØµÙØ§Øª Ø§ÙÙÙÙ</div>
           </div>
         </div>
       </div>
@@ -374,230 +374,230 @@ select.form-control{cursor:pointer}
   </div>
 </div>
 
-<!-- ═══ PAGE: ADMIN ═══ -->
+<!-- âââ PAGE: ADMIN âââ -->
 <div class="page" id="page-admin">
   <div class="grid-4" style="margin-bottom:1rem">
     <div class="stat brand">
-      <div class="stat-label">✅ حضور اليوم</div>
+      <div class="stat-label">â Ø­Ø¶ÙØ± Ø§ÙÙÙÙ</div>
       <div class="stat-value" id="stat-present">0</div>
-      <div class="stat-sub">موظف</div>
+      <div class="stat-sub">ÙÙØ¸Ù</div>
     </div>
     <div class="stat">
-      <div class="stat-label">❌ غياب اليوم</div>
+      <div class="stat-label">â ØºÙØ§Ø¨ Ø§ÙÙÙÙ</div>
       <div class="stat-value" id="stat-absent">0</div>
-      <div class="stat-sub">موظف</div>
+      <div class="stat-sub">ÙÙØ¸Ù</div>
     </div>
     <div class="stat">
-      <div class="stat-label">⏰ تأخر اليوم</div>
+      <div class="stat-label">â° ØªØ£Ø®Ø± Ø§ÙÙÙÙ</div>
       <div class="stat-value" id="stat-late">0</div>
-      <div class="stat-sub">موظف</div>
+      <div class="stat-sub">ÙÙØ¸Ù</div>
     </div>
     <div class="stat">
-      <div class="stat-label">⛔ محاولات مرفوضة</div>
+      <div class="stat-label">â ÙØ­Ø§ÙÙØ§Øª ÙØ±ÙÙØ¶Ø©</div>
       <div class="stat-value" id="stat-rejected">0</div>
-      <div class="stat-sub">هذا الشهر</div>
+      <div class="stat-sub">ÙØ°Ø§ Ø§ÙØ´ÙØ±</div>
     </div>
   </div>
 
   <div class="grid-2">
     <div class="card">
-      <div class="card-title">📈 حضور الأسبوع الحالي</div>
+      <div class="card-title">ð Ø­Ø¶ÙØ± Ø§ÙØ£Ø³Ø¨ÙØ¹ Ø§ÙØ­Ø§ÙÙ</div>
       <div class="chart-wrap"><canvas id="week-chart"></canvas></div>
     </div>
     <div class="card">
-      <div class="card-title">🏢 الحضور حسب القسم</div>
+      <div class="card-title">ð¢ Ø§ÙØ­Ø¶ÙØ± Ø­Ø³Ø¨ Ø§ÙÙØ³Ù</div>
       <div class="chart-wrap"><canvas id="dept-chart"></canvas></div>
     </div>
   </div>
 
   <div class="card">
     <div class="section-header">
-      <div class="card-title" style="margin-bottom:0">🕐 آخر البصمات</div>
-      <button class="btn btn-secondary" onclick="exportToSheet()">⬆️ تصدير لـ Google Sheets</button>
+      <div class="card-title" style="margin-bottom:0">ð Ø¢Ø®Ø± Ø§ÙØ¨ØµÙØ§Øª</div>
+      <button class="btn btn-secondary" onclick="exportToSheet()">â¬ï¸ ØªØµØ¯ÙØ± ÙÙ Google Sheets</button>
     </div>
     <div class="table-wrap" id="live-log-table">
       <table>
-        <thead><tr><th>الموظف</th><th>القسم</th><th>النوع</th><th>الوقت</th><th>الموقع</th><th>الحالة</th></tr></thead>
+        <thead><tr><th>Ø§ÙÙÙØ¸Ù</th><th>Ø§ÙÙØ³Ù</th><th>Ø§ÙÙÙØ¹</th><th>Ø§ÙÙÙØª</th><th>Ø§ÙÙÙÙØ¹</th><th>Ø§ÙØ­Ø§ÙØ©</th></tr></thead>
         <tbody id="live-log-body">
-          <tr><td colspan="6" style="text-align:center;color:var(--text-3);padding:24px">لا توجد سجلات بعد</td></tr>
+          <tr><td colspan="6" style="text-align:center;color:var(--text-3);padding:24px">ÙØ§ ØªÙØ¬Ø¯ Ø³Ø¬ÙØ§Øª Ø¨Ø¹Ø¯</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
 
-<!-- ═══ PAGE: REPORTS ═══ -->
+<!-- âââ PAGE: REPORTS âââ -->
 <div class="page" id="page-reports">
   <div class="card">
-    <div class="card-title">🔍 فلترة التقارير</div>
+    <div class="card-title">ð ÙÙØªØ±Ø© Ø§ÙØªÙØ§Ø±ÙØ±</div>
     <div class="grid-2">
       <div class="form-group">
-        <label class="form-label">من تاريخ</label>
+        <label class="form-label">ÙÙ ØªØ§Ø±ÙØ®</label>
         <input type="date" class="form-control" id="filter-from">
       </div>
       <div class="form-group">
-        <label class="form-label">إلى تاريخ</label>
+        <label class="form-label">Ø¥ÙÙ ØªØ§Ø±ÙØ®</label>
         <input type="date" class="form-control" id="filter-to">
       </div>
       <div class="form-group">
-        <label class="form-label">الموظف</label>
-        <select class="form-control" id="filter-emp"><option value="">جميع الموظفين</option></select>
+        <label class="form-label">Ø§ÙÙÙØ¸Ù</label>
+        <select class="form-control" id="filter-emp"><option value="">Ø¬ÙÙØ¹ Ø§ÙÙÙØ¸ÙÙÙ</option></select>
       </div>
       <div class="form-group">
-        <label class="form-label">القسم</label>
+        <label class="form-label">Ø§ÙÙØ³Ù</label>
         <select class="form-control" id="filter-dept">
-          <option value="">جميع الأقسام</option>
-          <option>الاستقبال</option><option>التنظيف والتدبير</option>
-          <option>الأمن</option><option>الصيانة</option><option>الإدارة</option>
+          <option value="">Ø¬ÙÙØ¹ Ø§ÙØ£ÙØ³Ø§Ù</option>
+          <option>Ø§ÙØ§Ø³ØªÙØ¨Ø§Ù</option><option>Ø§ÙØªÙØ¸ÙÙ ÙØ§ÙØªØ¯Ø¨ÙØ±</option>
+          <option>Ø§ÙØ£ÙÙ</option><option>Ø§ÙØµÙØ§ÙØ©</option><option>Ø§ÙØ¥Ø¯Ø§Ø±Ø©</option>
         </select>
       </div>
     </div>
     <div style="display:flex;gap:10px">
-      <button class="btn btn-primary" onclick="filterReports()">🔍 عرض التقرير</button>
-      <button class="btn btn-secondary" onclick="exportToSheet()">⬆️ تصدير لـ Google Sheets</button>
-      <button class="btn btn-secondary" onclick="printReport()">🖨️ طباعة</button>
+      <button class="btn btn-primary" onclick="filterReports()">ð Ø¹Ø±Ø¶ Ø§ÙØªÙØ±ÙØ±</button>
+      <button class="btn btn-secondary" onclick="exportToSheet()">â¬ï¸ ØªØµØ¯ÙØ± ÙÙ Google Sheets</button>
+      <button class="btn btn-secondary" onclick="printReport()">ð¨ï¸ Ø·Ø¨Ø§Ø¹Ø©</button>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-title">📊 ملخص الحضور</div>
+    <div class="card-title">ð ÙÙØ®Øµ Ø§ÙØ­Ø¶ÙØ±</div>
     <div class="grid-3" id="report-summary">
-      <div class="stat"><div class="stat-label">إجمالي البصمات</div><div class="stat-value" id="r-total">0</div></div>
-      <div class="stat"><div class="stat-label">بصمات مقبولة</div><div class="stat-value" id="r-accepted">0</div></div>
-      <div class="stat"><div class="stat-label">بصمات مرفوضة</div><div class="stat-value" id="r-rejected">0</div></div>
+      <div class="stat"><div class="stat-label">Ø¥Ø¬ÙØ§ÙÙ Ø§ÙØ¨ØµÙØ§Øª</div><div class="stat-value" id="r-total">0</div></div>
+      <div class="stat"><div class="stat-label">Ø¨ØµÙØ§Øª ÙÙØ¨ÙÙØ©</div><div class="stat-value" id="r-accepted">0</div></div>
+      <div class="stat"><div class="stat-label">Ø¨ØµÙØ§Øª ÙØ±ÙÙØ¶Ø©</div><div class="stat-value" id="r-rejected">0</div></div>
     </div>
   </div>
 
   <div class="card">
     <div class="section-header">
-      <div class="card-title" style="margin-bottom:0">📋 سجلات الحضور</div>
-      <span class="chip" id="report-count">0 سجل</span>
+      <div class="card-title" style="margin-bottom:0">ð Ø³Ø¬ÙØ§Øª Ø§ÙØ­Ø¶ÙØ±</div>
+      <span class="chip" id="report-count">0 Ø³Ø¬Ù</span>
     </div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>التاريخ</th><th>الموظف</th><th>القسم</th><th>الوردية</th><th>حضور</th><th>انصراف</th><th>المدة</th><th>الحالة</th></tr></thead>
+        <thead><tr><th>Ø§ÙØªØ§Ø±ÙØ®</th><th>Ø§ÙÙÙØ¸Ù</th><th>Ø§ÙÙØ³Ù</th><th>Ø§ÙÙØ±Ø¯ÙØ©</th><th>Ø­Ø¶ÙØ±</th><th>Ø§ÙØµØ±Ø§Ù</th><th>Ø§ÙÙØ¯Ø©</th><th>Ø§ÙØ­Ø§ÙØ©</th></tr></thead>
         <tbody id="report-body">
-          <tr><td colspan="8" style="text-align:center;color:var(--text-3);padding:24px">لا توجد سجلات</td></tr>
+          <tr><td colspan="8" style="text-align:center;color:var(--text-3);padding:24px">ÙØ§ ØªÙØ¬Ø¯ Ø³Ø¬ÙØ§Øª</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
 
-<!-- ═══ PAGE: EMPLOYEES ═══ -->
+<!-- âââ PAGE: EMPLOYEES âââ -->
 <div class="page" id="page-employees">
   <div class="section-header">
-    <h2 style="font-size:17px;font-weight:600">👥 إدارة الموظفين</h2>
-    <button class="btn btn-primary" onclick="openAddEmp()">+ إضافة موظف</button>
+    <h2 style="font-size:17px;font-weight:600">ð¥ Ø¥Ø¯Ø§Ø±Ø© Ø§ÙÙÙØ¸ÙÙÙ</h2>
+    <button class="btn btn-primary" onclick="openAddEmp()">+ Ø¥Ø¶Ø§ÙØ© ÙÙØ¸Ù</button>
   </div>
   <div class="card">
     <div class="table-wrap">
       <table>
-        <thead><tr><th>الاسم</th><th>القسم</th><th>الوردية</th><th>اسم المستخدم</th><th>تاريخ التوظيف</th><th>الحالة</th><th>الإجراءات</th></tr></thead>
+        <thead><tr><th>Ø§ÙØ§Ø³Ù</th><th>Ø§ÙÙØ³Ù</th><th>Ø§ÙÙØ±Ø¯ÙØ©</th><th>Ø§Ø³Ù Ø§ÙÙØ³ØªØ®Ø¯Ù</th><th>ØªØ§Ø±ÙØ® Ø§ÙØªÙØ¸ÙÙ</th><th>Ø§ÙØ­Ø§ÙØ©</th><th>Ø§ÙØ¥Ø¬Ø±Ø§Ø¡Ø§Øª</th></tr></thead>
         <tbody id="emp-table-body"></tbody>
       </table>
     </div>
   </div>
 </div>
 
-<!-- ═══ PAGE: SETTINGS ═══ -->
+<!-- âââ PAGE: SETTINGS âââ -->
 <div class="page" id="page-settings">
   <div class="grid-2">
     <div class="card">
-      <div class="card-title">📍 إعدادات الموقع الجغرافي</div>
+      <div class="card-title">ð Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø§ÙÙÙÙØ¹ Ø§ÙØ¬ØºØ±Ø§ÙÙ</div>
       <div class="form-group">
-        <label class="form-label">خط العرض (Latitude)</label>
+        <label class="form-label">Ø®Ø· Ø§ÙØ¹Ø±Ø¶ (Latitude)</label>
         <input class="form-control" id="set-lat" value="21.4787635" style="direction:ltr">
       </div>
       <div class="form-group">
-        <label class="form-label">خط الطول (Longitude)</label>
+        <label class="form-label">Ø®Ø· Ø§ÙØ·ÙÙ (Longitude)</label>
         <input class="form-control" id="set-lng" value="40.4853529" style="direction:ltr">
       </div>
       <div class="form-group">
-        <label class="form-label">نطاق السماح (متر)</label>
+        <label class="form-label">ÙØ·Ø§Ù Ø§ÙØ³ÙØ§Ø­ (ÙØªØ±)</label>
         <input class="form-control" type="number" id="set-radius" value="100" min="30" max="1000">
       </div>
-      <button class="btn btn-primary" onclick="saveSettings()">💾 حفظ الإعدادات</button>
+      <button class="btn btn-primary" onclick="saveSettings()">ð¾ Ø­ÙØ¸ Ø§ÙØ¥Ø¹Ø¯Ø§Ø¯Ø§Øª</button>
     </div>
     <div class="card">
-      <div class="card-title">🔑 إعدادات حفظ كلمة المرور (GitHub)</div>
+      <div class="card-title">ð Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø­ÙØ¸ ÙÙÙØ© Ø§ÙÙØ±ÙØ± (GitHub)</div>
       <div style="font-size:12px;color:var(--text-3);margin-bottom:1rem;line-height:1.8">
-        لحفظ كلمة مرور المدير بشكل دائم، أدخل بيانات GitHub Token مرة واحدة فقط.
-        <br><a href="https://github.com/settings/tokens/new?scopes=repo&description=rahati-star" target="_blank" style="color:var(--brand)">اضغط هنا لإنشاء Token</a>
-        (اختر صلاحية <strong>repo</strong>)
+        ÙØ­ÙØ¸ ÙÙÙØ© ÙØ±ÙØ± Ø§ÙÙØ¯ÙØ± Ø¨Ø´ÙÙ Ø¯Ø§Ø¦ÙØ Ø£Ø¯Ø®Ù Ø¨ÙØ§ÙØ§Øª GitHub Token ÙØ±Ø© ÙØ§Ø­Ø¯Ø© ÙÙØ·.
+        <br><a href="https://github.com/settings/tokens/new?scopes=repo&description=rahati-star" target="_blank" style="color:var(--brand)">Ø§Ø¶ØºØ· ÙÙØ§ ÙØ¥ÙØ´Ø§Ø¡ Token</a>
+        (Ø§Ø®ØªØ± ØµÙØ§Ø­ÙØ© <strong>repo</strong>)
       </div>
       <div class="form-group">
         <label class="form-label">GitHub Token</label>
         <input class="form-control" id="gh-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" style="direction:ltr;font-size:12px">
       </div>
       <div class="form-group">
-        <label class="form-label">اسم المستخدم / الـ Repository</label>
+        <label class="form-label">Ø§Ø³Ù Ø§ÙÙØ³ØªØ®Ø¯Ù / Ø§ÙÙ Repository</label>
         <input class="form-control" id="gh-repo" type="text" placeholder="go5220964-bit/rahti-star" style="direction:ltr;font-size:12px" value="go5220964-bit/rahti-star">
       </div>
-      <button class="btn btn-secondary" style="font-size:13px" onclick="saveGithubSettings()">💾 حفظ إعدادات GitHub</button>
+      <button class="btn btn-secondary" style="font-size:13px" onclick="saveGithubSettings()">ð¾ Ø­ÙØ¸ Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª GitHub</button>
       <div id="gh-settings-status" style="font-size:12px;color:var(--text-3);margin-top:8px"></div>
       <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
-        <button class="btn btn-primary" style="font-size:13px" onclick="manualGithubSync()">🔄 مزامنة البيانات الآن</button>
-        <button class="btn btn-secondary" style="font-size:13px" onclick="testGithubConnection()">🧪 اختبار الاتصال</button>
+        <button class="btn btn-primary" style="font-size:13px" onclick="manualGithubSync()">ð ÙØ²Ø§ÙÙØ© Ø§ÙØ¨ÙØ§ÙØ§Øª Ø§ÙØ¢Ù</button>
+        <button class="btn btn-secondary" style="font-size:13px" onclick="testGithubConnection()">ð§ª Ø§Ø®ØªØ¨Ø§Ø± Ø§ÙØ§ØªØµØ§Ù</button>
       </div>
       <div id="gh-test-result" style="font-size:12px;margin-top:10px;padding:10px;border-radius:8px;display:none;word-break:break-all;line-height:1.8"></div>
     </div>
 
     <div class="card">
-      <div class="card-title">🔗 إعدادات Google Drive</div>
-      <div id="drive-settings-status" style="margin-bottom:1rem;font-size:14px;color:var(--text-2)">غير مرتبط</div>
+      <div class="card-title">ð Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Google Drive</div>
+      <div id="drive-settings-status" style="margin-bottom:1rem;font-size:14px;color:var(--text-2)">ØºÙØ± ÙØ±ØªØ¨Ø·</div>
       <button class="gdrive-btn" id="settings-gdrive-btn" onclick="showScriptUrlModal()" style="margin-top:0;border-radius:8px">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.5 20L1 11l4-7h14l4 7-4 7z" fill="#34a853"/><path d="M1 11l5.5 9h11L23 11z" fill="#4285f4" opacity=".5"/><path d="M5 4l5.5 9.5-5 8.5H1L6.5 11z" fill="#fbbc05" opacity=".6"/></svg>
-        ربط Google Drive
+        Ø±Ø¨Ø· Google Drive
       </button>
       <div style="margin-top:1rem">
         <div class="form-group">
-          <label class="form-label">معرّف Google Sheet (اختياري)</label>
-          <input class="form-control" id="sheet-id" placeholder="أدخل Sheet ID أو اتركه فارغاً للإنشاء تلقائياً" style="direction:ltr;font-size:12px">
+          <label class="form-label">ÙØ¹Ø±ÙÙ Google Sheet (Ø§Ø®ØªÙØ§Ø±Ù)</label>
+          <input class="form-control" id="sheet-id" placeholder="Ø£Ø¯Ø®Ù Sheet ID Ø£Ù Ø§ØªØ±ÙÙ ÙØ§Ø±ØºØ§Ù ÙÙØ¥ÙØ´Ø§Ø¡ ØªÙÙØ§Ø¦ÙØ§Ù" style="direction:ltr;font-size:12px">
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-title">⏰ إعدادات الدوام</div>
+      <div class="card-title">â° Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø§ÙØ¯ÙØ§Ù</div>
       <div class="form-group">
-        <label class="form-label">وقت بدء الدوام الصباحي</label>
+        <label class="form-label">ÙÙØª Ø¨Ø¯Ø¡ Ø§ÙØ¯ÙØ§Ù Ø§ÙØµØ¨Ø§Ø­Ù</label>
         <input class="form-control" type="time" id="set-work-start" value="07:00">
       </div>
       <div class="form-group">
-        <label class="form-label">حد التأخر (بالدقائق)</label>
+        <label class="form-label">Ø­Ø¯ Ø§ÙØªØ£Ø®Ø± (Ø¨Ø§ÙØ¯ÙØ§Ø¦Ù)</label>
         <input class="form-control" type="number" id="set-late-mins" value="15" min="0">
       </div>
-      <button class="btn btn-primary" onclick="saveSettings()">💾 حفظ</button>
+      <button class="btn btn-primary" onclick="saveSettings()">ð¾ Ø­ÙØ¸</button>
     </div>
     <div class="card">
-      <div class="card-title">🔐 تغيير كلمة مرور المدير</div>
+      <div class="card-title">ð ØªØºÙÙØ± ÙÙÙØ© ÙØ±ÙØ± Ø§ÙÙØ¯ÙØ±</div>
       <div id="admin-pwd-settings-alert"></div>
       <div class="form-group" style="position:relative">
-        <label class="form-label">كلمة المرور الحالية</label>
-        <input class="form-control" id="admin-cur-pwd" type="password" placeholder="أدخل كلمة المرور الحالية" style="padding-left:40px">
-        <button onclick="togglePwdVis('admin-cur-pwd','eye-ac')" id="eye-ac" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">👁</button>
+        <label class="form-label">ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ­Ø§ÙÙØ©</label>
+        <input class="form-control" id="admin-cur-pwd" type="password" placeholder="Ø£Ø¯Ø®Ù ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ­Ø§ÙÙØ©" style="padding-left:40px">
+        <button onclick="togglePwdVis('admin-cur-pwd','eye-ac')" id="eye-ac" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">ð</button>
       </div>
       <div class="form-group" style="position:relative">
-        <label class="form-label">كلمة المرور الجديدة</label>
-        <input class="form-control" id="admin-new-pwd" type="password" placeholder="6 أحرف على الأقل" style="padding-left:40px">
-        <button onclick="togglePwdVis('admin-new-pwd','eye-an')" id="eye-an" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">👁</button>
+        <label class="form-label">ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ¬Ø¯ÙØ¯Ø©</label>
+        <input class="form-control" id="admin-new-pwd" type="password" placeholder="6 Ø£Ø­Ø±Ù Ø¹ÙÙ Ø§ÙØ£ÙÙ" style="padding-left:40px">
+        <button onclick="togglePwdVis('admin-new-pwd','eye-an')" id="eye-an" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">ð</button>
       </div>
       <div class="form-group" style="position:relative">
-        <label class="form-label">تأكيد كلمة المرور الجديدة</label>
-        <input class="form-control" id="admin-confirm-pwd" type="password" placeholder="أعد الكتابة" style="padding-left:40px">
-        <button onclick="togglePwdVis('admin-confirm-pwd','eye-ar')" id="eye-ar" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">👁</button>
+        <label class="form-label">ØªØ£ÙÙØ¯ ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ¬Ø¯ÙØ¯Ø©</label>
+        <input class="form-control" id="admin-confirm-pwd" type="password" placeholder="Ø£Ø¹Ø¯ Ø§ÙÙØªØ§Ø¨Ø©" style="padding-left:40px">
+        <button onclick="togglePwdVis('admin-confirm-pwd','eye-ar')" id="eye-ar" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">ð</button>
       </div>
-      <button class="btn btn-primary" onclick="changeAdminPassword()">💾 حفظ كلمة مرور المدير</button>
+      <button class="btn btn-primary" onclick="changeAdminPassword()">ð¾ Ø­ÙØ¸ ÙÙÙØ© ÙØ±ÙØ± Ø§ÙÙØ¯ÙØ±</button>
     </div>
 
     <div class="card">
-      <div class="card-title">ℹ️ معلومات الشركة</div>
+      <div class="card-title">â¹ï¸ ÙØ¹ÙÙÙØ§Øª Ø§ÙØ´Ø±ÙØ©</div>
       <div style="font-size:14px;color:var(--text-2);line-height:2">
-        <div>🏢 <strong>راحتي ستار للشقق المخدومة</strong></div>
-        <div>📍 الطائف — طريق السيل</div>
-        <div>🌐 إحداثيات المقر: 21.4787635, 40.4853529</div>
+        <div>ð¢ <strong>Ø±Ø§Ø­ØªÙ Ø³ØªØ§Ø± ÙÙØ´ÙÙ Ø§ÙÙØ®Ø¯ÙÙØ©</strong></div>
+        <div>ð Ø§ÙØ·Ø§Ø¦Ù â Ø·Ø±ÙÙ Ø§ÙØ³ÙÙ</div>
+        <div>ð Ø¥Ø­Ø¯Ø§Ø«ÙØ§Øª Ø§ÙÙÙØ±: 21.4787635, 40.4853529</div>
         <div style="margin-top:10px">
-          <div style="font-size:12px;color:var(--text-3)">إصدار النظام: 1.0.0</div>
+          <div style="font-size:12px;color:var(--text-3)">Ø¥ØµØ¯Ø§Ø± Ø§ÙÙØ¸Ø§Ù: 1.0.0</div>
         </div>
       </div>
     </div>
@@ -605,11 +605,11 @@ select.form-control{cursor:pointer}
 </div>
 
 
-<!-- ═══ PAGE: SHIFTS ═══ -->
+<!-- âââ PAGE: SHIFTS âââ -->
 <div class="page" id="page-shifts">
   <div class="section-header">
-    <h2 style="font-size:17px;font-weight:600">🕐 إدارة الورديات</h2>
-    <button class="btn btn-primary" onclick="openShiftModal()">+ إضافة وردية</button>
+    <h2 style="font-size:17px;font-weight:600">ð Ø¥Ø¯Ø§Ø±Ø© Ø§ÙÙØ±Ø¯ÙØ§Øª</h2>
+    <button class="btn btn-primary" onclick="openShiftModal()">+ Ø¥Ø¶Ø§ÙØ© ÙØ±Ø¯ÙØ©</button>
   </div>
 
   <div class="grid-3" id="shifts-stats" style="margin-bottom:1rem"></div>
@@ -619,13 +619,13 @@ select.form-control{cursor:pointer}
       <table>
         <thead>
           <tr>
-            <th>اسم الوردية</th>
-            <th>وقت البداية</th>
-            <th>وقت النهاية</th>
-            <th>المدة</th>
-            <th>الموظفون</th>
-            <th>الحالة</th>
-            <th>الإجراءات</th>
+            <th>Ø§Ø³Ù Ø§ÙÙØ±Ø¯ÙØ©</th>
+            <th>ÙÙØª Ø§ÙØ¨Ø¯Ø§ÙØ©</th>
+            <th>ÙÙØª Ø§ÙÙÙØ§ÙØ©</th>
+            <th>Ø§ÙÙØ¯Ø©</th>
+            <th>Ø§ÙÙÙØ¸ÙÙÙ</th>
+            <th>Ø§ÙØ­Ø§ÙØ©</th>
+            <th>Ø§ÙØ¥Ø¬Ø±Ø§Ø¡Ø§Øª</th>
           </tr>
         </thead>
         <tbody id="shifts-table-body"></tbody>
@@ -634,11 +634,11 @@ select.form-control{cursor:pointer}
   </div>
 
   <div class="card" style="margin-top:1rem">
-    <div class="card-title">📅 توزيع الورديات على الموظفين</div>
+    <div class="card-title">ð ØªÙØ²ÙØ¹ Ø§ÙÙØ±Ø¯ÙØ§Øª Ø¹ÙÙ Ø§ÙÙÙØ¸ÙÙÙ</div>
     <div class="table-wrap">
       <table>
         <thead>
-          <tr><th>الموظف</th><th>القسم</th><th>الوردية المعينة</th><th>تغيير الوردية</th></tr>
+          <tr><th>Ø§ÙÙÙØ¸Ù</th><th>Ø§ÙÙØ³Ù</th><th>Ø§ÙÙØ±Ø¯ÙØ© Ø§ÙÙØ¹ÙÙØ©</th><th>ØªØºÙÙØ± Ø§ÙÙØ±Ø¯ÙØ©</th></tr>
         </thead>
         <tbody id="emp-shift-assign-body"></tbody>
       </table>
@@ -647,123 +647,123 @@ select.form-control{cursor:pointer}
 </div>
 
 
-<!-- ═══ PAGE: ABSENCE ═══ -->
+<!-- âââ PAGE: ABSENCE âââ -->
 <div class="page" id="page-absence">
   <div class="card">
-    <div class="card-title">📅 تقرير الغيابات الشهري</div>
+    <div class="card-title">ð ØªÙØ±ÙØ± Ø§ÙØºÙØ§Ø¨Ø§Øª Ø§ÙØ´ÙØ±Ù</div>
     <div class="grid-2" style="margin-bottom:1rem">
       <div class="form-group">
-        <label class="form-label">الشهر</label>
+        <label class="form-label">Ø§ÙØ´ÙØ±</label>
         <input type="month" class="form-control" id="absence-month" style="direction:ltr">
       </div>
       <div class="form-group">
-        <label class="form-label">القسم</label>
+        <label class="form-label">Ø§ÙÙØ³Ù</label>
         <select class="form-control" id="absence-dept">
-          <option value="">جميع الأقسام</option>
-          <option>الاستقبال</option><option>التنظيف والتدبير</option>
-          <option>الأمن</option><option>الصيانة</option><option>الإدارة</option>
+          <option value="">Ø¬ÙÙØ¹ Ø§ÙØ£ÙØ³Ø§Ù</option>
+          <option>Ø§ÙØ§Ø³ØªÙØ¨Ø§Ù</option><option>Ø§ÙØªÙØ¸ÙÙ ÙØ§ÙØªØ¯Ø¨ÙØ±</option>
+          <option>Ø§ÙØ£ÙÙ</option><option>Ø§ÙØµÙØ§ÙØ©</option><option>Ø§ÙØ¥Ø¯Ø§Ø±Ø©</option>
         </select>
       </div>
     </div>
     <div style="display:flex;gap:10px">
-      <button class="btn btn-primary" onclick="generateAbsenceReport()">🔍 إنشاء التقرير</button>
-      <button class="btn btn-secondary" onclick="exportAbsenceCSV()">⬇️ تصدير CSV</button>
-      <button class="btn btn-secondary" onclick="window.print()">🖨️ طباعة</button>
+      <button class="btn btn-primary" onclick="generateAbsenceReport()">ð Ø¥ÙØ´Ø§Ø¡ Ø§ÙØªÙØ±ÙØ±</button>
+      <button class="btn btn-secondary" onclick="exportAbsenceCSV()">â¬ï¸ ØªØµØ¯ÙØ± CSV</button>
+      <button class="btn btn-secondary" onclick="window.print()">ð¨ï¸ Ø·Ø¨Ø§Ø¹Ø©</button>
     </div>
   </div>
   <div class="grid-4" style="margin-bottom:1rem">
-    <div class="stat brand"><div class="stat-label" style="color:#fff">📅 أيام العمل</div><div class="stat-value" id="abs-work-days">—</div></div>
-    <div class="stat"><div class="stat-label">👥 الموظفون</div><div class="stat-value" id="abs-total-emp">—</div></div>
-    <div class="stat"><div class="stat-label">🔴 الغيابات</div><div class="stat-value" id="abs-total-absent">—</div></div>
-    <div class="stat"><div class="stat-label">🟡 التأخرات</div><div class="stat-value" id="abs-total-late">—</div></div>
+    <div class="stat brand"><div class="stat-label" style="color:#fff">ð Ø£ÙØ§Ù Ø§ÙØ¹ÙÙ</div><div class="stat-value" id="abs-work-days">â</div></div>
+    <div class="stat"><div class="stat-label">ð¥ Ø§ÙÙÙØ¸ÙÙÙ</div><div class="stat-value" id="abs-total-emp">â</div></div>
+    <div class="stat"><div class="stat-label">ð´ Ø§ÙØºÙØ§Ø¨Ø§Øª</div><div class="stat-value" id="abs-total-absent">â</div></div>
+    <div class="stat"><div class="stat-label">ð¡ Ø§ÙØªØ£Ø®Ø±Ø§Øª</div><div class="stat-value" id="abs-total-late">â</div></div>
   </div>
   <div class="card">
     <div class="section-header">
-      <div class="card-title" style="margin-bottom:0">📋 جدول الغيابات التفصيلي</div>
-      <span class="chip" id="absence-count">0 موظف</span>
+      <div class="card-title" style="margin-bottom:0">ð Ø¬Ø¯ÙÙ Ø§ÙØºÙØ§Ø¨Ø§Øª Ø§ÙØªÙØµÙÙÙ</div>
+      <span class="chip" id="absence-count">0 ÙÙØ¸Ù</span>
     </div>
     <div class="table-wrap" style="overflow-x:auto">
       <table id="absence-table" style="font-size:13px;min-width:600px">
         <thead id="absence-thead"></thead>
-        <tbody id="absence-tbody"><tr><td colspan="6" style="text-align:center;color:var(--text-3);padding:28px">اختر الشهر واضغط إنشاء التقرير</td></tr></tbody>
+        <tbody id="absence-tbody"><tr><td colspan="6" style="text-align:center;color:var(--text-3);padding:28px">Ø§Ø®ØªØ± Ø§ÙØ´ÙØ± ÙØ§Ø¶ØºØ· Ø¥ÙØ´Ø§Ø¡ Ø§ÙØªÙØ±ÙØ±</td></tr></tbody>
       </table>
     </div>
     <div style="display:flex;gap:16px;margin-top:12px;font-size:12px">
-      <span style="background:#e8f5ee;color:#1a6b4a;padding:3px 10px;border-radius:4px">✓ حاضر</span>
-      <span style="background:#fdf0ef;color:#c0392b;padding:3px 10px;border-radius:4px">غ غائب</span>
-      <span style="background:#fdf5e6;color:#c9973a;padding:3px 10px;border-radius:4px">ت متأخر</span>
+      <span style="background:#e8f5ee;color:#1a6b4a;padding:3px 10px;border-radius:4px">â Ø­Ø§Ø¶Ø±</span>
+      <span style="background:#fdf0ef;color:#c0392b;padding:3px 10px;border-radius:4px">Øº ØºØ§Ø¦Ø¨</span>
+      <span style="background:#fdf5e6;color:#c9973a;padding:3px 10px;border-radius:4px">Øª ÙØªØ£Ø®Ø±</span>
     </div>
   </div>
 </div>
 
-<!-- ═══ PAGE: PROFILE ═══ -->
+<!-- âââ PAGE: PROFILE âââ -->
 <div class="page" id="page-profile">
   <div class="grid-2">
     <div>
       <div class="card">
-        <div class="card-title">👤 بياناتي الشخصية</div>
+        <div class="card-title">ð¤ Ø¨ÙØ§ÙØ§ØªÙ Ø§ÙØ´Ø®ØµÙØ©</div>
         <div id="profile-details"></div>
       </div>
       <div class="card">
-        <div class="card-title">📊 إحصائياتي هذا الشهر</div>
+        <div class="card-title">ð Ø¥Ø­ØµØ§Ø¦ÙØ§ØªÙ ÙØ°Ø§ Ø§ÙØ´ÙØ±</div>
         <div class="grid-3" style="gap:.6rem">
-          <div class="stat"><div class="stat-label">🟢 حضور</div><div class="stat-value" id="my-present-days">0</div></div>
-          <div class="stat"><div class="stat-label">🔴 غياب</div><div class="stat-value" id="my-absent-days">0</div></div>
-          <div class="stat"><div class="stat-label">🟡 تأخر</div><div class="stat-value" id="my-late-days">0</div></div>
+          <div class="stat"><div class="stat-label">ð¢ Ø­Ø¶ÙØ±</div><div class="stat-value" id="my-present-days">0</div></div>
+          <div class="stat"><div class="stat-label">ð´ ØºÙØ§Ø¨</div><div class="stat-value" id="my-absent-days">0</div></div>
+          <div class="stat"><div class="stat-label">ð¡ ØªØ£Ø®Ø±</div><div class="stat-value" id="my-late-days">0</div></div>
         </div>
       </div>
       <div class="card">
-        <div class="card-title">🗓️ سجل حضوري</div>
+        <div class="card-title">ðï¸ Ø³Ø¬Ù Ø­Ø¶ÙØ±Ù</div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>التاريخ</th><th>دخول</th><th>خروج</th><th>المدة</th><th>الحالة</th></tr></thead>
-            <tbody id="my-attendance-log"><tr><td colspan="5" style="text-align:center;color:var(--text-3);padding:20px">لا توجد سجلات</td></tr></tbody>
+            <thead><tr><th>Ø§ÙØªØ§Ø±ÙØ®</th><th>Ø¯Ø®ÙÙ</th><th>Ø®Ø±ÙØ¬</th><th>Ø§ÙÙØ¯Ø©</th><th>Ø§ÙØ­Ø§ÙØ©</th></tr></thead>
+            <tbody id="my-attendance-log"><tr><td colspan="5" style="text-align:center;color:var(--text-3);padding:20px">ÙØ§ ØªÙØ¬Ø¯ Ø³Ø¬ÙØ§Øª</td></tr></tbody>
           </table>
         </div>
       </div>
     </div>
     <div>
       <div class="card">
-        <div class="card-title">🔑 تغيير كلمة المرور</div>
+        <div class="card-title">ð ØªØºÙÙØ± ÙÙÙØ© Ø§ÙÙØ±ÙØ±</div>
         <div id="pwd-change-alert"></div>
         <div class="form-group" style="position:relative">
-          <label class="form-label">كلمة المرور الحالية</label>
-          <input class="form-control" id="pwd-current" type="password" placeholder="أدخل كلمة مرورك الحالية" style="padding-left:40px">
-          <button onclick="togglePwdVis('pwd-current','eye-c')" id="eye-c" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">👁</button>
+          <label class="form-label">ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ­Ø§ÙÙØ©</label>
+          <input class="form-control" id="pwd-current" type="password" placeholder="Ø£Ø¯Ø®Ù ÙÙÙØ© ÙØ±ÙØ±Ù Ø§ÙØ­Ø§ÙÙØ©" style="padding-left:40px">
+          <button onclick="togglePwdVis('pwd-current','eye-c')" id="eye-c" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">ð</button>
         </div>
         <div class="form-group" style="position:relative">
-          <label class="form-label">كلمة المرور الجديدة</label>
-          <input class="form-control" id="pwd-new" type="password" placeholder="6 أحرف على الأقل" oninput="checkPwdStrength(this.value)" style="padding-left:40px">
-          <button onclick="togglePwdVis('pwd-new','eye-n')" id="eye-n" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">👁</button>
+          <label class="form-label">ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ¬Ø¯ÙØ¯Ø©</label>
+          <input class="form-control" id="pwd-new" type="password" placeholder="6 Ø£Ø­Ø±Ù Ø¹ÙÙ Ø§ÙØ£ÙÙ" oninput="checkPwdStrength(this.value)" style="padding-left:40px">
+          <button onclick="togglePwdVis('pwd-new','eye-n')" id="eye-n" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">ð</button>
         </div>
         <div class="form-group" style="position:relative">
-          <label class="form-label">تأكيد كلمة المرور الجديدة</label>
-          <input class="form-control" id="pwd-confirm" type="password" placeholder="أعد الكتابة" style="padding-left:40px">
-          <button onclick="togglePwdVis('pwd-confirm','eye-r')" id="eye-r" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">👁</button>
+          <label class="form-label">ØªØ£ÙÙØ¯ ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ¬Ø¯ÙØ¯Ø©</label>
+          <input class="form-control" id="pwd-confirm" type="password" placeholder="Ø£Ø¹Ø¯ Ø§ÙÙØªØ§Ø¨Ø©" style="padding-left:40px">
+          <button onclick="togglePwdVis('pwd-confirm','eye-r')" id="eye-r" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">ð</button>
         </div>
         <div style="margin-bottom:1rem">
           <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-3);margin-bottom:4px">
-            <span>قوة كلمة المرور</span><span id="pwd-strength-label">—</span>
+            <span>ÙÙØ© ÙÙÙØ© Ø§ÙÙØ±ÙØ±</span><span id="pwd-strength-label">â</span>
           </div>
           <div style="height:5px;background:#eee;border-radius:3px;overflow:hidden">
             <div id="pwd-strength-bar" style="height:100%;width:0;border-radius:3px;transition:.3s"></div>
           </div>
         </div>
-        <button class="btn btn-primary" style="width:100%" onclick="changePassword()">💾 حفظ كلمة المرور الجديدة</button>
-        <div id="admin-profile-pwd-note" style="display:none;font-size:12px;color:var(--text-3);margin-top:8px;text-align:center">🛡️ تغيير كلمة مرور المدير — سيتم الحفظ على GitHub</div>
+        <button class="btn btn-primary" style="width:100%" onclick="changePassword()">ð¾ Ø­ÙØ¸ ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ¬Ø¯ÙØ¯Ø©</button>
+        <div id="admin-profile-pwd-note" style="display:none;font-size:12px;color:var(--text-3);margin-top:8px;text-align:center">ð¡ï¸ ØªØºÙÙØ± ÙÙÙØ© ÙØ±ÙØ± Ø§ÙÙØ¯ÙØ± â Ø³ÙØªÙ Ø§ÙØ­ÙØ¸ Ø¹ÙÙ GitHub</div>
       </div>
       <div class="card" id="admin-reset-pwd-card" style="display:none">
-        <div class="card-title">🔧 إعادة تعيين كلمة مرور موظف</div>
+        <div class="card-title">ð§ Ø¥Ø¹Ø§Ø¯Ø© ØªØ¹ÙÙÙ ÙÙÙØ© ÙØ±ÙØ± ÙÙØ¸Ù</div>
         <div id="admin-pwd-reset-alert"></div>
         <div class="form-group">
-          <label class="form-label">اختر الموظف</label>
+          <label class="form-label">Ø§Ø®ØªØ± Ø§ÙÙÙØ¸Ù</label>
           <select class="form-control" id="reset-emp-select"></select>
         </div>
         <div class="form-group">
-          <label class="form-label">كلمة المرور الجديدة</label>
-          <input class="form-control" id="reset-new-pwd" type="text" placeholder="اكتب كلمة المرور الجديدة">
+          <label class="form-label">ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ¬Ø¯ÙØ¯Ø©</label>
+          <input class="form-control" id="reset-new-pwd" type="text" placeholder="Ø§ÙØªØ¨ ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ¬Ø¯ÙØ¯Ø©">
         </div>
-        <button class="btn btn-primary" onclick="adminResetPassword()">🔄 إعادة التعيين</button>
+        <button class="btn btn-primary" onclick="adminResetPassword()">ð Ø¥Ø¹Ø§Ø¯Ø© Ø§ÙØªØ¹ÙÙÙ</button>
       </div>
     </div>
   </div>
@@ -771,77 +771,77 @@ select.form-control{cursor:pointer}
 
 </div><!-- end #app -->
 
-<!-- ═══ Modal: Add Employee ═══ -->
+<!-- âââ Modal: Add Employee âââ -->
 <div class="modal-backdrop" id="add-emp-modal">
   <div class="modal">
-    <div class="modal-title">👤 إضافة موظف جديد</div>
+    <div class="modal-title">ð¤ Ø¥Ø¶Ø§ÙØ© ÙÙØ¸Ù Ø¬Ø¯ÙØ¯</div>
     <div class="form-group">
-      <label class="form-label">الاسم الكامل *</label>
-      <input class="form-control" id="new-emp-name" placeholder="محمد أحمد العمري">
+      <label class="form-label">Ø§ÙØ§Ø³Ù Ø§ÙÙØ§ÙÙ *</label>
+      <input class="form-control" id="new-emp-name" placeholder="ÙØ­ÙØ¯ Ø£Ø­ÙØ¯ Ø§ÙØ¹ÙØ±Ù">
     </div>
     <div class="form-group">
-      <label class="form-label">القسم *</label>
+      <label class="form-label">Ø§ÙÙØ³Ù *</label>
       <select class="form-control" id="new-emp-dept">
-        <option>الاستقبال</option><option>التنظيف والتدبير</option>
-        <option>الأمن</option><option>الصيانة</option><option>الإدارة</option>
+        <option>Ø§ÙØ§Ø³ØªÙØ¨Ø§Ù</option><option>Ø§ÙØªÙØ¸ÙÙ ÙØ§ÙØªØ¯Ø¨ÙØ±</option>
+        <option>Ø§ÙØ£ÙÙ</option><option>Ø§ÙØµÙØ§ÙØ©</option><option>Ø§ÙØ¥Ø¯Ø§Ø±Ø©</option>
       </select>
     </div>
     <div class="form-group">
-      <label class="form-label">الوردية</label>
+      <label class="form-label">Ø§ÙÙØ±Ø¯ÙØ©</label>
       <select class="form-control" id="new-emp-shift"></select>
     </div>
     <div class="form-group">
-      <label class="form-label">اسم المستخدم (للدخول)</label>
-      <input class="form-control" id="new-emp-username" placeholder="مثال: mohammed123" style="direction:ltr">
+      <label class="form-label">Ø§Ø³Ù Ø§ÙÙØ³ØªØ®Ø¯Ù (ÙÙØ¯Ø®ÙÙ)</label>
+      <input class="form-control" id="new-emp-username" placeholder="ÙØ«Ø§Ù: mohammed123" style="direction:ltr">
     </div>
     <div class="form-group">
-      <label class="form-label">كلمة المرور الأولية</label>
-      <input class="form-control" id="new-emp-password" type="text" placeholder="مثال: 123456">
+      <label class="form-label">ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ£ÙÙÙØ©</label>
+      <input class="form-control" id="new-emp-password" type="text" placeholder="ÙØ«Ø§Ù: 123456">
     </div>
     <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('add-emp-modal')">إلغاء</button>
-      <button class="btn btn-primary" onclick="addEmployee()">✅ إضافة</button>
+      <button class="btn btn-secondary" onclick="closeModal('add-emp-modal')">Ø¥ÙØºØ§Ø¡</button>
+      <button class="btn btn-primary" onclick="addEmployee()">â Ø¥Ø¶Ø§ÙØ©</button>
     </div>
   </div>
 </div>
 
-<!-- ═══ Modal: Add/Edit Shift ═══ -->
+<!-- âââ Modal: Add/Edit Shift âââ -->
 <div class="modal-backdrop" id="shift-modal">
   <div class="modal">
-    <div class="modal-title" id="shift-modal-title">🕐 إضافة وردية جديدة</div>
+    <div class="modal-title" id="shift-modal-title">ð Ø¥Ø¶Ø§ÙØ© ÙØ±Ø¯ÙØ© Ø¬Ø¯ÙØ¯Ø©</div>
     <input type="hidden" id="shift-edit-id">
     <div class="form-group">
-      <label class="form-label">اسم الوردية *</label>
-      <input class="form-control" id="shift-name-input" placeholder="مثال: صباحية، مسائية، ليلية...">
+      <label class="form-label">Ø§Ø³Ù Ø§ÙÙØ±Ø¯ÙØ© *</label>
+      <input class="form-control" id="shift-name-input" placeholder="ÙØ«Ø§Ù: ØµØ¨Ø§Ø­ÙØ©Ø ÙØ³Ø§Ø¦ÙØ©Ø ÙÙÙÙØ©...">
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
       <div class="form-group">
-        <label class="form-label">وقت البداية *</label>
+        <label class="form-label">ÙÙØª Ø§ÙØ¨Ø¯Ø§ÙØ© *</label>
         <input class="form-control" type="time" id="shift-start-input" value="07:00">
       </div>
       <div class="form-group">
-        <label class="form-label">وقت النهاية *</label>
+        <label class="form-label">ÙÙØª Ø§ÙÙÙØ§ÙØ© *</label>
         <input class="form-control" type="time" id="shift-end-input" value="15:00">
       </div>
     </div>
     <div class="form-group">
-      <label class="form-label">ملاحظات (اختياري)</label>
-      <input class="form-control" id="shift-notes-input" placeholder="أي ملاحظات خاصة بهذه الوردية">
+      <label class="form-label">ÙÙØ§Ø­Ø¸Ø§Øª (Ø§Ø®ØªÙØ§Ø±Ù)</label>
+      <input class="form-control" id="shift-notes-input" placeholder="Ø£Ù ÙÙØ§Ø­Ø¸Ø§Øª Ø®Ø§ØµØ© Ø¨ÙØ°Ù Ø§ÙÙØ±Ø¯ÙØ©">
     </div>
     <div id="shift-preview" style="background:var(--brand-light);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--brand-dark);margin-top:4px;display:none">
-      ⏱️ مدة الوردية: <strong id="shift-duration-preview"></strong>
+      â±ï¸ ÙØ¯Ø© Ø§ÙÙØ±Ø¯ÙØ©: <strong id="shift-duration-preview"></strong>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('shift-modal')">إلغاء</button>
-      <button class="btn btn-primary" onclick="saveShift()">💾 حفظ الوردية</button>
+      <button class="btn btn-secondary" onclick="closeModal('shift-modal')">Ø¥ÙØºØ§Ø¡</button>
+      <button class="btn btn-primary" onclick="saveShift()">ð¾ Ø­ÙØ¸ Ø§ÙÙØ±Ø¯ÙØ©</button>
     </div>
   </div>
 </div>
 
 
 <script>
-// ══════════════════════════════════════════════
-const OFFICE = { lat: 21.4787635, lng: 40.4853529, name: "راحتي ستار — الطائف" };
+// ââââââââââââââââââââââââââââââââââââââââââââââ
+const OFFICE = { lat: 21.4787635, lng: 40.4853529, name: "Ø±Ø§Ø­ØªÙ Ø³ØªØ§Ø± â Ø§ÙØ·Ø§Ø¦Ù" };
 let CONFIG = {
   lat: 21.4787635,
   lng: 40.4853529,
@@ -850,9 +850,9 @@ let CONFIG = {
   lateMins: 15
 };
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // STATE
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 let state = {
   role: 'employee',
   currentPos: null,
@@ -860,15 +860,15 @@ let state = {
   isInside: false,
   stamps: [],
   shifts: [
-    { id: 1, name: 'صباحية', start: '07:00', end: '15:00', notes: '', active: true },
-    { id: 2, name: 'مسائية', start: '15:00', end: '23:00', notes: '', active: true },
-    { id: 3, name: 'ليلية',  start: '23:00', end: '07:00', notes: '', active: true },
+    { id: 1, name: 'ØµØ¨Ø§Ø­ÙØ©', start: '07:00', end: '15:00', notes: '', active: true },
+    { id: 2, name: 'ÙØ³Ø§Ø¦ÙØ©', start: '15:00', end: '23:00', notes: '', active: true },
+    { id: 3, name: 'ÙÙÙÙØ©',  start: '23:00', end: '07:00', notes: '', active: true },
   ],
   employees: [
-    { id: 1, name: 'محمد أحمد العمري',     dept: 'الاستقبال',        shiftId: 1, joinDate: '2024-01-15', active: true },
-    { id: 2, name: 'سارة محمد القحطاني',   dept: 'الإدارة',          shiftId: 1, joinDate: '2024-03-01', active: true },
-    { id: 3, name: 'خالد عبدالله الزهراني',dept: 'الأمن',            shiftId: 3, joinDate: '2024-02-10', active: true },
-    { id: 4, name: 'نورة سعد العتيبي',     dept: 'التنظيف والتدبير', shiftId: 2, joinDate: '2024-04-05', active: true },
+    { id: 1, name: 'ÙØ­ÙØ¯ Ø£Ø­ÙØ¯ Ø§ÙØ¹ÙØ±Ù',     dept: 'Ø§ÙØ§Ø³ØªÙØ¨Ø§Ù',        shiftId: 1, joinDate: '2024-01-15', active: true },
+    { id: 2, name: 'Ø³Ø§Ø±Ø© ÙØ­ÙØ¯ Ø§ÙÙØ­Ø·Ø§ÙÙ',   dept: 'Ø§ÙØ¥Ø¯Ø§Ø±Ø©',          shiftId: 1, joinDate: '2024-03-01', active: true },
+    { id: 3, name: 'Ø®Ø§ÙØ¯ Ø¹Ø¨Ø¯Ø§ÙÙÙ Ø§ÙØ²ÙØ±Ø§ÙÙ',dept: 'Ø§ÙØ£ÙÙ',            shiftId: 3, joinDate: '2024-02-10', active: true },
+    { id: 4, name: 'ÙÙØ±Ø© Ø³Ø¹Ø¯ Ø§ÙØ¹ØªÙØ¨Ù',     dept: 'Ø§ÙØªÙØ¸ÙÙ ÙØ§ÙØªØ¯Ø¨ÙØ±', shiftId: 2, joinDate: '2024-04-05', active: true },
   ],
   driveConnected: false,
   sheetId: null,
@@ -876,9 +876,9 @@ let state = {
   deptChart: null
 };
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // HELPERS
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function haversine(lat1, lon1, lat2, lon2) {
   const R = 6371000, dLat = (lat2-lat1)*Math.PI/180, dLon = (lon2-lon1)*Math.PI/180;
   const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
@@ -896,7 +896,7 @@ function formatDateShort(date) {
 }
 
 function showAlert(container, type, msg, duration=4000) {
-  const icons = {success:'✅', danger:'❌', warn:'⚠️'};
+  const icons = {success:'â', danger:'â', warn:'â ï¸'};
   const el = document.getElementById(container);
   if(!el) return;
   el.innerHTML = `<div class="alert alert-${type}">${icons[type]||''} ${msg}</div>`;
@@ -909,7 +909,7 @@ function saveToStorage() {
   localStorage.setItem('rahati_employees', JSON.stringify(state.employees));
   localStorage.setItem('rahati_shifts', JSON.stringify(state.shifts));
   localStorage.setItem('rahati_config', JSON.stringify(CONFIG));
-  // حفظ على GitHub بعد 3 ثوان من آخر تغيير (debounce)
+  // Ø­ÙØ¸ Ø¹ÙÙ GitHub Ø¨Ø¹Ø¯ 3 Ø«ÙØ§Ù ÙÙ Ø¢Ø®Ø± ØªØºÙÙØ± (debounce)
   if(localStorage.getItem('rahati_gh_token')) {
     clearTimeout(_ghSaveTimer);
     _ghSaveTimer = setTimeout(saveDataToGithub, 3000);
@@ -929,9 +929,9 @@ function loadFromStorage() {
   } catch(err) {}
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // CLOCK
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function startClock() {
   function tick() {
     const now = new Date();
@@ -947,12 +947,12 @@ function startClock() {
   setInterval(tick, 1000);
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // GEOLOCATION
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function startWatchingLocation() {
   if(!navigator.geolocation) {
-    setLocationStatus('error', 'المتصفح لا يدعم تحديد الموقع');
+    setLocationStatus('error', 'Ø§ÙÙØªØµÙØ­ ÙØ§ ÙØ¯Ø¹Ù ØªØ­Ø¯ÙØ¯ Ø§ÙÙÙÙØ¹');
     return;
   }
   navigator.geolocation.watchPosition(
@@ -965,7 +965,7 @@ function startWatchingLocation() {
 
       // Update UI
       document.getElementById('current-dist').textContent = state.currentDist;
-      document.getElementById('map-coords').textContent = `${latitude.toFixed(5)}°, ${longitude.toFixed(5)}°`;
+      document.getElementById('map-coords').textContent = `${latitude.toFixed(5)}Â°, ${longitude.toFixed(5)}Â°`;
 
       const pct = Math.max(0, Math.min(100, 100 - (dist / CONFIG.radius * 100)));
       document.getElementById('prox-pct').textContent = Math.round(pct) + '%';
@@ -974,9 +974,9 @@ function startWatchingLocation() {
       bar.style.background = state.isInside ? 'var(--brand)' : 'var(--danger)';
 
       if(state.isInside) {
-        setLocationStatus('inside', `✅ أنت داخل النطاق المسموح`, `المسافة: ${state.currentDist} م — دقة: ${Math.round(accuracy)} م`);
+        setLocationStatus('inside', `â Ø£ÙØª Ø¯Ø§Ø®Ù Ø§ÙÙØ·Ø§Ù Ø§ÙÙØ³ÙÙØ­`, `Ø§ÙÙØ³Ø§ÙØ©: ${state.currentDist} Ù â Ø¯ÙØ©: ${Math.round(accuracy)} Ù`);
       } else {
-        setLocationStatus('outside', `⛔ أنت خارج النطاق`, `المسافة: ${state.currentDist} م — بعيد بـ ${Math.round(dist - CONFIG.radius)} م عن الحد المسموح`);
+        setLocationStatus('outside', `â Ø£ÙØª Ø®Ø§Ø±Ø¬ Ø§ÙÙØ·Ø§Ù`, `Ø§ÙÙØ³Ø§ÙØ©: ${state.currentDist} Ù â Ø¨Ø¹ÙØ¯ Ø¨Ù ${Math.round(dist - CONFIG.radius)} Ù Ø¹Ù Ø§ÙØ­Ø¯ Ø§ÙÙØ³ÙÙØ­`);
       }
 
       // Enable/disable buttons
@@ -986,8 +986,8 @@ function startWatchingLocation() {
       drawMap(latitude, longitude);
     },
     err => {
-      const msgs = { 1:'رُفض إذن الوصول للموقع', 2:'تعذّر تحديد الموقع', 3:'انتهت مهلة التحديد' };
-      setLocationStatus('error', msgs[err.code] || 'خطأ غير معروف', 'تأكد من تفعيل الموقع في المتصفح');
+      const msgs = { 1:'Ø±ÙÙØ¶ Ø¥Ø°Ù Ø§ÙÙØµÙÙ ÙÙÙÙÙØ¹', 2:'ØªØ¹Ø°ÙØ± ØªØ­Ø¯ÙØ¯ Ø§ÙÙÙÙØ¹', 3:'Ø§ÙØªÙØª ÙÙÙØ© Ø§ÙØªØ­Ø¯ÙØ¯' };
+      setLocationStatus('error', msgs[err.code] || 'Ø®Ø·Ø£ ØºÙØ± ÙØ¹Ø±ÙÙ', 'ØªØ£ÙØ¯ ÙÙ ØªÙØ¹ÙÙ Ø§ÙÙÙÙØ¹ ÙÙ Ø§ÙÙØªØµÙØ­');
     },
     { enableHighAccuracy: true, maximumAge: 5000, timeout: 15000 }
   );
@@ -1004,9 +1004,9 @@ function setLocationStatus(type, title, desc='') {
   d.textContent = desc;
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // MAP CANVAS
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function drawMap(empLat, empLng) {
   const canvas = document.getElementById('map-canvas');
   if(!canvas) return;
@@ -1082,7 +1082,7 @@ function drawMap(empLat, empLng) {
   ctx.fillStyle = '#0e4a32';
   ctx.font = 'bold 12px IBM Plex Sans Arabic, sans-serif';
   ctx.textAlign = 'right';
-  ctx.fillText('المقر ⭐', CX - 12, CY - 12);
+  ctx.fillText('Ø§ÙÙÙØ± â­', CX - 12, CY - 12);
 
   // Employee dot
   if(empLat && empLng) {
@@ -1110,17 +1110,17 @@ function drawMap(empLat, empLng) {
     ctx.fillStyle = state.isInside ? '#0c447c' : '#8b1a1a';
     ctx.font = '11px IBM Plex Sans Arabic, sans-serif';
     ctx.textAlign = 'right';
-    ctx.fillText('موقعك', ecx - 12, ecy - 12);
+    ctx.fillText('ÙÙÙØ¹Ù', ecx - 12, ecy - 12);
   }
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // STAMPING
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function doStamp(type) {
   if(!state.isInside) {
-    showAlert('attendance-alert', 'danger', `⛔ البصمة مرفوضة — أنت على بعد ${state.currentDist} م من المقر`);
-    const stamp = { id: Date.now(), name: document.getElementById('emp-name').value || 'غير محدد', dept: document.getElementById('emp-dept').value, shift: getShiftLabel(parseInt(document.getElementById('emp-shift').value)), type: 'rejected', stampType: type, time: new Date().toISOString(), dist: state.currentDist };
+    showAlert('attendance-alert', 'danger', `â Ø§ÙØ¨ØµÙØ© ÙØ±ÙÙØ¶Ø© â Ø£ÙØª Ø¹ÙÙ Ø¨Ø¹Ø¯ ${state.currentDist} Ù ÙÙ Ø§ÙÙÙØ±`);
+    const stamp = { id: Date.now(), name: document.getElementById('emp-name').value || 'ØºÙØ± ÙØ­Ø¯Ø¯', dept: document.getElementById('emp-dept').value, shift: getShiftLabel(parseInt(document.getElementById('emp-shift').value)), type: 'rejected', stampType: type, time: new Date().toISOString(), dist: state.currentDist };
     state.stamps.push(stamp);
     saveToStorage();
     updateAdminStats();
@@ -1129,7 +1129,7 @@ function doStamp(type) {
 
   const name = document.getElementById('emp-name').value.trim();
   if(!name) {
-    showAlert('attendance-alert', 'warn', 'يرجى إدخال اسم الموظف أولاً');
+    showAlert('attendance-alert', 'warn', 'ÙØ±Ø¬Ù Ø¥Ø¯Ø®Ø§Ù Ø§Ø³Ù Ø§ÙÙÙØ¸Ù Ø£ÙÙØ§Ù');
     document.getElementById('emp-name').focus();
     return;
   }
@@ -1152,8 +1152,8 @@ function doStamp(type) {
   saveToStorage();
   if(state.driveConnected) appendToSheet(stamp);
 
-  const typeAr = type === 'in' ? 'حضور' : 'انصراف';
-  showAlert('attendance-alert', 'success', `✅ تم تسجيل ${typeAr} بنجاح — ${formatTime(now)}`);
+  const typeAr = type === 'in' ? 'Ø­Ø¶ÙØ±' : 'Ø§ÙØµØ±Ø§Ù';
+  showAlert('attendance-alert', 'success', `â ØªÙ ØªØ³Ø¬ÙÙ ${typeAr} Ø¨ÙØ¬Ø§Ø­ â ${formatTime(now)}`);
   renderTodayLog();
   updateAdminStats();
   updateLiveLog();
@@ -1165,30 +1165,30 @@ function renderTodayLog() {
   const todayStamps = state.stamps.filter(s => new Date(s.time).toDateString() === today);
   const el = document.getElementById('today-log');
   if(!todayStamps.length) {
-    el.innerHTML = '<div class="empty-state"><div class="icon">📭</div><div>لا توجد بصمات اليوم</div></div>';
+    el.innerHTML = '<div class="empty-state"><div class="icon">ð­</div><div>ÙØ§ ØªÙØ¬Ø¯ Ø¨ØµÙØ§Øª Ø§ÙÙÙÙ</div></div>';
     return;
   }
   el.innerHTML = todayStamps.slice().reverse().map(s => {
     const t = new Date(s.time);
     const accepted = s.status === 'accepted';
-    const typeAr = s.type === 'in' ? 'حضور' : s.type === 'out' ? 'انصراف' : '--';
+    const typeAr = s.type === 'in' ? 'Ø­Ø¶ÙØ±' : s.type === 'out' ? 'Ø§ÙØµØ±Ø§Ù' : '--';
     return `<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)">
       <div style="width:10px;height:10px;border-radius:50%;background:${accepted?(s.type==='in'?'#1a6b4a':'#185fa3'):'#c0392b'};flex-shrink:0"></div>
       <div style="flex:1">
         <div style="font-size:14px;font-weight:500">${s.name}</div>
-        <div style="font-size:12px;color:var(--text-3)">${s.dept} • ${typeAr}</div>
+        <div style="font-size:12px;color:var(--text-3)">${s.dept} â¢ ${typeAr}</div>
       </div>
       <div style="text-align:left;direction:ltr">
         <div style="font-size:13px;font-weight:500">${formatTime(t)}</div>
-        <span class="badge ${accepted?'badge-green':'badge-red'}" style="font-size:11px">${accepted?'مقبولة':'مرفوضة'}</span>
+        <span class="badge ${accepted?'badge-green':'badge-red'}" style="font-size:11px">${accepted?'ÙÙØ¨ÙÙØ©':'ÙØ±ÙÙØ¶Ø©'}</span>
       </div>
     </div>`;
   }).join('');
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // ADMIN
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function updateAdminStats() {
   const today = new Date().toDateString();
   const todayAcc = state.stamps.filter(s=>new Date(s.time).toDateString()===today && s.status==='accepted');
@@ -1218,20 +1218,20 @@ function updateLiveLog() {
   const tbody = document.getElementById('live-log-body');
   const recent = state.stamps.slice().reverse().slice(0,20);
   if(!recent.length) {
-    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-3);padding:24px">لا توجد سجلات بعد</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-3);padding:24px">ÙØ§ ØªÙØ¬Ø¯ Ø³Ø¬ÙØ§Øª Ø¨Ø¹Ø¯</td></tr>';
     return;
   }
   tbody.innerHTML = recent.map(s => {
     const t = new Date(s.time);
     const accepted = s.status === 'accepted';
-    const typeAr = s.type === 'in' ? '⬆️ حضور' : s.type === 'out' ? '⬇️ انصراف' : '🚫 مرفوضة';
+    const typeAr = s.type === 'in' ? 'â¬ï¸ Ø­Ø¶ÙØ±' : s.type === 'out' ? 'â¬ï¸ Ø§ÙØµØ±Ø§Ù' : 'ð« ÙØ±ÙÙØ¶Ø©';
     return `<tr>
-      <td style="font-weight:500">${s.name||'—'}</td>
-      <td>${s.dept||'—'}</td>
+      <td style="font-weight:500">${s.name||'â'}</td>
+      <td>${s.dept||'â'}</td>
       <td>${typeAr}</td>
       <td style="direction:ltr;text-align:right">${formatTime(t)}<br><span style="font-size:11px;color:var(--text-3)">${formatDateShort(t)}</span></td>
-      <td style="direction:ltr;font-size:12px">${s.dist||'—'} م</td>
-      <td><span class="badge ${accepted?'badge-green':'badge-red'}">${accepted?'مقبولة':'مرفوضة'}</span></td>
+      <td style="direction:ltr;font-size:12px">${s.dist||'â'} Ù</td>
+      <td><span class="badge ${accepted?'badge-green':'badge-red'}">${accepted?'ÙÙØ¨ÙÙØ©':'ÙØ±ÙÙØ¶Ø©'}</span></td>
     </tr>`;
   }).join('');
 }
@@ -1251,7 +1251,7 @@ function renderWeekChart() {
   if(state.weekChart) state.weekChart.destroy();
   state.weekChart = new Chart(ctx, {
     type:'bar',
-    data:{labels:days,datasets:[{label:'الحضور',data:present,backgroundColor:'rgba(26,107,74,0.8)',borderRadius:6,borderSkipped:false}]},
+    data:{labels:days,datasets:[{label:'Ø§ÙØ­Ø¶ÙØ±',data:present,backgroundColor:'rgba(26,107,74,0.8)',borderRadius:6,borderSkipped:false}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}},x:{grid:{display:false}}}}
   });
 }
@@ -1259,7 +1259,7 @@ function renderWeekChart() {
 function renderDeptChart() {
   const ctx = document.getElementById('dept-chart');
   if(!ctx) return;
-  const depts = ['الاستقبال','التنظيف والتدبير','الأمن','الصيانة','الإدارة'];
+  const depts = ['Ø§ÙØ§Ø³ØªÙØ¨Ø§Ù','Ø§ÙØªÙØ¸ÙÙ ÙØ§ÙØªØ¯Ø¨ÙØ±','Ø§ÙØ£ÙÙ','Ø§ÙØµÙØ§ÙØ©','Ø§ÙØ¥Ø¯Ø§Ø±Ø©'];
   const today = new Date().toDateString();
   const counts = depts.map(d => [...new Set(state.stamps.filter(s=>new Date(s.time).toDateString()===today&&s.status==='accepted'&&s.dept===d).map(s=>s.name))].length);
   if(state.deptChart) state.deptChart.destroy();
@@ -1270,9 +1270,9 @@ function renderDeptChart() {
   });
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // REPORTS
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function filterReports() {
   const from = document.getElementById('filter-from').value;
   const to = document.getElementById('filter-to').value;
@@ -1303,37 +1303,37 @@ function filterReports() {
   if(deptF) records = records.filter(r => r.dept === deptF);
   records.sort((a,b) => b.date.localeCompare(a.date));
 
-  document.getElementById('report-count').textContent = records.length + ' سجل';
+  document.getElementById('report-count').textContent = records.length + ' Ø³Ø¬Ù';
   document.getElementById('r-total').textContent = state.stamps.length;
   document.getElementById('r-accepted').textContent = state.stamps.filter(s=>s.status==='accepted').length;
   document.getElementById('r-rejected').textContent = state.stamps.filter(s=>s.status!=='accepted').length;
 
   const tbody = document.getElementById('report-body');
   if(!records.length) {
-    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--text-3);padding:24px">لا توجد سجلات</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--text-3);padding:24px">ÙØ§ ØªÙØ¬Ø¯ Ø³Ø¬ÙØ§Øª</td></tr>';
     return;
   }
   tbody.innerHTML = records.map(r => {
-    const cin = r.checkin ? formatTime(new Date(r.checkin)) : '—';
-    const cout = r.checkout ? formatTime(new Date(r.checkout)) : '—';
-    let duration = '—';
+    const cin = r.checkin ? formatTime(new Date(r.checkin)) : 'â';
+    const cout = r.checkout ? formatTime(new Date(r.checkout)) : 'â';
+    let duration = 'â';
     if(r.checkin && r.checkout) {
       const mins = Math.round((new Date(r.checkout)-new Date(r.checkin))/60000);
-      duration = Math.floor(mins/60) + 'س ' + (mins%60) + 'د';
+      duration = Math.floor(mins/60) + 'Ø³ ' + (mins%60) + 'Ø¯';
     }
     const [wh,wm] = CONFIG.workStart.split(':').map(Number);
     const lateLimit = wh*60 + wm + CONFIG.lateMins;
-    let statusBadge = '<span class="badge badge-green">حاضر</span>';
+    let statusBadge = '<span class="badge badge-green">Ø­Ø§Ø¶Ø±</span>';
     if(r.checkin) {
       const t = new Date(r.checkin);
-      if(t.getHours()*60+t.getMinutes() > lateLimit) statusBadge = '<span class="badge badge-gold">متأخر</span>';
+      if(t.getHours()*60+t.getMinutes() > lateLimit) statusBadge = '<span class="badge badge-gold">ÙØªØ£Ø®Ø±</span>';
     }
-    if(!r.checkin) statusBadge = '<span class="badge badge-red">غائب</span>';
+    if(!r.checkin) statusBadge = '<span class="badge badge-red">ØºØ§Ø¦Ø¨</span>';
     return `<tr>
       <td>${new Date(r.date).toLocaleDateString('ar-SA',{year:'numeric',month:'short',day:'numeric'})}</td>
       <td style="font-weight:500">${r.name}</td>
       <td>${r.dept}</td>
-      <td style="font-size:13px">${r.shift||'—'}</td>
+      <td style="font-size:13px">${r.shift||'â'}</td>
       <td style="direction:ltr;text-align:right">${cin}</td>
       <td style="direction:ltr;text-align:right">${cout}</td>
       <td>${duration}</td>
@@ -1346,12 +1346,12 @@ function printReport() {
   window.print();
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // SHIFT HELPERS
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function getShiftLabel(shiftId) {
   const s = state.shifts.find(sh => sh.id === shiftId);
-  if(!s) return '—';
+  if(!s) return 'â';
   return `${s.name} (${s.start} - ${s.end})`;
 }
 
@@ -1365,7 +1365,7 @@ function shiftDurationMins(start, end) {
 
 function shiftDurationLabel(start, end) {
   const mins = shiftDurationMins(start, end);
-  return Math.floor(mins/60) + ' ساعة' + (mins%60 ? ' و' + (mins%60) + ' دقيقة' : '');
+  return Math.floor(mins/60) + ' Ø³Ø§Ø¹Ø©' + (mins%60 ? ' Ù' + (mins%60) + ' Ø¯ÙÙÙØ©' : '');
 }
 
 function populateShiftDropdowns() {
@@ -1377,9 +1377,9 @@ function populateShiftDropdowns() {
   });
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // SHIFTS PAGE
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function renderShiftsPage() {
   populateShiftDropdowns();
 
@@ -1389,15 +1389,15 @@ function renderShiftsPage() {
   const active = state.shifts.filter(s=>s.active).length;
   const empCount = state.employees.filter(e=>e.active).length;
   statsEl.innerHTML = `
-    <div class="stat"><div class="stat-label">إجمالي الورديات</div><div class="stat-value">${total}</div></div>
-    <div class="stat"><div class="stat-label">الورديات النشطة</div><div class="stat-value">${active}</div></div>
-    <div class="stat"><div class="stat-label">الموظفون الموزعون</div><div class="stat-value">${empCount}</div></div>
+    <div class="stat"><div class="stat-label">Ø¥Ø¬ÙØ§ÙÙ Ø§ÙÙØ±Ø¯ÙØ§Øª</div><div class="stat-value">${total}</div></div>
+    <div class="stat"><div class="stat-label">Ø§ÙÙØ±Ø¯ÙØ§Øª Ø§ÙÙØ´Ø·Ø©</div><div class="stat-value">${active}</div></div>
+    <div class="stat"><div class="stat-label">Ø§ÙÙÙØ¸ÙÙÙ Ø§ÙÙÙØ²Ø¹ÙÙ</div><div class="stat-value">${empCount}</div></div>
   `;
 
   // Shifts table
   const tbody = document.getElementById('shifts-table-body');
   if(!state.shifts.length) {
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--text-3);padding:24px">لا توجد ورديات — أضف وردية جديدة</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--text-3);padding:24px">ÙØ§ ØªÙØ¬Ø¯ ÙØ±Ø¯ÙØ§Øª â Ø£Ø¶Ù ÙØ±Ø¯ÙØ© Ø¬Ø¯ÙØ¯Ø©</td></tr>';
   } else {
     tbody.innerHTML = state.shifts.map(s => {
       const empCnt = state.employees.filter(e=>e.shiftId===s.id && e.active).length;
@@ -1407,12 +1407,12 @@ function renderShiftsPage() {
         <td><span style="direction:ltr;display:inline-block;font-size:14px;font-weight:500">${s.start}</span></td>
         <td><span style="direction:ltr;display:inline-block;font-size:14px;font-weight:500">${s.end}</span></td>
         <td><span class="chip">${dur}</span></td>
-        <td>${empCnt ? `<span class="badge badge-green">${empCnt} موظف</span>` : '<span class="badge badge-gray">لا أحد</span>'}</td>
-        <td><span class="badge ${s.active?'badge-green':'badge-gray'}">${s.active?'نشطة':'موقوفة'}</span></td>
+        <td>${empCnt ? `<span class="badge badge-green">${empCnt} ÙÙØ¸Ù</span>` : '<span class="badge badge-gray">ÙØ§ Ø£Ø­Ø¯</span>'}</td>
+        <td><span class="badge ${s.active?'badge-green':'badge-gray'}">${s.active?'ÙØ´Ø·Ø©':'ÙÙÙÙÙØ©'}</span></td>
         <td style="display:flex;gap:6px;flex-wrap:wrap">
-          <button class="btn btn-secondary" style="padding:5px 10px;font-size:12px" onclick="editShift(${s.id})">✏️ تعديل</button>
-          <button class="btn btn-secondary" style="padding:5px 10px;font-size:12px" onclick="toggleShift(${s.id})">${s.active?'⏸ إيقاف':'▶ تفعيل'}</button>
-          <button class="btn btn-danger" style="padding:5px 10px;font-size:12px" onclick="deleteShift(${s.id})" ${empCnt?'disabled title="لا يمكن حذف وردية بها موظفون"':''}>🗑</button>
+          <button class="btn btn-secondary" style="padding:5px 10px;font-size:12px" onclick="editShift(${s.id})">âï¸ ØªØ¹Ø¯ÙÙ</button>
+          <button class="btn btn-secondary" style="padding:5px 10px;font-size:12px" onclick="toggleShift(${s.id})">${s.active?'â¸ Ø¥ÙÙØ§Ù':'â¶ ØªÙØ¹ÙÙ'}</button>
+          <button class="btn btn-danger" style="padding:5px 10px;font-size:12px" onclick="deleteShift(${s.id})" ${empCnt?'disabled title="ÙØ§ ÙÙÙÙ Ø­Ø°Ù ÙØ±Ø¯ÙØ© Ø¨ÙØ§ ÙÙØ¸ÙÙÙ"':''}>ð</button>
         </td>
       </tr>`;
     }).join('');
@@ -1421,7 +1421,7 @@ function renderShiftsPage() {
   // Employee assignment table
   const assignBody = document.getElementById('emp-shift-assign-body');
   if(!state.employees.length) {
-    assignBody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--text-3);padding:24px">لا يوجد موظفون</td></tr>';
+    assignBody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--text-3);padding:24px">ÙØ§ ÙÙØ¬Ø¯ ÙÙØ¸ÙÙÙ</td></tr>';
   } else {
     const activeShiftOpts = state.shifts.filter(s=>s.active).map(s=>`<option value="${s.id}">${s.name} (${s.start} - ${s.end})</option>`).join('');
     assignBody.innerHTML = state.employees.filter(e=>e.active).map(e => {
@@ -1458,13 +1458,13 @@ function openShiftModal(editId=null) {
   if(editId) {
     const s = state.shifts.find(sh=>sh.id===editId);
     if(!s) return;
-    document.getElementById('shift-modal-title').textContent = '✏️ تعديل الوردية';
+    document.getElementById('shift-modal-title').textContent = 'âï¸ ØªØ¹Ø¯ÙÙ Ø§ÙÙØ±Ø¯ÙØ©';
     document.getElementById('shift-name-input').value = s.name;
     document.getElementById('shift-start-input').value = s.start;
     document.getElementById('shift-end-input').value = s.end;
     document.getElementById('shift-notes-input').value = s.notes||'';
   } else {
-    document.getElementById('shift-modal-title').textContent = '🕐 إضافة وردية جديدة';
+    document.getElementById('shift-modal-title').textContent = 'ð Ø¥Ø¶Ø§ÙØ© ÙØ±Ø¯ÙØ© Ø¬Ø¯ÙØ¯Ø©';
     document.getElementById('shift-name-input').value = '';
     document.getElementById('shift-start-input').value = '07:00';
     document.getElementById('shift-end-input').value = '15:00';
@@ -1494,8 +1494,8 @@ function saveShift() {
   const notes = document.getElementById('shift-notes-input').value.trim();
   const editId = parseInt(document.getElementById('shift-edit-id').value);
 
-  if(!name) { alert('يرجى إدخال اسم الوردية'); return; }
-  if(!start || !end) { alert('يرجى تحديد وقت البداية والنهاية'); return; }
+  if(!name) { alert('ÙØ±Ø¬Ù Ø¥Ø¯Ø®Ø§Ù Ø§Ø³Ù Ø§ÙÙØ±Ø¯ÙØ©'); return; }
+  if(!start || !end) { alert('ÙØ±Ø¬Ù ØªØ­Ø¯ÙØ¯ ÙÙØª Ø§ÙØ¨Ø¯Ø§ÙØ© ÙØ§ÙÙÙØ§ÙØ©'); return; }
 
   if(editId) {
     const s = state.shifts.find(sh=>sh.id===editId);
@@ -1518,8 +1518,8 @@ function toggleShift(id) {
 
 function deleteShift(id) {
   const empOnShift = state.employees.filter(e=>e.shiftId===id&&e.active).length;
-  if(empOnShift) { alert('لا يمكن حذف وردية بها موظفون نشطون. يرجى نقل الموظفين أولاً.'); return; }
-  if(!confirm('هل أنت متأكد من حذف هذه الوردية؟')) return;
+  if(empOnShift) { alert('ÙØ§ ÙÙÙÙ Ø­Ø°Ù ÙØ±Ø¯ÙØ© Ø¨ÙØ§ ÙÙØ¸ÙÙÙ ÙØ´Ø·ÙÙ. ÙØ±Ø¬Ù ÙÙÙ Ø§ÙÙÙØ¸ÙÙÙ Ø£ÙÙØ§Ù.'); return; }
+  if(!confirm('ÙÙ Ø£ÙØª ÙØªØ£ÙØ¯ ÙÙ Ø­Ø°Ù ÙØ°Ù Ø§ÙÙØ±Ø¯ÙØ©Ø')) return;
   state.shifts = state.shifts.filter(sh=>sh.id!==id);
   saveToStorage();
   renderShiftsPage();
@@ -1539,7 +1539,7 @@ function renderEmployees() {
   const tbody = document.getElementById('emp-table-body');
   const filterEl = document.getElementById('filter-emp');
   if(filterEl) {
-    filterEl.innerHTML = '<option value="">جميع الموظفين</option>' +
+    filterEl.innerHTML = '<option value="">Ø¬ÙÙØ¹ Ø§ÙÙÙØ¸ÙÙÙ</option>' +
       state.employees.map(e => `<option>${e.name}</option>`).join('');
   }
   tbody.innerHTML = state.employees.map(e => `
@@ -1549,13 +1549,13 @@ function renderEmployees() {
       <td style="font-size:13px">${getShiftLabel(e.shiftId)}</td>
       <td style="direction:ltr;font-size:12px;color:var(--text-3)">${getEmpUsername(e.id)}</td>
       <td style="direction:ltr;text-align:right;font-size:13px">${e.joinDate}</td>
-      <td><span class="badge ${e.active?'badge-green':'badge-red'}">${e.active?'نشط':'موقوف'}</span></td>
+      <td><span class="badge ${e.active?'badge-green':'badge-red'}">${e.active?'ÙØ´Ø·':'ÙÙÙÙÙ'}</span></td>
       <td>
         <button class="btn btn-secondary" style="padding:5px 10px;font-size:12px" onclick="toggleEmpStatus(${e.id})">
-          ${e.active?'⏸ إيقاف':'▶ تفعيل'}
+          ${e.active?'â¸ Ø¥ÙÙØ§Ù':'â¶ ØªÙØ¹ÙÙ'}
         </button>
-        <button class="btn btn-secondary" style="padding:5px 10px;font-size:12px;margin-right:4px" onclick="adminQuickResetPwd(${e.id})">🔑</button>
-        <button class="btn btn-danger" style="padding:5px 10px;font-size:12px;margin-right:4px" onclick="removeEmployee(${e.id})">🗑</button>
+        <button class="btn btn-secondary" style="padding:5px 10px;font-size:12px;margin-right:4px" onclick="adminQuickResetPwd(${e.id})">ð</button>
+        <button class="btn btn-danger" style="padding:5px 10px;font-size:12px;margin-right:4px" onclick="removeEmployee(${e.id})">ð</button>
       </td>
     </tr>
   `).join('');
@@ -1567,7 +1567,7 @@ function openAddEmp() {
 
 function addEmployee() {
   const name = document.getElementById('new-emp-name').value.trim();
-  if(!name) { alert('يرجى إدخال الاسم'); return; }
+  if(!name) { alert('ÙØ±Ø¬Ù Ø¥Ø¯Ø®Ø§Ù Ø§ÙØ§Ø³Ù'); return; }
   const shiftSel = document.getElementById('new-emp-shift');
   const shiftId = shiftSel ? parseInt(shiftSel.value) : (state.shifts[0]?.id || 1);
   const newId = Date.now();
@@ -1586,15 +1586,15 @@ function toggleEmpStatus(id) {
   if(e) { e.active = !e.active; saveToStorage(); renderEmployees(); }
 }
 function removeEmployee(id) {
-  if(confirm('هل أنت متأكد من حذف هذا الموظف؟')) {
+  if(confirm('ÙÙ Ø£ÙØª ÙØªØ£ÙØ¯ ÙÙ Ø­Ø°Ù ÙØ°Ø§ Ø§ÙÙÙØ¸ÙØ')) {
     state.employees = state.employees.filter(e=>e.id!==id);
     saveToStorage(); renderEmployees();
   }
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // SETTINGS
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function saveSettings() {
   CONFIG.lat = parseFloat(document.getElementById('set-lat').value);
   CONFIG.lng = parseFloat(document.getElementById('set-lng').value);
@@ -1603,15 +1603,15 @@ function saveSettings() {
   CONFIG.lateMins = parseInt(document.getElementById('set-late-mins').value);
   document.getElementById('allowed-radius-disp').textContent = CONFIG.radius;
   saveToStorage();
-  alert('✅ تم حفظ الإعدادات بنجاح');
+  alert('â ØªÙ Ø­ÙØ¸ Ø§ÙØ¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø¨ÙØ¬Ø§Ø­');
 }
 
-// ══════════════════════════════════════════════
-// GOOGLE SHEETS — عبر Apps Script Web App
-// لا يحتاج OAuth — يعمل من أي مكان
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
+// GOOGLE SHEETS â Ø¹Ø¨Ø± Apps Script Web App
+// ÙØ§ ÙØ­ØªØ§Ø¬ OAuth â ÙØ¹ÙÙ ÙÙ Ø£Ù ÙÙØ§Ù
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 
-// ضع رابط Apps Script Web App هنا بعد النشر
+// Ø¶Ø¹ Ø±Ø§Ø¨Ø· Apps Script Web App ÙÙØ§ Ø¨Ø¹Ø¯ Ø§ÙÙØ´Ø±
 let APPS_SCRIPT_URL = localStorage.getItem('rahati_script_url') || 'https://script.google.com/macros/s/AKfycbxzQWPBJ95PXcrAH7Be9m-oOUbkD10x7Uhra30_zlmSBUP2q3fIOC9FYCIl_dsjTAGW/exec';
 let state_driveReady = false;
 
@@ -1628,14 +1628,14 @@ function updateDriveUI() {
   var settingsEl = document.getElementById('drive-settings-status');
   var btnEl = document.getElementById('gdrive-login-btn');
   if(connected) {
-    if(statusEl) statusEl.textContent = '✅ متصل — البيانات تُحفظ تلقائياً في Google Sheets';
-    if(settingsEl) settingsEl.innerHTML = '✅ متصل بـ Google Sheets<br><small style="color:#666;word-break:break-all">' + APPS_SCRIPT_URL.slice(0,60) + '...</small>';
-    if(btnEl) { btnEl.textContent = '✅ متصل بـ Google Sheets'; btnEl.style.background = '#1a6b4a'; }
+    if(statusEl) statusEl.textContent = 'â ÙØªØµÙ â Ø§ÙØ¨ÙØ§ÙØ§Øª ØªÙØ­ÙØ¸ ØªÙÙØ§Ø¦ÙØ§Ù ÙÙ Google Sheets';
+    if(settingsEl) settingsEl.innerHTML = 'â ÙØªØµÙ Ø¨Ù Google Sheets<br><small style="color:#666;word-break:break-all">' + APPS_SCRIPT_URL.slice(0,60) + '...</small>';
+    if(btnEl) { btnEl.textContent = 'â ÙØªØµÙ Ø¨Ù Google Sheets'; btnEl.style.background = '#1a6b4a'; }
     document.getElementById('role-btns').style.display = 'grid';
     document.getElementById('demo-hint').style.display = 'none';
   } else {
-    if(statusEl) statusEl.textContent = 'يرجى ربط Google Sheets عبر Apps Script';
-    if(settingsEl) settingsEl.textContent = '❌ غير متصل';
+    if(statusEl) statusEl.textContent = 'ÙØ±Ø¬Ù Ø±Ø¨Ø· Google Sheets Ø¹Ø¨Ø± Apps Script';
+    if(settingsEl) settingsEl.textContent = 'â ØºÙØ± ÙØªØµÙ';
   }
 }
 
@@ -1656,10 +1656,10 @@ async function appendToSheet(stamp) {
       name: stamp.name || '',
       dept: stamp.dept || '',
       shift: stamp.shift || '',
-      type: stamp.type === 'in' ? 'حضور' : stamp.type === 'out' ? 'انصراف' : 'مرفوضة',
+      type: stamp.type === 'in' ? 'Ø­Ø¶ÙØ±' : stamp.type === 'out' ? 'Ø§ÙØµØ±Ø§Ù' : 'ÙØ±ÙÙØ¶Ø©',
       time: stamp.time ? formatTime(new Date(stamp.time)) : '',
       dist: stamp.dist || '',
-      status: stamp.status === 'accepted' ? 'مقبولة' : 'مرفوضة',
+      status: stamp.status === 'accepted' ? 'ÙÙØ¨ÙÙØ©' : 'ÙØ±ÙÙØ¶Ø©',
       lat: stamp.lat || '',
       lng: stamp.lng || ''
     };
@@ -1669,7 +1669,7 @@ async function appendToSheet(stamp) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(row)
     });
-    console.log('✅ Saved to sheet');
+    console.log('â Saved to sheet');
   } catch(e) {
     console.error('Sheet error:', e);
   }
@@ -1677,14 +1677,14 @@ async function appendToSheet(stamp) {
 
 async function testConnection() {
   if(!APPS_SCRIPT_URL) {
-    alert('يرجى إدخال رابط Apps Script أولاً');
+    alert('ÙØ±Ø¬Ù Ø¥Ø¯Ø®Ø§Ù Ø±Ø§Ø¨Ø· Apps Script Ø£ÙÙØ§Ù');
     return;
   }
   try {
-    document.getElementById('test-conn-btn').textContent = '⏳ جارٍ الاختبار...';
+    document.getElementById('test-conn-btn').textContent = 'â³ Ø¬Ø§Ø±Ù Ø§ÙØ§Ø®ØªØ¨Ø§Ø±...';
     // Send a test ping
     await fetch(APPS_SCRIPT_URL + '?action=ping', { mode: 'no-cors' });
-    document.getElementById('test-conn-btn').textContent = '✅ الاتصال ناجح';
+    document.getElementById('test-conn-btn').textContent = 'â Ø§ÙØ§ØªØµØ§Ù ÙØ§Ø¬Ø­';
     document.getElementById('test-conn-btn').style.background = '#1a6b4a';
     setTimeout(() => {
       closeModal('script-url-modal');
@@ -1693,22 +1693,22 @@ async function testConnection() {
       document.getElementById('demo-hint').style.display = 'none';
     }, 1000);
   } catch(e) {
-    document.getElementById('test-conn-btn').textContent = '❌ فشل الاتصال';
+    document.getElementById('test-conn-btn').textContent = 'â ÙØ´Ù Ø§ÙØ§ØªØµØ§Ù';
   }
 }
 
 function exportToSheet() {
-  var headers = ['التاريخ','الموظف','القسم','الوردية','نوع البصمة','الوقت','المسافة (م)','الحالة'];
+  var headers = ['Ø§ÙØªØ§Ø±ÙØ®','Ø§ÙÙÙØ¸Ù','Ø§ÙÙØ³Ù','Ø§ÙÙØ±Ø¯ÙØ©','ÙÙØ¹ Ø§ÙØ¨ØµÙØ©','Ø§ÙÙÙØª','Ø§ÙÙØ³Ø§ÙØ© (Ù)','Ø§ÙØ­Ø§ÙØ©'];
   var rows = state.stamps.map(function(s) {
     return [
       s.time ? s.time.slice(0,10) : '',
       s.name||'',
       s.dept||'',
       s.shift||'',
-      s.type==='in'?'حضور':s.type==='out'?'انصراف':'مرفوضة',
+      s.type==='in'?'Ø­Ø¶ÙØ±':s.type==='out'?'Ø§ÙØµØ±Ø§Ù':'ÙØ±ÙÙØ¶Ø©',
       s.time ? formatTime(new Date(s.time)) : '',
       s.dist||'',
-      s.status==='accepted'?'مقبولة':'مرفوضة'
+      s.status==='accepted'?'ÙÙØ¨ÙÙØ©':'ÙØ±ÙÙØ¶Ø©'
     ];
   });
   var csv = '\uFEFF' + [headers].concat(rows).map(function(r){ return r.map(function(c){ return '"'+c+'"'; }).join(','); }).join('\n');
@@ -1721,9 +1721,9 @@ function exportToSheet() {
   URL.revokeObjectURL(url);
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // NAV & PAGES
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function switchPage(id) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
@@ -1750,13 +1750,13 @@ function switchPage(id) {
   if(id==='absence') { const _n=new Date(); const _m=document.getElementById('absence-month'); if(_m&&!_m.value) _m.value=_n.getFullYear()+'-'+String(_n.getMonth()+1).padStart(2,'0'); }
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // LOGIN
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function demoLogin() {
   document.getElementById('role-btns').style.display = 'grid';
   document.getElementById('demo-hint').style.display = 'none';
-  document.getElementById('drive-status').textContent = '🔴 وضع تجريبي — البيانات تُحفظ محلياً في المتصفح';
+  document.getElementById('drive-status').textContent = 'ð´ ÙØ¶Ø¹ ØªØ¬Ø±ÙØ¨Ù â Ø§ÙØ¨ÙØ§ÙØ§Øª ØªÙØ­ÙØ¸ ÙØ­ÙÙØ§Ù ÙÙ Ø§ÙÙØªØµÙØ­';
   state.driveConnected = false;
 }
 
@@ -1765,7 +1765,7 @@ function login(role) {
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('app').style.display = 'block';
 
-  // إعادة تعيين جميع التبويبات (افتراضياً مخفية)
+  // Ø¥Ø¹Ø§Ø¯Ø© ØªØ¹ÙÙÙ Ø¬ÙÙØ¹ Ø§ÙØªØ¨ÙÙØ¨Ø§Øª (Ø§ÙØªØ±Ø§Ø¶ÙØ§Ù ÙØ®ÙÙØ©)
   ['admin-tab','reports-tab','emp-mgmt-tab','shifts-tab','settings-tab'].forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.style.display = 'none';
@@ -1773,20 +1773,20 @@ function login(role) {
 
   var pill = document.getElementById('user-pill');
   if(role === 'admin') {
-    pill.textContent = '🛡️ مدير';
-    // المدير يرى كل التبويبات
+    pill.textContent = 'ð¡ï¸ ÙØ¯ÙØ±';
+    // Ø§ÙÙØ¯ÙØ± ÙØ±Ù ÙÙ Ø§ÙØªØ¨ÙÙØ¨Ø§Øª
     ['admin-tab','reports-tab','emp-mgmt-tab','shifts-tab','settings-tab','absence-tab'].forEach(function(id){
       var el = document.getElementById(id);
       if(el) el.style.display = '';
     });
     var _pt=document.getElementById('profile-tab'); if(_pt) _pt.style.display='';
   } else {
-    // الموظف يرى بوابة الحضور فقط
-    pill.textContent = '👤 موظف';
+    // Ø§ÙÙÙØ¸Ù ÙØ±Ù Ø¨ÙØ§Ø¨Ø© Ø§ÙØ­Ø¶ÙØ± ÙÙØ·
+    pill.textContent = 'ð¤ ÙÙØ¸Ù';
   }
 
   loadFromStorage();
-  // تحميل من GitHub إذا كان Token محفوظاً
+  // ØªØ­ÙÙÙ ÙÙ GitHub Ø¥Ø°Ø§ ÙØ§Ù Token ÙØ­ÙÙØ¸Ø§Ù
   if(localStorage.getItem('rahati_gh_token')) {
     loadDataFromGithub().then(function(loaded) {
       if(loaded) {
@@ -1827,8 +1827,8 @@ function logout() {
     state.driveConnected = false;
   }
   var btn = document.getElementById('gdrive-login-btn');
-  if(btn) { btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.5 20L1 11l4-7h14l4 7-4 7z" fill="#34a853"/><path d="M1 11l5.5 9h11L23 11z" fill="#4285f4" opacity=".5"/><path d="M5 4l5.5 9.5-5 8.5H1L6.5 11z" fill="#fbbc05" opacity=".6"/></svg> تسجيل الدخول بـ Google'; btn.className = 'gdrive-btn'; }
-  document.getElementById('drive-status').textContent = 'سيتم حفظ البيانات تلقائياً في Google Sheets';
+  if(btn) { btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.5 20L1 11l4-7h14l4 7-4 7z" fill="#34a853"/><path d="M1 11l5.5 9h11L23 11z" fill="#4285f4" opacity=".5"/><path d="M5 4l5.5 9.5-5 8.5H1L6.5 11z" fill="#fbbc05" opacity=".6"/></svg> ØªØ³Ø¬ÙÙ Ø§ÙØ¯Ø®ÙÙ Ø¨Ù Google'; btn.className = 'gdrive-btn'; }
+  document.getElementById('drive-status').textContent = 'Ø³ÙØªÙ Ø­ÙØ¸ Ø§ÙØ¨ÙØ§ÙØ§Øª ØªÙÙØ§Ø¦ÙØ§Ù ÙÙ Google Sheets';
 }
 
 function toggleRole() {
@@ -1845,9 +1845,9 @@ document.querySelectorAll('.modal-backdrop').forEach(m => {
   m.addEventListener('click', e => { if(e.target===m) m.classList.remove('open'); });
 });
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // INIT
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 loadFromStorage();
 document.getElementById('allowed-radius-disp').textContent = CONFIG.radius;
 
@@ -1861,8 +1861,8 @@ if(APPS_SCRIPT_URL) {
 if(state.stamps.length === 0) {
   const now = new Date();
   const today = now.toISOString().slice(0,10);
-  const names = ['محمد أحمد العمري','سارة محمد القحطاني','خالد عبدالله الزهراني'];
-  const depts = ['الاستقبال','الإدارة','الأمن'];
+  const names = ['ÙØ­ÙØ¯ Ø£Ø­ÙØ¯ Ø§ÙØ¹ÙØ±Ù','Ø³Ø§Ø±Ø© ÙØ­ÙØ¯ Ø§ÙÙØ­Ø·Ø§ÙÙ','Ø®Ø§ÙØ¯ Ø¹Ø¨Ø¯Ø§ÙÙÙ Ø§ÙØ²ÙØ±Ø§ÙÙ'];
+  const depts = ['Ø§ÙØ§Ø³ØªÙØ¨Ø§Ù','Ø§ÙØ¥Ø¯Ø§Ø±Ø©','Ø§ÙØ£ÙÙ'];
   const shiftIds = [1,1,3];
   names.forEach((name,i) => {
     state.stamps.push({ id: Date.now()+i, name, dept:depts[i], shift:getShiftLabel(shiftIds[i]), type:'in', status:'accepted', time: today+'T07:'+(i===1?'22':'08')+':00.000Z', dist: 45+i*10 });
@@ -1873,12 +1873,12 @@ if(state.stamps.length === 0) {
 
 function downloadAppsScript() {
   var code = `// ============================================
-// راحتي ستار - Apps Script للحضور الجغرافي
-// انسخ هذا الكود في script.google.com
+// Ø±Ø§Ø­ØªÙ Ø³ØªØ§Ø± - Apps Script ÙÙØ­Ø¶ÙØ± Ø§ÙØ¬ØºØ±Ø§ÙÙ
+// Ø§ÙØ³Ø® ÙØ°Ø§ Ø§ÙÙÙØ¯ ÙÙ script.google.com
 // ============================================
 
-var SHEET_NAME = 'سجل الحضور';
-var SPREADSHEET_ID = ''; // اتركه فارغاً للإنشاء التلقائي
+var SHEET_NAME = 'Ø³Ø¬Ù Ø§ÙØ­Ø¶ÙØ±';
+var SPREADSHEET_ID = ''; // Ø§ØªØ±ÙÙ ÙØ§Ø±ØºØ§Ù ÙÙØ¥ÙØ´Ø§Ø¡ Ø§ÙØªÙÙØ§Ø¦Ù
 
 function doPost(e) {
   try {
@@ -1888,7 +1888,7 @@ function doPost(e) {
     
     // Add headers if empty
     if(sheet.getLastRow() === 0) {
-      sheet.appendRow(['التاريخ','الموظف','القسم','الوردية','نوع البصمة','الوقت','المسافة (م)','الحالة','خط العرض','خط الطول','وقت التسجيل']);
+      sheet.appendRow(['Ø§ÙØªØ§Ø±ÙØ®','Ø§ÙÙÙØ¸Ù','Ø§ÙÙØ³Ù','Ø§ÙÙØ±Ø¯ÙØ©','ÙÙØ¹ Ø§ÙØ¨ØµÙØ©','Ø§ÙÙÙØª','Ø§ÙÙØ³Ø§ÙØ© (Ù)','Ø§ÙØ­Ø§ÙØ©','Ø®Ø· Ø§ÙØ¹Ø±Ø¶','Ø®Ø· Ø§ÙØ·ÙÙ','ÙÙØª Ø§ÙØªØ³Ø¬ÙÙ']);
       sheet.getRange(1,1,1,11).setBackground('#0e4a32').setFontColor('#fff').setFontWeight('bold');
       sheet.setFrozenRows(1);
     }
@@ -1916,15 +1916,15 @@ function doPost(e) {
 }
 
 function doGet(e) {
-  return ContentService.createTextOutput(JSON.stringify({status:'ok', app:'راحتي ستار'}))
+  return ContentService.createTextOutput(JSON.stringify({status:'ok', app:'Ø±Ø§Ø­ØªÙ Ø³ØªØ§Ø±'}))
     .setMimeType(ContentService.MimeType.JSON);
 }
 
 function getOrCreateSpreadsheet() {
   if(SPREADSHEET_ID) return SpreadsheetApp.openById(SPREADSHEET_ID);
-  var files = DriveApp.getFilesByName('راحتي ستار - سجل الحضور');
+  var files = DriveApp.getFilesByName('Ø±Ø§Ø­ØªÙ Ø³ØªØ§Ø± - Ø³Ø¬Ù Ø§ÙØ­Ø¶ÙØ±');
   if(files.hasNext()) return SpreadsheetApp.openById(files.next().getId());
-  var ss = SpreadsheetApp.create('راحتي ستار - سجل الحضور');
+  var ss = SpreadsheetApp.create('Ø±Ø§Ø­ØªÙ Ø³ØªØ§Ø± - Ø³Ø¬Ù Ø§ÙØ­Ø¶ÙØ±');
   SPREADSHEET_ID = ss.getId();
   return ss;
 }`;
@@ -1946,18 +1946,18 @@ function saveScriptUrl() {
     return;
   }
   setScriptUrl(url);
-  document.getElementById('test-conn-btn').textContent = '✅ تم الحفظ';
+  document.getElementById('test-conn-btn').textContent = 'â ØªÙ Ø§ÙØ­ÙØ¸';
   document.getElementById('test-conn-btn').style.background = '#1a6b4a';
   setTimeout(function() {
     closeModal('script-url-modal');
-    showAlert('attendance-alert','success','✅ تم ربط Google Sheets بنجاح — البيانات ستُحفظ تلقائياً');
+    showAlert('attendance-alert','success','â ØªÙ Ø±Ø¨Ø· Google Sheets Ø¨ÙØ¬Ø§Ø­ â Ø§ÙØ¨ÙØ§ÙØ§Øª Ø³ØªÙØ­ÙØ¸ ØªÙÙØ§Ø¦ÙØ§Ù');
   }, 800);
 }
 
-// ══════════════════════════════════════════════
-// CREDENTIALS SYSTEM — نظام كلمات المرور
-// ══════════════════════════════════════════════
-const ADMIN_DEFAULT_PASSWORD = 'rahati2024'; // ADMIN_PWD_MARKER
+// ââââââââââââââââââââââââââââââââââââââââââââââ
+// CREDENTIALS SYSTEM â ÙØ¸Ø§Ù ÙÙÙØ§Øª Ø§ÙÙØ±ÙØ±
+// ââââââââââââââââââââââââââââââââââââââââââââââ
+const ADMIN_DEFAULT_PASSWORD = 'Aa123456@@'; // ADMIN_PWD_MARKER
 
 function getCredentials() {
   const saved = localStorage.getItem('rahati_credentials');
@@ -1974,12 +1974,12 @@ function saveCredentials(creds) {
 }
 function getEmpUsername(empId) {
   const creds = getCredentials();
-  return creds[empId] ? creds[empId].username : '—';
+  return creds[empId] ? creds[empId].username : 'â';
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // AUTH PANELS
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function showRoleSelect() {
   document.getElementById('role-btns').style.display = 'grid';
   document.getElementById('emp-login-panel').style.display = 'none';
@@ -2022,7 +2022,7 @@ function loginEmployee() {
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('app').style.display = 'block';
   var pill = document.getElementById('user-pill');
-  if(pill) pill.textContent = '👤 ' + foundEmp.name;
+  if(pill) pill.textContent = 'ð¤ ' + foundEmp.name;
   ['admin-tab','reports-tab','emp-mgmt-tab','shifts-tab','settings-tab','absence-tab'].forEach(function(id){
     var el = document.getElementById(id); if(el) el.style.display = 'none';
   });
@@ -2053,12 +2053,12 @@ function togglePwdVis(inputId, btnId) {
   var btn = document.getElementById(btnId);
   if(!input) return;
   input.type = input.type === 'password' ? 'text' : 'password';
-  if(btn) btn.textContent = input.type === 'password' ? '👁' : '🙈';
+  if(btn) btn.textContent = input.type === 'password' ? 'ð' : 'ð';
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // PASSWORD CHANGE
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function checkPwdStrength(pwd) {
   var bar = document.getElementById('pwd-strength-bar');
   var lbl = document.getElementById('pwd-strength-label');
@@ -2070,18 +2070,18 @@ function checkPwdStrength(pwd) {
   if(/[0-9]/.test(pwd)) score++;
   if(/[^A-Za-z0-9]/.test(pwd)) score++;
   var levels = [
-    {w:'0%',c:'#ccc',l:'—'},
-    {w:'25%',c:'#c0392b',l:'ضعيفة'},
-    {w:'50%',c:'#c9973a',l:'متوسطة'},
-    {w:'75%',c:'#2d9267',l:'جيدة'},
-    {w:'100%',c:'#1a6b4a',l:'قوية جداً'}
+    {w:'0%',c:'#ccc',l:'â'},
+    {w:'25%',c:'#c0392b',l:'Ø¶Ø¹ÙÙØ©'},
+    {w:'50%',c:'#c9973a',l:'ÙØªÙØ³Ø·Ø©'},
+    {w:'75%',c:'#2d9267',l:'Ø¬ÙØ¯Ø©'},
+    {w:'100%',c:'#1a6b4a',l:'ÙÙÙØ© Ø¬Ø¯Ø§Ù'}
   ];
   var lv = levels[Math.min(score,4)];
   bar.style.width=lv.w; bar.style.background=lv.c; lbl.textContent=lv.l;
 }
 function changePassword() {
   if(state.role === 'admin' && !state.loggedEmployee) {
-    // المدير يستخدم changeAdminPassword
+    // Ø§ÙÙØ¯ÙØ± ÙØ³ØªØ®Ø¯Ù changeAdminPassword
     var cur = document.getElementById('pwd-current').value;
     var nw  = document.getElementById('pwd-new').value;
     var conf= document.getElementById('pwd-confirm').value;
@@ -2095,19 +2095,19 @@ function changePassword() {
     return;
   }
   var emp = state.loggedEmployee;
-  if(!emp) { showAlert('pwd-change-alert','warn','لا يوجد موظف مسجّل دخوله'); return; }
+  if(!emp) { showAlert('pwd-change-alert','warn','ÙØ§ ÙÙØ¬Ø¯ ÙÙØ¸Ù ÙØ³Ø¬ÙÙ Ø¯Ø®ÙÙÙ'); return; }
   var current = document.getElementById('pwd-current').value;
   var newPwd  = document.getElementById('pwd-new').value;
   var confirm = document.getElementById('pwd-confirm').value;
   var creds = getCredentials();
   if(!creds[emp.id] || creds[emp.id].password !== current) {
-    showAlert('pwd-change-alert','danger','كلمة المرور الحالية غير صحيحة'); return;
+    showAlert('pwd-change-alert','danger','ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ­Ø§ÙÙØ© ØºÙØ± ØµØ­ÙØ­Ø©'); return;
   }
-  if(newPwd.length < 6){ showAlert('pwd-change-alert','warn','كلمة المرور الجديدة قصيرة جداً (6 أحرف على الأقل)'); return; }
-  if(newPwd !== confirm){ showAlert('pwd-change-alert','danger','كلمتا المرور غير متطابقتين'); return; }
+  if(newPwd.length < 6){ showAlert('pwd-change-alert','warn','ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ¬Ø¯ÙØ¯Ø© ÙØµÙØ±Ø© Ø¬Ø¯Ø§Ù (6 Ø£Ø­Ø±Ù Ø¹ÙÙ Ø§ÙØ£ÙÙ)'); return; }
+  if(newPwd !== confirm){ showAlert('pwd-change-alert','danger','ÙÙÙØªØ§ Ø§ÙÙØ±ÙØ± ØºÙØ± ÙØªØ·Ø§Ø¨ÙØªÙÙ'); return; }
   creds[emp.id].password = newPwd;
   saveCredentials(creds);
-  showAlert('pwd-change-alert','success','✅ تم تغيير كلمة المرور بنجاح');
+  showAlert('pwd-change-alert','success','â ØªÙ ØªØºÙÙØ± ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø¨ÙØ¬Ø§Ø­');
   document.getElementById('pwd-current').value='';
   document.getElementById('pwd-new').value='';
   document.getElementById('pwd-confirm').value='';
@@ -2116,30 +2116,30 @@ function changePassword() {
 function adminResetPassword() {
   var sel = document.getElementById('reset-emp-select');
   var newPwd = document.getElementById('reset-new-pwd').value.trim();
-  if(!sel||!newPwd){ showAlert('admin-pwd-reset-alert','warn','اختر موظفاً واكتب كلمة مرور جديدة'); return; }
+  if(!sel||!newPwd){ showAlert('admin-pwd-reset-alert','warn','Ø§Ø®ØªØ± ÙÙØ¸ÙØ§Ù ÙØ§ÙØªØ¨ ÙÙÙØ© ÙØ±ÙØ± Ø¬Ø¯ÙØ¯Ø©'); return; }
   var empId = sel.value;
   var creds = getCredentials();
   if(!creds[empId]) creds[empId] = { username: getEmpUsername(empId), password: newPwd };
   else creds[empId].password = newPwd;
   saveCredentials(creds);
-  showAlert('admin-pwd-reset-alert','success','✅ تم إعادة تعيين كلمة المرور بنجاح');
+  showAlert('admin-pwd-reset-alert','success','â ØªÙ Ø¥Ø¹Ø§Ø¯Ø© ØªØ¹ÙÙÙ ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø¨ÙØ¬Ø§Ø­');
   document.getElementById('reset-new-pwd').value='';
 }
 function adminQuickResetPwd(empId) {
   var emp = state.employees.find(function(e){ return e.id === empId; });
   if(!emp) return;
-  var newPwd = prompt('كلمة المرور الجديدة للموظف: ' + emp.name, '123456');
+  var newPwd = prompt('ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ¬Ø¯ÙØ¯Ø© ÙÙÙÙØ¸Ù: ' + emp.name, '123456');
   if(!newPwd) return;
   var creds = getCredentials();
   if(!creds[empId]) creds[empId] = { username: emp.name.split(' ')[0].toLowerCase()+empId, password: newPwd };
   else creds[empId].password = newPwd;
   saveCredentials(creds);
-  alert('✅ تم تغيير كلمة مرور ' + emp.name);
+  alert('â ØªÙ ØªØºÙÙØ± ÙÙÙØ© ÙØ±ÙØ± ' + emp.name);
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // PROFILE PAGE
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function renderProfilePage() {
   var emp = state.loggedEmployee;
   var isAdmin = state.role === 'admin';
@@ -2152,18 +2152,18 @@ function renderProfilePage() {
       return '<option value="'+e.id+'">'+e.name+'</option>';
     }).join('');
   }
-  var displayEmp = emp || { name: 'مدير النظام', dept: 'الإدارة', shiftId: null, joinDate: '—' };
+  var displayEmp = emp || { name: 'ÙØ¯ÙØ± Ø§ÙÙØ¸Ø§Ù', dept: 'Ø§ÙØ¥Ø¯Ø§Ø±Ø©', shiftId: null, joinDate: 'â' };
   if(detEl) detEl.innerHTML =
     '<div style="display:flex;align-items:center;gap:16px;margin-bottom:1rem">' +
     '<div style="width:56px;height:56px;background:var(--brand-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px">' +
-    (isAdmin ? '🛡️' : '👤') + '</div>' +
+    (isAdmin ? 'ð¡ï¸' : 'ð¤') + '</div>' +
     '<div><div style="font-size:17px;font-weight:600">'+displayEmp.name+'</div>' +
-    '<div style="font-size:13px;color:var(--text-3)">'+(isAdmin?'مدير النظام':displayEmp.dept)+'</div></div></div>' +
+    '<div style="font-size:13px;color:var(--text-3)">'+(isAdmin?'ÙØ¯ÙØ± Ø§ÙÙØ¸Ø§Ù':displayEmp.dept)+'</div></div></div>' +
     '<div style="display:grid;gap:8px;font-size:14px">' +
-    '<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text-3)">القسم</span><span>'+displayEmp.dept+'</span></div>' +
-    '<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text-3)">الوردية</span><span>'+(getShiftLabel(displayEmp.shiftId)||'—')+'</span></div>' +
-    '<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text-3)">تاريخ التوظيف</span><span style="direction:ltr">'+(displayEmp.joinDate||'—')+'</span></div>' +
-    (emp ? '<div style="display:flex;justify-content:space-between;padding:8px 0"><span style="color:var(--text-3)">اسم المستخدم</span><span style="direction:ltr">'+getEmpUsername(emp.id)+'</span></div>' : '') +
+    '<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text-3)">Ø§ÙÙØ³Ù</span><span>'+displayEmp.dept+'</span></div>' +
+    '<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text-3)">Ø§ÙÙØ±Ø¯ÙØ©</span><span>'+(getShiftLabel(displayEmp.shiftId)||'â')+'</span></div>' +
+    '<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text-3)">ØªØ§Ø±ÙØ® Ø§ÙØªÙØ¸ÙÙ</span><span style="direction:ltr">'+(displayEmp.joinDate||'â')+'</span></div>' +
+    (emp ? '<div style="display:flex;justify-content:space-between;padding:8px 0"><span style="color:var(--text-3)">Ø§Ø³Ù Ø§ÙÙØ³ØªØ®Ø¯Ù</span><span style="direction:ltr">'+getEmpUsername(emp.id)+'</span></div>' : '') +
     '</div>';
 
   var noteEl = document.getElementById('admin-profile-pwd-note');
@@ -2186,14 +2186,14 @@ function renderProfilePage() {
   var lateLimit = wParts[0]*60 + wParts[1] + CONFIG.lateMins;
   if(tbody) tbody.innerHTML = records.length ? records.map(function(entry){
     var date=entry[0], r=entry[1];
-    var cin  = r.checkin  ? formatTime(new Date(r.checkin))  : '—';
-    var cout = r.checkout ? formatTime(new Date(r.checkout)) : '—';
-    var dur='—';
-    if(r.checkin&&r.checkout){ var m=Math.round((new Date(r.checkout)-new Date(r.checkin))/60000); dur=Math.floor(m/60)+'س '+m%60+'د'; }
-    var badge='<span class="badge badge-green">في الوقت</span>';
-    if(r.checkin){ var t=new Date(r.checkin); if(t.getHours()*60+t.getMinutes()>lateLimit) badge='<span class="badge badge-gold">متأخر</span>'; }
+    var cin  = r.checkin  ? formatTime(new Date(r.checkin))  : 'â';
+    var cout = r.checkout ? formatTime(new Date(r.checkout)) : 'â';
+    var dur='â';
+    if(r.checkin&&r.checkout){ var m=Math.round((new Date(r.checkout)-new Date(r.checkin))/60000); dur=Math.floor(m/60)+'Ø³ '+m%60+'Ø¯'; }
+    var badge='<span class="badge badge-green">ÙÙ Ø§ÙÙÙØª</span>';
+    if(r.checkin){ var t=new Date(r.checkin); if(t.getHours()*60+t.getMinutes()>lateLimit) badge='<span class="badge badge-gold">ÙØªØ£Ø®Ø±</span>'; }
     return '<tr><td style="direction:ltr">'+date+'</td><td style="direction:ltr">'+cin+'</td><td style="direction:ltr">'+cout+'</td><td>'+dur+'</td><td>'+badge+'</td></tr>';
-  }).join('') : '<tr><td colspan="5" style="text-align:center;color:var(--text-3);padding:20px">لا توجد سجلات هذا الشهر</td></tr>';
+  }).join('') : '<tr><td colspan="5" style="text-align:center;color:var(--text-3);padding:20px">ÙØ§ ØªÙØ¬Ø¯ Ø³Ø¬ÙØ§Øª ÙØ°Ø§ Ø§ÙØ´ÙØ±</td></tr>';
   renderMyStats(records);
 }
 function renderMyStats(records) {
@@ -2211,13 +2211,13 @@ function renderMyStats(records) {
   var lEl=document.getElementById('my-late-days');    if(lEl) lEl.textContent=lateDays;
 }
 
-// ══════════════════════════════════════════════
-// ABSENCE REPORT — تقرير الغيابات
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
+// ABSENCE REPORT â ØªÙØ±ÙØ± Ø§ÙØºÙØ§Ø¨Ø§Øª
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function generateAbsenceReport() {
   var monthVal = document.getElementById('absence-month').value;
   var deptFilter = document.getElementById('absence-dept').value;
-  if(!monthVal){ alert('يرجى اختيار الشهر'); return; }
+  if(!monthVal){ alert('ÙØ±Ø¬Ù Ø§Ø®ØªÙØ§Ø± Ø§ÙØ´ÙØ±'); return; }
   var parts = monthVal.split('-').map(Number);
   var year = parts[0], month = parts[1];
   var daysInMonth = new Date(year, month, 0).getDate();
@@ -2240,30 +2240,30 @@ function generateAbsenceReport() {
     var cells = workDays.map(function(dStr){
       var dateStr = year+'-'+monthPad+'-'+dStr;
       var dayStamps = state.stamps.filter(function(s){ return s.name===emp.name && s.status==='accepted' && s.time.startsWith(dateStr); });
-      if(!dayStamps.length){ absentCount++; return '<td style="background:#fdf0ef;text-align:center;color:#c0392b;font-weight:600">غ</td>'; }
+      if(!dayStamps.length){ absentCount++; return '<td style="background:#fdf0ef;text-align:center;color:#c0392b;font-weight:600">Øº</td>'; }
       var inStamp = dayStamps.find(function(s){ return s.type==='in'; });
       if(inStamp){
         var t=new Date(inStamp.time);
-        if(t.getHours()*60+t.getMinutes()>lateLimit){ lateCount++; return '<td style="background:#fdf5e6;text-align:center;color:#c9973a;font-weight:600">ت</td>'; }
+        if(t.getHours()*60+t.getMinutes()>lateLimit){ lateCount++; return '<td style="background:#fdf5e6;text-align:center;color:#c9973a;font-weight:600">Øª</td>'; }
       }
-      return '<td style="background:#e8f5ee;text-align:center;color:#1a6b4a;font-weight:600">✓</td>';
+      return '<td style="background:#e8f5ee;text-align:center;color:#1a6b4a;font-weight:600">â</td>';
     });
     totalAbsent+=absentCount; totalLate+=lateCount;
     return '<tr><td style="font-weight:500;white-space:nowrap;padding:8px 10px">'+emp.name+'</td><td style="padding:8px 10px">'+emp.dept+'</td>'+cells.join('')+'<td style="font-weight:700;color:#c0392b;text-align:center">'+absentCount+'</td><td style="font-weight:700;color:#c9973a;text-align:center">'+lateCount+'</td></tr>';
   });
   document.getElementById('abs-total-absent').textContent = totalAbsent;
   document.getElementById('abs-total-late').textContent = totalLate;
-  document.getElementById('absence-count').textContent = employees.length + ' موظف';
+  document.getElementById('absence-count').textContent = employees.length + ' ÙÙØ¸Ù';
   var thead = document.getElementById('absence-thead');
-  thead.innerHTML = '<tr><th style="white-space:nowrap">الموظف</th><th>القسم</th>' +
+  thead.innerHTML = '<tr><th style="white-space:nowrap">Ø§ÙÙÙØ¸Ù</th><th>Ø§ÙÙØ³Ù</th>' +
     workDays.map(function(d){ return '<th style="padding:6px 4px;font-size:11px;text-align:center;min-width:28px">'+d+'</th>'; }).join('') +
-    '<th style="color:#c0392b;white-space:nowrap">غياب</th><th style="color:#c9973a;white-space:nowrap">تأخر</th></tr>';
+    '<th style="color:#c0392b;white-space:nowrap">ØºÙØ§Ø¨</th><th style="color:#c9973a;white-space:nowrap">ØªØ£Ø®Ø±</th></tr>';
   var tbody = document.getElementById('absence-tbody');
-  tbody.innerHTML = rows.length ? rows.join('') : '<tr><td colspan="6" style="text-align:center;color:var(--text-3);padding:24px">لا توجد بيانات</td></tr>';
+  tbody.innerHTML = rows.length ? rows.join('') : '<tr><td colspan="6" style="text-align:center;color:var(--text-3);padding:24px">ÙØ§ ØªÙØ¬Ø¯ Ø¨ÙØ§ÙØ§Øª</td></tr>';
 }
 function exportAbsenceCSV() {
   var monthVal = document.getElementById('absence-month').value;
-  if(!monthVal){ alert('أنشئ التقرير أولاً'); return; }
+  if(!monthVal){ alert('Ø£ÙØ´Ø¦ Ø§ÙØªÙØ±ÙØ± Ø£ÙÙØ§Ù'); return; }
   var rows = [];
   document.querySelectorAll('#absence-tbody tr').forEach(function(tr){
     rows.push(Array.from(tr.querySelectorAll('td')).map(function(td){ return td.textContent.trim(); }).join(','));
@@ -2275,19 +2275,19 @@ function exportAbsenceCSV() {
   a.click();
 }
 
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 // ADMIN PASSWORD CHANGE
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 function saveGithubSettings() {
   var token = document.getElementById('gh-token').value.trim();
   var repo  = document.getElementById('gh-repo').value.trim();
   if(!token || !repo) { 
-    document.getElementById('gh-settings-status').textContent = '⚠️ أدخل الـ Token واسم الـ Repository';
+    document.getElementById('gh-settings-status').textContent = 'â ï¸ Ø£Ø¯Ø®Ù Ø§ÙÙ Token ÙØ§Ø³Ù Ø§ÙÙ Repository';
     return; 
   }
   localStorage.setItem('rahati_gh_token', token);
   localStorage.setItem('rahati_gh_repo', repo);
-  document.getElementById('gh-settings-status').textContent = '✅ تم الحفظ بنجاح';
+  document.getElementById('gh-settings-status').textContent = 'â ØªÙ Ø§ÙØ­ÙØ¸ Ø¨ÙØ¬Ø§Ø­';
   document.getElementById('gh-token').value = '';
 }
 
@@ -2298,21 +2298,21 @@ function loadGithubSettings() {
   var token = localStorage.getItem('rahati_gh_token') || '';
   if(token) {
     var statusEl = document.getElementById('gh-settings-status');
-    if(statusEl) statusEl.textContent = '✅ GitHub Token محفوظ';
+    if(statusEl) statusEl.textContent = 'â GitHub Token ÙØ­ÙÙØ¸';
   }
 }
 
 async function pushPasswordToGithub(newPassword) {
   var token = localStorage.getItem('rahati_gh_token');
   var repo  = localStorage.getItem('rahati_gh_repo') || 'go5220964-bit/rahti-star';
-  if(!token || token.length < 10) return { ok: false, msg: 'لم يتم إعداد GitHub Token — اذهب للإعدادات وأدخل الـ Token' };
+  if(!token || token.length < 10) return { ok: false, msg: 'ÙÙ ÙØªÙ Ø¥Ø¹Ø¯Ø§Ø¯ GitHub Token â Ø§Ø°ÙØ¨ ÙÙØ¥Ø¹Ø¯Ø§Ø¯Ø§Øª ÙØ£Ø¯Ø®Ù Ø§ÙÙ Token' };
 
   try {
     // 1. Get current file SHA and content
     var getRes = await fetch('https://api.github.com/repos/' + repo + '/contents/index.html', {
       headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
     });
-    if(!getRes.ok) return { ok: false, msg: 'خطأ في الاتصال بـ GitHub: ' + getRes.status };
+    if(!getRes.ok) return { ok: false, msg: 'Ø®Ø·Ø£ ÙÙ Ø§ÙØ§ØªØµØ§Ù Ø¨Ù GitHub: ' + getRes.status };
     var fileData = await getRes.json();
     var sha = fileData.sha;
     var currentContent = atob(fileData.content.replace(/\n/g,''));
@@ -2320,7 +2320,7 @@ async function pushPasswordToGithub(newPassword) {
     // 2. Replace password marker in file content
     var oldMarker = /const ADMIN_DEFAULT_PASSWORD = '[^']*'; \/\/ ADMIN_PWD_MARKER/;
     var newMarker = "const ADMIN_DEFAULT_PASSWORD = '" + newPassword + "'; // ADMIN_PWD_MARKER";
-    if(!oldMarker.test(currentContent)) return { ok: false, msg: 'لم يتم العثور على علامة كلمة المرور في الملف' };
+    if(!oldMarker.test(currentContent)) return { ok: false, msg: 'ÙÙ ÙØªÙ Ø§ÙØ¹Ø«ÙØ± Ø¹ÙÙ Ø¹ÙØ§ÙØ© ÙÙÙØ© Ø§ÙÙØ±ÙØ± ÙÙ Ø§ÙÙÙÙ' };
     var updatedContent = currentContent.replace(oldMarker, newMarker);
 
     // 3. Push updated file
@@ -2340,11 +2340,11 @@ async function pushPasswordToGithub(newPassword) {
     });
     if(!putRes.ok) {
       var err = await putRes.json();
-      return { ok: false, msg: 'فشل الرفع (' + putRes.status + '): ' + (err.message || '') };
+      return { ok: false, msg: 'ÙØ´Ù Ø§ÙØ±ÙØ¹ (' + putRes.status + '): ' + (err.message || '') };
     }
     return { ok: true };
   } catch(e) {
-    return { ok: false, msg: 'خطأ في الاتصال: ' + e.message };
+    return { ok: false, msg: 'Ø®Ø·Ø£ ÙÙ Ø§ÙØ§ØªØµØ§Ù: ' + e.message };
   }
 }
 
@@ -2355,21 +2355,21 @@ async function changeAdminPassword() {
   var savedPwd = localStorage.getItem('rahati_admin_pwd') || ADMIN_DEFAULT_PASSWORD;
 
   if (cur !== savedPwd) {
-    showAlert('admin-pwd-settings-alert','danger','❌ كلمة المرور الحالية غير صحيحة');
+    showAlert('admin-pwd-settings-alert','danger','â ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ­Ø§ÙÙØ© ØºÙØ± ØµØ­ÙØ­Ø©');
     return;
   }
   if (nw.length < 6) {
-    showAlert('admin-pwd-settings-alert','warn','⚠️ كلمة المرور الجديدة قصيرة جداً (6 أحرف على الأقل)');
+    showAlert('admin-pwd-settings-alert','warn','â ï¸ ÙÙÙØ© Ø§ÙÙØ±ÙØ± Ø§ÙØ¬Ø¯ÙØ¯Ø© ÙØµÙØ±Ø© Ø¬Ø¯Ø§Ù (6 Ø£Ø­Ø±Ù Ø¹ÙÙ Ø§ÙØ£ÙÙ)');
     return;
   }
   if (nw !== conf) {
-    showAlert('admin-pwd-settings-alert','danger','❌ كلمتا المرور غير متطابقتين');
+    showAlert('admin-pwd-settings-alert','danger','â ÙÙÙØªØ§ Ø§ÙÙØ±ÙØ± ØºÙØ± ÙØªØ·Ø§Ø¨ÙØªÙÙ');
     return;
   }
 
   // Save locally first
   localStorage.setItem('rahati_admin_pwd', nw);
-  showAlert('admin-pwd-settings-alert','success','⏳ جاري الحفظ الدائم على GitHub...');
+  showAlert('admin-pwd-settings-alert','success','â³ Ø¬Ø§Ø±Ù Ø§ÙØ­ÙØ¸ Ø§ÙØ¯Ø§Ø¦Ù Ø¹ÙÙ GitHub...');
   document.getElementById('admin-cur-pwd').value = '';
   document.getElementById('admin-new-pwd').value = '';
   document.getElementById('admin-confirm-pwd').value = '';
@@ -2377,16 +2377,16 @@ async function changeAdminPassword() {
   // Then push to GitHub for permanent storage
   var result = await pushPasswordToGithub(nw);
   if(result.ok) {
-    showAlert('admin-pwd-settings-alert','success','✅ تم تغيير كلمة المرور وحفظها بشكل دائم على GitHub');
+    showAlert('admin-pwd-settings-alert','success','â ØªÙ ØªØºÙÙØ± ÙÙÙØ© Ø§ÙÙØ±ÙØ± ÙØ­ÙØ¸ÙØ§ Ø¨Ø´ÙÙ Ø¯Ø§Ø¦Ù Ø¹ÙÙ GitHub');
   } else {
     showAlert('admin-pwd-settings-alert','warn',
-      '✅ تم الحفظ محلياً<br>⚠️ سبب عدم الحفظ على GitHub: <strong>' + result.msg + '</strong>');
+      'â ØªÙ Ø§ÙØ­ÙØ¸ ÙØ­ÙÙØ§Ù<br>â ï¸ Ø³Ø¨Ø¨ Ø¹Ø¯Ù Ø§ÙØ­ÙØ¸ Ø¹ÙÙ GitHub: <strong>' + result.msg + '</strong>');
   }
 }
 
-// ══════════════════════════════════════════════
-// GITHUB DATA SYNC — حفظ البيانات على GitHub
-// ══════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââ
+// GITHUB DATA SYNC â Ø­ÙØ¸ Ø§ÙØ¨ÙØ§ÙØ§Øª Ø¹ÙÙ GitHub
+// ââââââââââââââââââââââââââââââââââââââââââââââ
 
 async function saveDataToGithub() {
   var token = localStorage.getItem('rahati_gh_token');
@@ -2426,7 +2426,7 @@ async function saveDataToGithub() {
       },
       body: JSON.stringify(body)
     });
-    console.log('✅ Data synced to GitHub');
+    console.log('â Data synced to GitHub');
   } catch(e) {
     console.error('GitHub sync error:', e);
   }
@@ -2451,7 +2451,7 @@ async function loadDataFromGithub() {
     if(data.credentials) saveCredentials(data.credentials);
     // Also sync to localStorage
     saveToStorage();
-    console.log('✅ Data loaded from GitHub');
+    console.log('â Data loaded from GitHub');
     return true;
   } catch(e) {
     console.error('GitHub load error:', e);
@@ -2459,7 +2459,7 @@ async function loadDataFromGithub() {
   }
 }
 
-// مزامنة تلقائية كل 5 دقائق
+// ÙØ²Ø§ÙÙØ© ØªÙÙØ§Ø¦ÙØ© ÙÙ 5 Ø¯ÙØ§Ø¦Ù
 setInterval(function() {
   if(state.role === 'admin' && localStorage.getItem('rahati_gh_token')) {
     saveDataToGithub();
@@ -2468,9 +2468,9 @@ setInterval(function() {
 
 async function manualGithubSync() {
   var statusEl = document.getElementById('gh-settings-status');
-  if(statusEl) statusEl.textContent = '⏳ جاري المزامنة...';
+  if(statusEl) statusEl.textContent = 'â³ Ø¬Ø§Ø±Ù Ø§ÙÙØ²Ø§ÙÙØ©...';
   await saveDataToGithub();
-  if(statusEl) statusEl.textContent = '✅ تمت المزامنة بنجاح في ' + new Date().toLocaleTimeString('ar');
+  if(statusEl) statusEl.textContent = 'â ØªÙØª Ø§ÙÙØ²Ø§ÙÙØ© Ø¨ÙØ¬Ø§Ø­ ÙÙ ' + new Date().toLocaleTimeString('ar');
 }
 
 async function testGithubConnection() {
@@ -2478,20 +2478,20 @@ async function testGithubConnection() {
   resultEl.style.display = 'block';
   resultEl.style.background = '#f5f5f5';
   resultEl.style.border = '1px solid #ddd';
-  resultEl.innerHTML = '⏳ جاري الاختبار...';
+  resultEl.innerHTML = 'â³ Ø¬Ø§Ø±Ù Ø§ÙØ§Ø®ØªØ¨Ø§Ø±...';
 
   var token = localStorage.getItem('rahati_gh_token');
   var repo  = localStorage.getItem('rahati_gh_repo') || 'go5220964-bit/rahti-star';
 
   var lines = [];
-  lines.push('📋 <strong>نتائج الاختبار:</strong>');
-  lines.push('🔑 Token: ' + (token ? '✅ محفوظ (' + token.slice(0,8) + '...)' : '❌ غير موجود'));
-  lines.push('📁 Repository: ' + repo);
+  lines.push('ð <strong>ÙØªØ§Ø¦Ø¬ Ø§ÙØ§Ø®ØªØ¨Ø§Ø±:</strong>');
+  lines.push('ð Token: ' + (token ? 'â ÙØ­ÙÙØ¸ (' + token.slice(0,8) + '...)' : 'â ØºÙØ± ÙÙØ¬ÙØ¯'));
+  lines.push('ð Repository: ' + repo);
 
   if(!token) {
     lines.push('');
-    lines.push('❌ <strong>المشكلة:</strong> لم يتم حفظ الـ Token');
-    lines.push('✅ <strong>الحل:</strong> أدخل الـ Token في الحقل أعلاه واضغط "حفظ إعدادات GitHub"');
+    lines.push('â <strong>Ø§ÙÙØ´ÙÙØ©:</strong> ÙÙ ÙØªÙ Ø­ÙØ¸ Ø§ÙÙ Token');
+    lines.push('â <strong>Ø§ÙØ­Ù:</strong> Ø£Ø¯Ø®Ù Ø§ÙÙ Token ÙÙ Ø§ÙØ­ÙÙ Ø£Ø¹ÙØ§Ù ÙØ§Ø¶ØºØ· "Ø­ÙØ¸ Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª GitHub"');
     resultEl.innerHTML = lines.join('<br>');
     return;
   }
@@ -2503,18 +2503,18 @@ async function testGithubConnection() {
     });
     if(userRes.ok) {
       var user = await userRes.json();
-      lines.push('👤 حساب GitHub: ✅ ' + user.login);
+      lines.push('ð¤ Ø­Ø³Ø§Ø¨ GitHub: â ' + user.login);
     } else {
-      lines.push('👤 حساب GitHub: ❌ Token غير صالح (كود: ' + userRes.status + ')');
+      lines.push('ð¤ Ø­Ø³Ø§Ø¨ GitHub: â Token ØºÙØ± ØµØ§ÙØ­ (ÙÙØ¯: ' + userRes.status + ')');
       lines.push('');
-      lines.push('❌ <strong>المشكلة:</strong> الـ Token منتهي أو غير صحيح');
-      lines.push('✅ <strong>الحل:</strong> أنشئ Token جديد من github.com/settings/tokens');
+      lines.push('â <strong>Ø§ÙÙØ´ÙÙØ©:</strong> Ø§ÙÙ Token ÙÙØªÙÙ Ø£Ù ØºÙØ± ØµØ­ÙØ­');
+      lines.push('â <strong>Ø§ÙØ­Ù:</strong> Ø£ÙØ´Ø¦ Token Ø¬Ø¯ÙØ¯ ÙÙ github.com/settings/tokens');
       resultEl.style.background = '#fdf0ef';
       resultEl.innerHTML = lines.join('<br>');
       return;
     }
   } catch(e) {
-    lines.push('🌐 اتصال الإنترنت: ❌ ' + e.message);
+    lines.push('ð Ø§ØªØµØ§Ù Ø§ÙØ¥ÙØªØ±ÙØª: â ' + e.message);
     resultEl.innerHTML = lines.join('<br>');
     return;
   }
@@ -2525,18 +2525,18 @@ async function testGithubConnection() {
       headers: { 'Authorization': 'token ' + token }
     });
     if(repoRes.ok) {
-      lines.push('📁 الوصول للـ Repository: ✅');
+      lines.push('ð Ø§ÙÙØµÙÙ ÙÙÙ Repository: â');
     } else {
-      lines.push('📁 الوصول للـ Repository: ❌ كود ' + repoRes.status);
+      lines.push('ð Ø§ÙÙØµÙÙ ÙÙÙ Repository: â ÙÙØ¯ ' + repoRes.status);
       lines.push('');
-      lines.push('❌ <strong>المشكلة:</strong> لا يمكن الوصول للـ Repository');
-      lines.push('✅ <strong>الحل:</strong> تأكد أن اسم الـ Repository صحيح: <strong>' + repo + '</strong>');
+      lines.push('â <strong>Ø§ÙÙØ´ÙÙØ©:</strong> ÙØ§ ÙÙÙÙ Ø§ÙÙØµÙÙ ÙÙÙ Repository');
+      lines.push('â <strong>Ø§ÙØ­Ù:</strong> ØªØ£ÙØ¯ Ø£Ù Ø§Ø³Ù Ø§ÙÙ Repository ØµØ­ÙØ­: <strong>' + repo + '</strong>');
       resultEl.style.background = '#fdf0ef';
       resultEl.innerHTML = lines.join('<br>');
       return;
     }
   } catch(e) {
-    lines.push('📁 Repository: ❌ ' + e.message);
+    lines.push('ð Repository: â ' + e.message);
   }
 
   // Test 3: Check index.html exists
@@ -2546,29 +2546,29 @@ async function testGithubConnection() {
     });
     if(fileRes.ok) {
       var fileData = await fileRes.json();
-      lines.push('📄 ملف index.html: ✅ موجود (الحجم: ' + Math.round(fileData.size/1024) + ' KB)');
+      lines.push('ð ÙÙÙ index.html: â ÙÙØ¬ÙØ¯ (Ø§ÙØ­Ø¬Ù: ' + Math.round(fileData.size/1024) + ' KB)');
       // Check if marker exists
       var content = atob(fileData.content.replace(/\n/g,''));
       if(content.includes('ADMIN_PWD_MARKER')) {
-        lines.push('🔖 علامة كلمة المرور: ✅ موجودة');
+        lines.push('ð Ø¹ÙØ§ÙØ© ÙÙÙØ© Ø§ÙÙØ±ÙØ±: â ÙÙØ¬ÙØ¯Ø©');
         lines.push('');
-        lines.push('✅ <strong>كل شيء يعمل بشكل صحيح!</strong>');
+        lines.push('â <strong>ÙÙ Ø´ÙØ¡ ÙØ¹ÙÙ Ø¨Ø´ÙÙ ØµØ­ÙØ­!</strong>');
         resultEl.style.background = '#e8f5ee';
         resultEl.style.border = '1px solid #2d9267';
       } else {
-        lines.push('🔖 علامة كلمة المرور: ❌ غير موجودة في الملف');
+        lines.push('ð Ø¹ÙØ§ÙØ© ÙÙÙØ© Ø§ÙÙØ±ÙØ±: â ØºÙØ± ÙÙØ¬ÙØ¯Ø© ÙÙ Ø§ÙÙÙÙ');
         lines.push('');
-        lines.push('❌ <strong>المشكلة:</strong> الملف المرفوع على GitHub ليس النسخة الصحيحة');
-        lines.push('✅ <strong>الحل:</strong> ارفع ملف <strong>rahati-star-v3.html</strong> وسمّه index.html');
+        lines.push('â <strong>Ø§ÙÙØ´ÙÙØ©:</strong> Ø§ÙÙÙÙ Ø§ÙÙØ±ÙÙØ¹ Ø¹ÙÙ GitHub ÙÙØ³ Ø§ÙÙØ³Ø®Ø© Ø§ÙØµØ­ÙØ­Ø©');
+        lines.push('â <strong>Ø§ÙØ­Ù:</strong> Ø§Ø±ÙØ¹ ÙÙÙ <strong>rahati-star-v3.html</strong> ÙØ³ÙÙÙ index.html');
         resultEl.style.background = '#fdf0ef';
       }
     } else {
-      lines.push('📄 ملف index.html: ❌ غير موجود');
-      lines.push('✅ <strong>الحل:</strong> ارفع الملف على GitHub باسم index.html');
+      lines.push('ð ÙÙÙ index.html: â ØºÙØ± ÙÙØ¬ÙØ¯');
+      lines.push('â <strong>Ø§ÙØ­Ù:</strong> Ø§Ø±ÙØ¹ Ø§ÙÙÙÙ Ø¹ÙÙ GitHub Ø¨Ø§Ø³Ù index.html');
       resultEl.style.background = '#fdf0ef';
     }
   } catch(e) {
-    lines.push('📄 index.html: ❌ ' + e.message);
+    lines.push('ð index.html: â ' + e.message);
   }
 
   resultEl.innerHTML = lines.join('<br>');
@@ -2580,30 +2580,30 @@ async function testGithubConnection() {
 <!-- Modal: Apps Script URL -->
 <div class="modal-backdrop" id="script-url-modal">
   <div class="modal" style="max-width:560px">
-    <div class="modal-title">🔗 ربط Google Sheets</div>
+    <div class="modal-title">ð Ø±Ø¨Ø· Google Sheets</div>
 
     <div style="background:#f0f7ff;border:1px solid #c0d8f0;border-radius:8px;padding:14px;margin-bottom:1.25rem;font-size:13px;line-height:1.9;color:#1a3a5c">
-      <strong>📋 خطوات الربط (مرة واحدة فقط):</strong><br>
-      1. افتح <a href="https://script.google.com/home" target="_blank" style="color:#1a5fa3">script.google.com</a> وأنشئ مشروعاً جديداً<br>
-      2. انسخ كود Apps Script وألصقه في المحرر<br>
-      3. اضغط <strong>نشر ← Deploy as Web App</strong><br>
-      4. اختر <strong>Anyone</strong> في "Who has access"<br>
-      5. انسخ رابط الـ Web App والصقه أدناه
+      <strong>ð Ø®Ø·ÙØ§Øª Ø§ÙØ±Ø¨Ø· (ÙØ±Ø© ÙØ§Ø­Ø¯Ø© ÙÙØ·):</strong><br>
+      1. Ø§ÙØªØ­ <a href="https://script.google.com/home" target="_blank" style="color:#1a5fa3">script.google.com</a> ÙØ£ÙØ´Ø¦ ÙØ´Ø±ÙØ¹Ø§Ù Ø¬Ø¯ÙØ¯Ø§Ù<br>
+      2. Ø§ÙØ³Ø® ÙÙØ¯ Apps Script ÙØ£ÙØµÙÙ ÙÙ Ø§ÙÙØ­Ø±Ø±<br>
+      3. Ø§Ø¶ØºØ· <strong>ÙØ´Ø± â Deploy as Web App</strong><br>
+      4. Ø§Ø®ØªØ± <strong>Anyone</strong> ÙÙ "Who has access"<br>
+      5. Ø§ÙØ³Ø® Ø±Ø§Ø¨Ø· Ø§ÙÙ Web App ÙØ§ÙØµÙÙ Ø£Ø¯ÙØ§Ù
     </div>
 
     <div style="background:#fffbea;border:1px solid #f0d060;border-radius:8px;padding:10px 14px;margin-bottom:1.25rem;font-size:12px;color:#7a6000">
-      💡 <strong>كود Apps Script:</strong> اضغط الزر أدناه لتنزيله
-      <br><button onclick="downloadAppsScript()" class="btn btn-secondary" style="margin-top:8px;font-size:12px;padding:6px 12px">⬇️ تنزيل كود Apps Script</button>
+      ð¡ <strong>ÙÙØ¯ Apps Script:</strong> Ø§Ø¶ØºØ· Ø§ÙØ²Ø± Ø£Ø¯ÙØ§Ù ÙØªÙØ²ÙÙÙ
+      <br><button onclick="downloadAppsScript()" class="btn btn-secondary" style="margin-top:8px;font-size:12px;padding:6px 12px">â¬ï¸ ØªÙØ²ÙÙ ÙÙØ¯ Apps Script</button>
     </div>
 
     <div class="form-group">
-      <label class="form-label">رابط Web App (يبدأ بـ https://script.google.com/macros/s/...)</label>
+      <label class="form-label">Ø±Ø§Ø¨Ø· Web App (ÙØ¨Ø¯Ø£ Ø¨Ù https://script.google.com/macros/s/...)</label>
       <input class="form-control" id="script-url-input" placeholder="https://script.google.com/macros/s/AKfycbx.../exec" style="direction:ltr;font-size:12px" oninput="this.style.borderColor=this.value?'var(--brand)':'var(--border)'">
     </div>
 
     <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('script-url-modal');document.getElementById('role-btns').style.display='grid';document.getElementById('demo-hint').style.display='none'">استخدام بدون Sheets</button>
-      <button class="btn btn-primary" id="test-conn-btn" onclick="saveScriptUrl()">✅ حفظ والاتصال</button>
+      <button class="btn btn-secondary" onclick="closeModal('script-url-modal');document.getElementById('role-btns').style.display='grid';document.getElementById('demo-hint').style.display='none'">Ø§Ø³ØªØ®Ø¯Ø§Ù Ø¨Ø¯ÙÙ Sheets</button>
+      <button class="btn btn-primary" id="test-conn-btn" onclick="saveScriptUrl()">â Ø­ÙØ¸ ÙØ§ÙØ§ØªØµØ§Ù</button>
     </div>
   </div>
 </div>
