@@ -536,6 +536,11 @@ select.form-control{cursor:pointer}
       </div>
       <button class="btn btn-secondary" style="font-size:13px" onclick="saveGithubSettings()">💾 حفظ إعدادات GitHub</button>
       <div id="gh-settings-status" style="font-size:12px;color:var(--text-3);margin-top:8px"></div>
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" style="font-size:13px" onclick="manualGithubSync()">🔄 مزامنة البيانات الآن</button>
+        <button class="btn btn-secondary" style="font-size:13px" onclick="testGithubConnection()">🧪 اختبار الاتصال</button>
+      </div>
+      <div id="gh-test-result" style="font-size:12px;margin-top:10px;padding:10px;border-radius:8px;display:none;word-break:break-all;line-height:1.8"></div>
     </div>
 
     <div class="card">
@@ -745,6 +750,7 @@ select.form-control{cursor:pointer}
           </div>
         </div>
         <button class="btn btn-primary" style="width:100%" onclick="changePassword()">💾 حفظ كلمة المرور الجديدة</button>
+        <div id="admin-profile-pwd-note" style="display:none;font-size:12px;color:var(--text-3);margin-top:8px;text-align:center">🛡️ تغيير كلمة مرور المدير — سيتم الحفظ على GitHub</div>
       </div>
       <div class="card" id="admin-reset-pwd-card" style="display:none">
         <div class="card-title">🔧 إعادة تعيين كلمة مرور موظف</div>
@@ -897,11 +903,17 @@ function showAlert(container, type, msg, duration=4000) {
   if(duration) setTimeout(()=>{ if(el) el.innerHTML=''; }, duration);
 }
 
+var _ghSaveTimer = null;
 function saveToStorage() {
   localStorage.setItem('rahati_stamps', JSON.stringify(state.stamps));
   localStorage.setItem('rahati_employees', JSON.stringify(state.employees));
   localStorage.setItem('rahati_shifts', JSON.stringify(state.shifts));
   localStorage.setItem('rahati_config', JSON.stringify(CONFIG));
+  // حفظ على GitHub بعد 3 ثوان من آخر تغيير (debounce)
+  if(localStorage.getItem('rahati_gh_token')) {
+    clearTimeout(_ghSaveTimer);
+    _ghSaveTimer = setTimeout(saveDataToGithub, 3000);
+  }
 }
 
 function loadFromStorage() {
@@ -1773,6 +1785,18 @@ function login(role) {
     pill.textContent = '👤 موظف';
   }
 
+  loadFromStorage();
+  // تحميل من GitHub إذا كان Token محفوظاً
+  if(localStorage.getItem('rahati_gh_token')) {
+    loadDataFromGithub().then(function(loaded) {
+      if(loaded) {
+        populateShiftDropdowns();
+        renderEmployees();
+        updateAdminStats();
+        renderTodayLog();
+      }
+    });
+  }
   populateShiftDropdowns();
 
   // Auto-fill from employees list
@@ -2056,6 +2080,20 @@ function checkPwdStrength(pwd) {
   bar.style.width=lv.w; bar.style.background=lv.c; lbl.textContent=lv.l;
 }
 function changePassword() {
+  if(state.role === 'admin' && !state.loggedEmployee) {
+    // المدير يستخدم changeAdminPassword
+    var cur = document.getElementById('pwd-current').value;
+    var nw  = document.getElementById('pwd-new').value;
+    var conf= document.getElementById('pwd-confirm').value;
+    document.getElementById('admin-cur-pwd').value = cur;
+    document.getElementById('admin-new-pwd').value = nw;
+    document.getElementById('admin-confirm-pwd').value = conf;
+    changeAdminPassword();
+    document.getElementById('pwd-current').value='';
+    document.getElementById('pwd-new').value='';
+    document.getElementById('pwd-confirm').value='';
+    return;
+  }
   var emp = state.loggedEmployee;
   if(!emp) { showAlert('pwd-change-alert','warn','لا يوجد موظف مسجّل دخوله'); return; }
   var current = document.getElementById('pwd-current').value;
@@ -2128,6 +2166,8 @@ function renderProfilePage() {
     (emp ? '<div style="display:flex;justify-content:space-between;padding:8px 0"><span style="color:var(--text-3)">اسم المستخدم</span><span style="direction:ltr">'+getEmpUsername(emp.id)+'</span></div>' : '') +
     '</div>';
 
+  var noteEl = document.getElementById('admin-profile-pwd-note');
+  if(noteEl) noteEl.style.display = isAdmin ? 'block' : 'none';
   if(!emp) { renderMyStats([]); return; }
   var myName = emp.name;
   var now = new Date();
@@ -2265,7 +2305,7 @@ function loadGithubSettings() {
 async function pushPasswordToGithub(newPassword) {
   var token = localStorage.getItem('rahati_gh_token');
   var repo  = localStorage.getItem('rahati_gh_repo') || 'go5220964-bit/rahti-star';
-  if(!token) return { ok: false, msg: 'لم يتم إعداد GitHub Token بعد' };
+  if(!token || token.length < 10) return { ok: false, msg: 'لم يتم إعداد GitHub Token — اذهب للإعدادات وأدخل الـ Token' };
 
   try {
     // 1. Get current file SHA and content
@@ -2300,11 +2340,11 @@ async function pushPasswordToGithub(newPassword) {
     });
     if(!putRes.ok) {
       var err = await putRes.json();
-      return { ok: false, msg: 'فشل الرفع: ' + (err.message || putRes.status) };
+      return { ok: false, msg: 'فشل الرفع (' + putRes.status + '): ' + (err.message || '') };
     }
     return { ok: true };
   } catch(e) {
-    return { ok: false, msg: 'خطأ: ' + e.message };
+    return { ok: false, msg: 'خطأ في الاتصال: ' + e.message };
   }
 }
 
@@ -2340,9 +2380,198 @@ async function changeAdminPassword() {
     showAlert('admin-pwd-settings-alert','success','✅ تم تغيير كلمة المرور وحفظها بشكل دائم على GitHub');
   } else {
     showAlert('admin-pwd-settings-alert','warn',
-      '✅ تم الحفظ محلياً — لكن لم يتم الحفظ الدائم: ' + result.msg + 
-      '<br><small>لحفظ دائم: أعد إعداد GitHub Token في الإعدادات</small>');
+      '✅ تم الحفظ محلياً<br>⚠️ سبب عدم الحفظ على GitHub: <strong>' + result.msg + '</strong>');
   }
+}
+
+// ══════════════════════════════════════════════
+// GITHUB DATA SYNC — حفظ البيانات على GitHub
+// ══════════════════════════════════════════════
+
+async function saveDataToGithub() {
+  var token = localStorage.getItem('rahati_gh_token');
+  var repo  = localStorage.getItem('rahati_gh_repo') || 'go5220964-bit/rahti-star';
+  if(!token) return;
+
+  var data = {
+    employees: state.employees,
+    shifts: state.shifts,
+    stamps: state.stamps,
+    config: CONFIG,
+    credentials: getCredentials(),
+    savedAt: new Date().toISOString()
+  };
+  var content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+
+  try {
+    // Check if file exists (to get SHA)
+    var sha = null;
+    var checkRes = await fetch('https://api.github.com/repos/' + repo + '/contents/rahati-data.json', {
+      headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if(checkRes.ok) {
+      var existing = await checkRes.json();
+      sha = existing.sha;
+    }
+
+    var body = { message: 'sync data ' + new Date().toISOString().slice(0,16), content: content };
+    if(sha) body.sha = sha;
+
+    await fetch('https://api.github.com/repos/' + repo + '/contents/rahati-data.json', {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'token ' + token,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+    console.log('✅ Data synced to GitHub');
+  } catch(e) {
+    console.error('GitHub sync error:', e);
+  }
+}
+
+async function loadDataFromGithub() {
+  var token = localStorage.getItem('rahati_gh_token');
+  var repo  = localStorage.getItem('rahati_gh_repo') || 'go5220964-bit/rahti-star';
+  if(!token) return false;
+
+  try {
+    var res = await fetch('https://api.github.com/repos/' + repo + '/contents/rahati-data.json', {
+      headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if(!res.ok) return false;
+    var file = await res.json();
+    var data = JSON.parse(decodeURIComponent(escape(atob(file.content.replace(/\n/g,'')))));
+    if(data.employees) state.employees = data.employees;
+    if(data.shifts)    state.shifts    = data.shifts;
+    if(data.stamps)    state.stamps    = data.stamps;
+    if(data.config)    CONFIG = {...CONFIG, ...data.config};
+    if(data.credentials) saveCredentials(data.credentials);
+    // Also sync to localStorage
+    saveToStorage();
+    console.log('✅ Data loaded from GitHub');
+    return true;
+  } catch(e) {
+    console.error('GitHub load error:', e);
+    return false;
+  }
+}
+
+// مزامنة تلقائية كل 5 دقائق
+setInterval(function() {
+  if(state.role === 'admin' && localStorage.getItem('rahati_gh_token')) {
+    saveDataToGithub();
+  }
+}, 5 * 60 * 1000);
+
+async function manualGithubSync() {
+  var statusEl = document.getElementById('gh-settings-status');
+  if(statusEl) statusEl.textContent = '⏳ جاري المزامنة...';
+  await saveDataToGithub();
+  if(statusEl) statusEl.textContent = '✅ تمت المزامنة بنجاح في ' + new Date().toLocaleTimeString('ar');
+}
+
+async function testGithubConnection() {
+  var resultEl = document.getElementById('gh-test-result');
+  resultEl.style.display = 'block';
+  resultEl.style.background = '#f5f5f5';
+  resultEl.style.border = '1px solid #ddd';
+  resultEl.innerHTML = '⏳ جاري الاختبار...';
+
+  var token = localStorage.getItem('rahati_gh_token');
+  var repo  = localStorage.getItem('rahati_gh_repo') || 'go5220964-bit/rahti-star';
+
+  var lines = [];
+  lines.push('📋 <strong>نتائج الاختبار:</strong>');
+  lines.push('🔑 Token: ' + (token ? '✅ محفوظ (' + token.slice(0,8) + '...)' : '❌ غير موجود'));
+  lines.push('📁 Repository: ' + repo);
+
+  if(!token) {
+    lines.push('');
+    lines.push('❌ <strong>المشكلة:</strong> لم يتم حفظ الـ Token');
+    lines.push('✅ <strong>الحل:</strong> أدخل الـ Token في الحقل أعلاه واضغط "حفظ إعدادات GitHub"');
+    resultEl.innerHTML = lines.join('<br>');
+    return;
+  }
+
+  // Test 1: Check token validity
+  try {
+    var userRes = await fetch('https://api.github.com/user', {
+      headers: { 'Authorization': 'token ' + token }
+    });
+    if(userRes.ok) {
+      var user = await userRes.json();
+      lines.push('👤 حساب GitHub: ✅ ' + user.login);
+    } else {
+      lines.push('👤 حساب GitHub: ❌ Token غير صالح (كود: ' + userRes.status + ')');
+      lines.push('');
+      lines.push('❌ <strong>المشكلة:</strong> الـ Token منتهي أو غير صحيح');
+      lines.push('✅ <strong>الحل:</strong> أنشئ Token جديد من github.com/settings/tokens');
+      resultEl.style.background = '#fdf0ef';
+      resultEl.innerHTML = lines.join('<br>');
+      return;
+    }
+  } catch(e) {
+    lines.push('🌐 اتصال الإنترنت: ❌ ' + e.message);
+    resultEl.innerHTML = lines.join('<br>');
+    return;
+  }
+
+  // Test 2: Check repo access
+  try {
+    var repoRes = await fetch('https://api.github.com/repos/' + repo, {
+      headers: { 'Authorization': 'token ' + token }
+    });
+    if(repoRes.ok) {
+      lines.push('📁 الوصول للـ Repository: ✅');
+    } else {
+      lines.push('📁 الوصول للـ Repository: ❌ كود ' + repoRes.status);
+      lines.push('');
+      lines.push('❌ <strong>المشكلة:</strong> لا يمكن الوصول للـ Repository');
+      lines.push('✅ <strong>الحل:</strong> تأكد أن اسم الـ Repository صحيح: <strong>' + repo + '</strong>');
+      resultEl.style.background = '#fdf0ef';
+      resultEl.innerHTML = lines.join('<br>');
+      return;
+    }
+  } catch(e) {
+    lines.push('📁 Repository: ❌ ' + e.message);
+  }
+
+  // Test 3: Check index.html exists
+  try {
+    var fileRes = await fetch('https://api.github.com/repos/' + repo + '/contents/index.html', {
+      headers: { 'Authorization': 'token ' + token }
+    });
+    if(fileRes.ok) {
+      var fileData = await fileRes.json();
+      lines.push('📄 ملف index.html: ✅ موجود (الحجم: ' + Math.round(fileData.size/1024) + ' KB)');
+      // Check if marker exists
+      var content = atob(fileData.content.replace(/\n/g,''));
+      if(content.includes('ADMIN_PWD_MARKER')) {
+        lines.push('🔖 علامة كلمة المرور: ✅ موجودة');
+        lines.push('');
+        lines.push('✅ <strong>كل شيء يعمل بشكل صحيح!</strong>');
+        resultEl.style.background = '#e8f5ee';
+        resultEl.style.border = '1px solid #2d9267';
+      } else {
+        lines.push('🔖 علامة كلمة المرور: ❌ غير موجودة في الملف');
+        lines.push('');
+        lines.push('❌ <strong>المشكلة:</strong> الملف المرفوع على GitHub ليس النسخة الصحيحة');
+        lines.push('✅ <strong>الحل:</strong> ارفع ملف <strong>rahati-star-v3.html</strong> وسمّه index.html');
+        resultEl.style.background = '#fdf0ef';
+      }
+    } else {
+      lines.push('📄 ملف index.html: ❌ غير موجود');
+      lines.push('✅ <strong>الحل:</strong> ارفع الملف على GitHub باسم index.html');
+      resultEl.style.background = '#fdf0ef';
+    }
+  } catch(e) {
+    lines.push('📄 index.html: ❌ ' + e.message);
+  }
+
+  resultEl.innerHTML = lines.join('<br>');
 }
 
 </script>
