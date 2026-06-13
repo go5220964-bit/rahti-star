@@ -31,6 +31,14 @@
       "shiftId": 2,
       "joinDate": "2024-04-05",
       "active": true
+    },
+    {
+      "id": 1781359171345,
+      "name": "مراد",
+      "dept": "الاستقبال",
+      "shiftId": 1,
+      "joinDate": "2026-06-13",
+      "active": true
     }
   ],
   "shifts": [
@@ -134,7 +142,11 @@
     "4": {
       "username": "noura",
       "password": "123456"
+    },
+    "1781359171345": {
+      "username": "مراد",
+      "password": "1234"
     }
   },
-  "savedAt": "2026-06-13T13:59:12.323Z"
+  "savedAt": "2026-06-13T13:59:32.146Z"
 }
