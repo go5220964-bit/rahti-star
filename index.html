@@ -2019,13 +2019,10 @@ function showAdminLogin() {
   document.getElementById('admin-login-error').style.display = 'none';
   setTimeout(function(){ document.getElementById('admin-login-password').focus(); }, 100);
 }
-async function loginEmployee() {
+function loginEmployee() {
+  loadFromStorage();
   var username = document.getElementById('emp-login-username').value.trim();
   var password = document.getElementById('emp-login-password').value;
-  if(getGHToken()) {
-    try { await loadDataFromGithub(); } catch(e) {}
-  }
-  loadFromStorage();
   var creds = getCredentials();
   var foundEmp = null;
   var foundId = null;
@@ -2063,11 +2060,8 @@ async function loginEmployee() {
   startClock(); startWatchingLocation(); renderTodayLog();
   switchPage('attendance');
 }
-async function loginAdmin() {
+function loginAdmin() {
   var password = document.getElementById('admin-login-password').value;
-  if(getGHToken()) {
-    try { await loadDataFromGithub(); } catch(e) {}
-  }
   var savedPwd = localStorage.getItem('rahati_admin_pwd') || ADMIN_DEFAULT_PASSWORD;
   if (password !== savedPwd) {
     document.getElementById('admin-login-error').style.display = 'block';
@@ -2316,12 +2310,7 @@ function saveGithubSettings() {
   }
   localStorage.setItem('rahati_gh_token', token);
   localStorage.setItem('rahati_gh_repo', repo);
-  document.getElementById('gh-settings-status').textContent = '⏳ جاري حفظ الإعدادات على GitHub...';
-  saveDataToGithub().then(function(ok){
-    document.getElementById('gh-settings-status').textContent = ok ? '✅ تم الحفظ على جميع الأجهزة' : '✅ تم الحفظ محلياً';
-  }).catch(function(){
-    document.getElementById('gh-settings-status').textContent = '✅ تم الحفظ محلياً';
-  });
+  document.getElementById('gh-settings-status').textContent = '✅ تم الحفظ بنجاح';
   document.getElementById('gh-token').value = '';
 }
 
@@ -2611,25 +2600,6 @@ async function testGithubConnection() {
 // ══════════════════════════════════════════════
 // AUTO RESTORE SESSION — استعادة الجلسة تلقائياً
 // ══════════════════════════════════════════════
-
-(async function bootstrapRahatiSync(){
-  try {
-    if(localStorage.getItem('rahati_gh_token')) return;
-    var repo = localStorage.getItem('rahati_gh_repo') || 'go5220964-bit/rahti-star';
-    var res = await fetch('https://raw.githubusercontent.com/' + repo + '/main/rahati-data.json?t=' + Date.now());
-    if(!res.ok) return;
-    var data = await res.json();
-    if(data.ghToken) localStorage.setItem('rahati_gh_token', data.ghToken);
-    if(data.ghRepo) localStorage.setItem('rahati_gh_repo', data.ghRepo);
-    if(data.adminPassword) localStorage.setItem('rahati_admin_pwd', data.adminPassword);
-    if(data.credentials) localStorage.setItem('rahati_credentials', JSON.stringify(data.credentials));
-    if(data.employees) localStorage.setItem('rahati_employees', JSON.stringify(data.employees));
-    if(data.shifts) localStorage.setItem('rahati_shifts', JSON.stringify(data.shifts));
-    if(data.stamps) localStorage.setItem('rahati_stamps', JSON.stringify(data.stamps));
-    if(data.config) localStorage.setItem('rahati_config', JSON.stringify(data.config));
-  } catch(e) {}
-})();
-
 window.addEventListener('load', function() {
   var savedRole = localStorage.getItem('rahati_session_role');
   var savedEmp  = localStorage.getItem('rahati_session_emp');
