@@ -1,5 +1,14 @@
 {
-  "employees": [],
+  "employees": [
+    {
+      "id": 1781335561524,
+      "name": "مراد اليمني",
+      "dept": "الاستقبال",
+      "shiftId": 1,
+      "joinDate": "2026-06-13",
+      "active": true
+    }
+  ],
   "shifts": [
     {
       "id": 1,
@@ -101,7 +110,11 @@
     "4": {
       "username": "noura",
       "password": "123456"
+    },
+    "1781335561524": {
+      "username": "مراد",
+      "password": "Mm1234"
     }
   },
-  "savedAt": "2026-06-13T07:25:19.468Z"
+  "savedAt": "2026-06-13T07:26:04.531Z"
 }
