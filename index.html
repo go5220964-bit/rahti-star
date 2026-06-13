@@ -913,21 +913,20 @@ function saveToStorage() {
   localStorage.setItem('rahati_employees', JSON.stringify(state.employees));
   localStorage.setItem('rahati_shifts', JSON.stringify(state.shifts));
   localStorage.setItem('rahati_config', JSON.stringify(CONFIG));
-  // حفظ فوري على GitHub (debounce 1 ثانية لتجنب الطلبات المتعددة)
+  // حفظ آلي فوري على GitHub
   if(localStorage.getItem('rahati_gh_token')) {
     clearTimeout(_ghSaveTimer);
     _ghSaveTimer = setTimeout(function(){
-      // إظهار مؤشر الحفظ
       var ind = document.getElementById('sync-indicator');
-      if(ind){ ind.style.display='flex'; ind.textContent='⏳ جاري الحفظ...'; ind.style.color='#888'; }
+      if(ind){ ind.style.display='flex'; ind.textContent='⏳ حفظ...'; ind.style.color='#888'; }
       saveDataToGithub().then(function(ok){
         if(ind){
-          if(ok){ ind.textContent='✅ تم الحفظ'; ind.style.color='#1a6b4a'; }
-          else  { ind.textContent='⚠️ حفظ محلي فقط'; ind.style.color='#e67e22'; }
-          setTimeout(function(){ if(ind) ind.style.display='none'; }, 3000);
+          if(ok){ ind.textContent='✅ محفوظ على GitHub'; ind.style.color='#1a6b4a'; }
+          else  { ind.textContent='⚠️ محفوظ محلياً'; ind.style.color='#e67e22'; }
+          setTimeout(function(){ if(ind) ind.style.display='none'; }, 2000);
         }
       });
-    }, 800);
+    }, 500);
   }
 }
 
@@ -2019,7 +2018,10 @@ function showAdminLogin() {
   document.getElementById('admin-login-error').style.display = 'none';
   setTimeout(function(){ document.getElementById('admin-login-password').focus(); }, 100);
 }
-function loginEmployee() {
+async function loginEmployee() {
+  if(localStorage.getItem('rahati_gh_token')) {
+    await loadDataFromGithub();
+  }
   loadFromStorage();
   var username = document.getElementById('emp-login-username').value.trim();
   var password = document.getElementById('emp-login-password').value;
@@ -2060,12 +2062,17 @@ function loginEmployee() {
   startClock(); startWatchingLocation(); renderTodayLog();
   switchPage('attendance');
 }
-function loginAdmin() {
+async function loginAdmin() {
+  if(localStorage.getItem('rahati_gh_token')) {
+    await loadDataFromGithub();
+  }
   var password = document.getElementById('admin-login-password').value;
   var savedPwd = localStorage.getItem('rahati_admin_pwd') || ADMIN_DEFAULT_PASSWORD;
   if (password !== savedPwd) {
     document.getElementById('admin-login-error').style.display = 'block';
     document.getElementById('admin-login-password').value = '';
+    var btn = document.getElementById('admin-login-btn');
+    if(btn){ btn.disabled=false; btn.textContent='دخول المدير'; }
     return;
   }
   state.loggedEmployee = null;
