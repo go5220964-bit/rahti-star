@@ -520,6 +520,25 @@ select.form-control{cursor:pointer}
       <button class="btn btn-primary" onclick="saveSettings()">💾 حفظ الإعدادات</button>
     </div>
     <div class="card">
+      <div class="card-title">🔑 إعدادات حفظ كلمة المرور (GitHub)</div>
+      <div style="font-size:12px;color:var(--text-3);margin-bottom:1rem;line-height:1.8">
+        لحفظ كلمة مرور المدير بشكل دائم، أدخل بيانات GitHub Token مرة واحدة فقط.
+        <br><a href="https://github.com/settings/tokens/new?scopes=repo&description=rahati-star" target="_blank" style="color:var(--brand)">اضغط هنا لإنشاء Token</a>
+        (اختر صلاحية <strong>repo</strong>)
+      </div>
+      <div class="form-group">
+        <label class="form-label">GitHub Token</label>
+        <input class="form-control" id="gh-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" style="direction:ltr;font-size:12px">
+      </div>
+      <div class="form-group">
+        <label class="form-label">اسم المستخدم / الـ Repository</label>
+        <input class="form-control" id="gh-repo" type="text" placeholder="go5220964-bit/rahti-star" style="direction:ltr;font-size:12px" value="go5220964-bit/rahti-star">
+      </div>
+      <button class="btn btn-secondary" style="font-size:13px" onclick="saveGithubSettings()">💾 حفظ إعدادات GitHub</button>
+      <div id="gh-settings-status" style="font-size:12px;color:var(--text-3);margin-top:8px"></div>
+    </div>
+
+    <div class="card">
       <div class="card-title">🔗 إعدادات Google Drive</div>
       <div id="drive-settings-status" style="margin-bottom:1rem;font-size:14px;color:var(--text-2)">غير مرتبط</div>
       <button class="gdrive-btn" id="settings-gdrive-btn" onclick="showScriptUrlModal()" style="margin-top:0;border-radius:8px">
@@ -545,6 +564,27 @@ select.form-control{cursor:pointer}
       </div>
       <button class="btn btn-primary" onclick="saveSettings()">💾 حفظ</button>
     </div>
+    <div class="card">
+      <div class="card-title">🔐 تغيير كلمة مرور المدير</div>
+      <div id="admin-pwd-settings-alert"></div>
+      <div class="form-group" style="position:relative">
+        <label class="form-label">كلمة المرور الحالية</label>
+        <input class="form-control" id="admin-cur-pwd" type="password" placeholder="أدخل كلمة المرور الحالية" style="padding-left:40px">
+        <button onclick="togglePwdVis('admin-cur-pwd','eye-ac')" id="eye-ac" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">👁</button>
+      </div>
+      <div class="form-group" style="position:relative">
+        <label class="form-label">كلمة المرور الجديدة</label>
+        <input class="form-control" id="admin-new-pwd" type="password" placeholder="6 أحرف على الأقل" style="padding-left:40px">
+        <button onclick="togglePwdVis('admin-new-pwd','eye-an')" id="eye-an" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">👁</button>
+      </div>
+      <div class="form-group" style="position:relative">
+        <label class="form-label">تأكيد كلمة المرور الجديدة</label>
+        <input class="form-control" id="admin-confirm-pwd" type="password" placeholder="أعد الكتابة" style="padding-left:40px">
+        <button onclick="togglePwdVis('admin-confirm-pwd','eye-ar')" id="eye-ar" style="position:absolute;left:10px;top:33px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3)">👁</button>
+      </div>
+      <button class="btn btn-primary" onclick="changeAdminPassword()">💾 حفظ كلمة مرور المدير</button>
+    </div>
+
     <div class="card">
       <div class="card-title">ℹ️ معلومات الشركة</div>
       <div style="font-size:14px;color:var(--text-2);line-height:2">
@@ -1688,6 +1728,7 @@ function switchPage(id) {
     renderEmployees();
   }
   if(id==='settings') {
+    loadGithubSettings();
     document.getElementById('set-lat').value = CONFIG.lat;
     document.getElementById('set-lng').value = CONFIG.lng;
     document.getElementById('set-radius').value = CONFIG.radius;
@@ -1753,8 +1794,9 @@ function login(role) {
 function logout() {
   document.getElementById('login-screen').style.display = 'flex';
   document.getElementById('app').style.display = 'none';
-  document.getElementById('role-btns').style.display = 'none';
-  document.getElementById('demo-hint').style.display = '';
+  document.getElementById('role-btns').style.display = 'grid';
+  document.getElementById('emp-login-panel').style.display = 'none';
+  document.getElementById('admin-login-panel').style.display = 'none';
   if(accessToken && google && google.accounts) {
     google.accounts.oauth2.revoke(accessToken);
     accessToken = null;
@@ -1891,7 +1933,7 @@ function saveScriptUrl() {
 // ══════════════════════════════════════════════
 // CREDENTIALS SYSTEM — نظام كلمات المرور
 // ══════════════════════════════════════════════
-const ADMIN_DEFAULT_PASSWORD = 'rahati2024';
+const ADMIN_DEFAULT_PASSWORD = 'rahati2024'; // ADMIN_PWD_MARKER
 
 function getCredentials() {
   const saved = localStorage.getItem('rahati_credentials');
@@ -1934,12 +1976,15 @@ function showAdminLogin() {
   setTimeout(function(){ document.getElementById('admin-login-password').focus(); }, 100);
 }
 function loginEmployee() {
+  loadFromStorage();
   var username = document.getElementById('emp-login-username').value.trim();
   var password = document.getElementById('emp-login-password').value;
   var creds = getCredentials();
   var foundEmp = null;
+  var foundId = null;
   for (var empId in creds) {
     if (creds[empId].username === username && creds[empId].password === password) {
+      foundId = empId;
       foundEmp = state.employees.find(function(e){ return String(e.id) === String(empId); });
       break;
     }
@@ -1962,7 +2007,6 @@ function loginEmployee() {
   var deptEl = document.getElementById('emp-dept');
   if(nameEl){ nameEl.value = foundEmp.name; nameEl.readOnly = true; }
   if(deptEl){ deptEl.value = foundEmp.dept; deptEl.disabled = true; }
-  loadFromStorage();
   populateShiftDropdowns();
   var shiftEl = document.getElementById('emp-shift');
   if(shiftEl) shiftEl.value = foundEmp.shiftId;
@@ -2189,6 +2233,116 @@ function exportAbsenceCSV() {
   a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
   a.download = 'absence-report-' + monthVal + '.csv';
   a.click();
+}
+
+// ══════════════════════════════════════════════
+// ADMIN PASSWORD CHANGE
+// ══════════════════════════════════════════════
+function saveGithubSettings() {
+  var token = document.getElementById('gh-token').value.trim();
+  var repo  = document.getElementById('gh-repo').value.trim();
+  if(!token || !repo) { 
+    document.getElementById('gh-settings-status').textContent = '⚠️ أدخل الـ Token واسم الـ Repository';
+    return; 
+  }
+  localStorage.setItem('rahati_gh_token', token);
+  localStorage.setItem('rahati_gh_repo', repo);
+  document.getElementById('gh-settings-status').textContent = '✅ تم الحفظ بنجاح';
+  document.getElementById('gh-token').value = '';
+}
+
+function loadGithubSettings() {
+  var repo = localStorage.getItem('rahati_gh_repo') || 'go5220964-bit/rahti-star';
+  var ghRepoEl = document.getElementById('gh-repo');
+  if(ghRepoEl) ghRepoEl.value = repo;
+  var token = localStorage.getItem('rahati_gh_token') || '';
+  if(token) {
+    var statusEl = document.getElementById('gh-settings-status');
+    if(statusEl) statusEl.textContent = '✅ GitHub Token محفوظ';
+  }
+}
+
+async function pushPasswordToGithub(newPassword) {
+  var token = localStorage.getItem('rahati_gh_token');
+  var repo  = localStorage.getItem('rahati_gh_repo') || 'go5220964-bit/rahti-star';
+  if(!token) return { ok: false, msg: 'لم يتم إعداد GitHub Token بعد' };
+
+  try {
+    // 1. Get current file SHA and content
+    var getRes = await fetch('https://api.github.com/repos/' + repo + '/contents/index.html', {
+      headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if(!getRes.ok) return { ok: false, msg: 'خطأ في الاتصال بـ GitHub: ' + getRes.status };
+    var fileData = await getRes.json();
+    var sha = fileData.sha;
+    var currentContent = atob(fileData.content.replace(/\n/g,''));
+
+    // 2. Replace password marker in file content
+    var oldMarker = /const ADMIN_DEFAULT_PASSWORD = '[^']*'; \/\/ ADMIN_PWD_MARKER/;
+    var newMarker = "const ADMIN_DEFAULT_PASSWORD = '" + newPassword + "'; // ADMIN_PWD_MARKER";
+    if(!oldMarker.test(currentContent)) return { ok: false, msg: 'لم يتم العثور على علامة كلمة المرور في الملف' };
+    var updatedContent = currentContent.replace(oldMarker, newMarker);
+
+    // 3. Push updated file
+    var encoded = btoa(unescape(encodeURIComponent(updatedContent)));
+    var putRes = await fetch('https://api.github.com/repos/' + repo + '/contents/index.html', {
+      method: 'PUT',
+      headers: { 
+        'Authorization': 'token ' + token, 
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: 'Update admin password',
+        content: encoded,
+        sha: sha
+      })
+    });
+    if(!putRes.ok) {
+      var err = await putRes.json();
+      return { ok: false, msg: 'فشل الرفع: ' + (err.message || putRes.status) };
+    }
+    return { ok: true };
+  } catch(e) {
+    return { ok: false, msg: 'خطأ: ' + e.message };
+  }
+}
+
+async function changeAdminPassword() {
+  var cur  = document.getElementById('admin-cur-pwd').value;
+  var nw   = document.getElementById('admin-new-pwd').value;
+  var conf = document.getElementById('admin-confirm-pwd').value;
+  var savedPwd = localStorage.getItem('rahati_admin_pwd') || ADMIN_DEFAULT_PASSWORD;
+
+  if (cur !== savedPwd) {
+    showAlert('admin-pwd-settings-alert','danger','❌ كلمة المرور الحالية غير صحيحة');
+    return;
+  }
+  if (nw.length < 6) {
+    showAlert('admin-pwd-settings-alert','warn','⚠️ كلمة المرور الجديدة قصيرة جداً (6 أحرف على الأقل)');
+    return;
+  }
+  if (nw !== conf) {
+    showAlert('admin-pwd-settings-alert','danger','❌ كلمتا المرور غير متطابقتين');
+    return;
+  }
+
+  // Save locally first
+  localStorage.setItem('rahati_admin_pwd', nw);
+  showAlert('admin-pwd-settings-alert','success','⏳ جاري الحفظ الدائم على GitHub...');
+  document.getElementById('admin-cur-pwd').value = '';
+  document.getElementById('admin-new-pwd').value = '';
+  document.getElementById('admin-confirm-pwd').value = '';
+
+  // Then push to GitHub for permanent storage
+  var result = await pushPasswordToGithub(nw);
+  if(result.ok) {
+    showAlert('admin-pwd-settings-alert','success','✅ تم تغيير كلمة المرور وحفظها بشكل دائم على GitHub');
+  } else {
+    showAlert('admin-pwd-settings-alert','warn',
+      '✅ تم الحفظ محلياً — لكن لم يتم الحفظ الدائم: ' + result.msg + 
+      '<br><small>لحفظ دائم: أعد إعداد GitHub Token في الإعدادات</small>');
+  }
 }
 
 </script>
