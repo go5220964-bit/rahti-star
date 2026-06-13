@@ -1,46 +1,5 @@
 {
-  "employees": [
-    {
-      "id": 1,
-      "name": "محمد أحمد العمري",
-      "dept": "الاستقبال",
-      "shiftId": 1,
-      "joinDate": "2024-01-15",
-      "active": false
-    },
-    {
-      "id": 2,
-      "name": "سارة محمد القحطاني",
-      "dept": "الإدارة",
-      "shiftId": 1,
-      "joinDate": "2024-03-01",
-      "active": false
-    },
-    {
-      "id": 3,
-      "name": "خالد عبدالله الزهراني",
-      "dept": "الأمن",
-      "shiftId": 3,
-      "joinDate": "2024-02-10",
-      "active": false
-    },
-    {
-      "id": 4,
-      "name": "نورة سعد العتيبي",
-      "dept": "التنظيف والتدبير",
-      "shiftId": 2,
-      "joinDate": "2024-04-05",
-      "active": false
-    },
-    {
-      "id": 1781283475355,
-      "name": "مراد",
-      "dept": "الاستقبال",
-      "shiftId": 1,
-      "joinDate": "2026-06-12",
-      "active": true
-    }
-  ],
+  "employees": [],
   "shifts": [
     {
       "id": 1,
@@ -148,5 +107,5 @@
       "password": "123456"
     }
   },
-  "savedAt": "2026-06-13T07:11:41.482Z"
+  "savedAt": "2026-06-13T07:11:57.523Z"
 }
