@@ -39,30 +39,38 @@
       "shiftId": 1,
       "joinDate": "2026-06-12",
       "active": true
+    },
+    {
+      "id": 1781336292973,
+      "name": "تجريبي",
+      "dept": "الإدارة",
+      "shiftId": 1,
+      "joinDate": "2026-06-13",
+      "active": true
     }
   ],
   "shifts": [
     {
       "id": 1,
       "name": "صباحية",
-      "start": "07:00",
-      "end": "15:00",
+      "start": "08:00",
+      "end": "16:00",
       "notes": "",
       "active": true
     },
     {
       "id": 2,
       "name": "مسائية",
-      "start": "15:00",
-      "end": "23:00",
+      "start": "16:00",
+      "end": "00:00",
       "notes": "",
       "active": true
     },
     {
       "id": 3,
       "name": "ليلية",
-      "start": "23:00",
-      "end": "07:00",
+      "start": "00:00",
+      "end": "08:00",
       "notes": "",
       "active": true
     }
@@ -150,7 +158,11 @@
     "1781334760435": {
       "username": "مراد",
       "password": "Mm1234"
+    },
+    "1781336292973": {
+      "username": "تجريبي",
+      "password": "123456"
     }
   },
-  "savedAt": "2026-06-13T07:42:17.083Z"
+  "savedAt": "2026-06-13T07:42:43.092Z"
 }
